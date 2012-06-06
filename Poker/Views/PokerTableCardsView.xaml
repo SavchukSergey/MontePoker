@@ -4,7 +4,6 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Poker.Views"
-             mc:Ignorable="d" 
              >
     <Grid>
         <Grid.ColumnDefinitions>
@@ -14,10 +13,10 @@
             <ColumnDefinition />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <local:PokerCardView DataContext="{Binding Path=CardA}" Grid.Column="0" Margin="2" />
-        <local:PokerCardView DataContext="{Binding Path=CardB}" Grid.Column="1" Margin="2" />
-        <local:PokerCardView DataContext="{Binding Path=CardC}" Grid.Column="2" Margin="2" />
-        <local:PokerCardView DataContext="{Binding Path=CardD}" Grid.Column="3" Margin="2" />
-        <local:PokerCardView DataContext="{Binding Path=CardE}" Grid.Column="4" Margin="2" />
+        <local:PokerCardView DataContext="{Binding Path=CardA}" Grid.Column="0" Margin="2" CardClick="OnCardClick" />
+        <local:PokerCardView DataContext="{Binding Path=CardB}" Grid.Column="1" Margin="2" CardClick="OnCardClick" />
+        <local:PokerCardView DataContext="{Binding Path=CardC}" Grid.Column="2" Margin="2" CardClick="OnCardClick" />
+        <local:PokerCardView DataContext="{Binding Path=CardD}" Grid.Column="3" Margin="2" CardClick="OnCardClick" />
+        <local:PokerCardView DataContext="{Binding Path=CardE}" Grid.Column="4" Margin="2" CardClick="OnCardClick" />
     </Grid>
 </UserControl>

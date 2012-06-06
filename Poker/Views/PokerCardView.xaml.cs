@@ -11,6 +11,8 @@ namespace Poker.Views {
     /// </summary>
     public partial class PokerCardView : UserControl {
 
+        public static readonly RoutedEvent CardClickEvent = EventManager.RegisterRoutedEvent("CardClick", RoutingStrategy.Direct, typeof(RoutedEventHandler), typeof(PokerCardView));
+
         private const double DIM_X = 2;
         private const double DIM_Y = 2.5;
 
@@ -106,8 +108,13 @@ namespace Poker.Views {
             return arrangeBounds;
         }
 
-        protected override Size MeasureOverride(Size constraint) {
-            return base.MeasureOverride(constraint);
+        public event EventHandler<CardClickEventArgs> CardClick {
+            add { AddHandler(CardClickEvent, value); }
+            remove { RemoveHandler(CardClickEvent, value); }
+        }
+
+        private void UserControl_Click(object sender, RoutedEventArgs e) {
+            RaiseEvent(new RoutedEventArgs(CardClickEvent, this));
         }
 
     }
