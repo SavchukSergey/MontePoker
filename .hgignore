@@ -1,0 +1,6 @@
+syntax: glob
+_ReSharper.Poker/
+Poker.Calc.suo
+Poker/bin/
+Poker/obj/
+Poker/Poker.csproj.user
