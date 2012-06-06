@@ -5,10 +5,10 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
             >
-    <Border BorderBrush="Red" BorderThickness="0" x:Name="inner">
+    <Border BorderBrush="Red" BorderThickness="0" x:Name="inner" >
         <Border.Style>
             <Style>
-                <Setter Property="Border.Background" Value="White" />
+                <Setter Property="Border.Background" Value="Red" />
                 <Style.Triggers>
                     <DataTrigger Binding="{Binding Path=Highlighted}" Value="true">
                         <Setter Property="Border.Background" Value="Green" />

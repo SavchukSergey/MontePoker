@@ -61,6 +61,13 @@ namespace Poker.Views {
                 _selectedCard.Highlighted = true;
             }
             OnCardClick(new CardClickEventArgs(view));
+            InvalidateCards();
+        }
+
+        private void InvalidateCards() {
+            foreach (PokerCardView child in inner.Children) {
+                child.InvalidateVisual();
+            }
         }
 
         protected virtual void OnCardClick(CardClickEventArgs args) {
