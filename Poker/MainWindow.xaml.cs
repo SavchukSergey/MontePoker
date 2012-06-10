@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 using System.Windows;
 using Poker.Models;
 using Poker.Statistics;
@@ -13,6 +14,7 @@ namespace Poker {
         private readonly PokerStatRootModel _model = new PokerStatRootModel();
         private readonly PokerCalculator _calculator = new PokerCalculator();
         private Thread _calcThread;
+        private Timer _refreshTimer;
 
         public MainWindow() {
             InitializeComponent();
@@ -22,8 +24,17 @@ namespace Poker {
                 _model.Players.Add(player);
             }
             DataContext = _model;
-            _calcThread = new Thread(CalcThreadEntryPoint);
-            _calcThread.Start();
+            //_calcThread = new Thread(CalcThreadEntryPoint);
+            //_calcThread.Start();
+            //_refreshTimer = new Timer(onTimerTick, null, TimeSpan.Zero, TimeSpan.FromMilliseconds(250));
+        }
+
+        private void onTimerTick(object state) {
+            if (_model.Dirty)
+            {
+                _model.ResetStat();
+                _model.ResetDirty();
+            }
         }
 
         private void CalcThreadEntryPoint() {
@@ -47,7 +58,7 @@ namespace Poker {
                 sc.Visible = false;
             }
             _model.CardDeck.DeselectAll();
-            _model.InvalidateStat();
+            _model.InvalidateState();
         }
 
 
@@ -66,7 +77,7 @@ namespace Poker {
                 sc.Visible = false;
             }
             _model.CardDeck.DeselectAll();
-            _model.InvalidateStat();
+            _model.InvalidateState();
         }
 
     }

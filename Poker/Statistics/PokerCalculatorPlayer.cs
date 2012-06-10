@@ -91,5 +91,9 @@ namespace Poker.Statistics {
                     break;
             }
         }
+
+        public bool Contains(ref PokerCard card) {
+            return CardA == card || CardB == card;
+        }
     }
 }

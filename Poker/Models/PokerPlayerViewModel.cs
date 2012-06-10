@@ -6,6 +6,11 @@ namespace Poker.Models {
         private readonly PokerCardViewModel _cardA = new PokerCardViewModel();
         private readonly PokerCardViewModel _cardB = new PokerCardViewModel();
 
+        private readonly PokerPlayerStatisticsViewModel _statistics = new PokerPlayerStatisticsViewModel();
+        public PokerPlayerStatisticsViewModel Statistics {
+            get { return _statistics; }
+        }
+
         private string _name;
         public string Name {
             get { return _name; }
@@ -33,5 +38,8 @@ namespace Poker.Models {
 
         public event PropertyChangedEventHandler PropertyChanged;
 
+        public void ResetStat() {
+            throw new System.NotImplementedException();
+        }
     }
 }

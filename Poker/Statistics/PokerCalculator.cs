@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Poker.Cards;
 using Poker.Evaluation;
 
@@ -17,11 +18,6 @@ namespace Poker.Statistics {
         }
 
         public PokerCalculatorTable Table;
-        
-        private readonly CardDeck _cardDeck = new CardDeck();
-        public CardDeck CardDeck {
-            get { return _cardDeck; }
-        }
 
         private class PokerPlayerHand {
 
@@ -33,7 +29,6 @@ namespace Poker.Statistics {
         }
 
         public void PlayGame() {
-
             _gamesPlayed++;
             var deck = GetDeckSnapShot();
             IList<PokerPlayerHand> hands = new List<PokerPlayerHand>();
@@ -119,7 +114,15 @@ namespace Poker.Statistics {
         }
 
         protected CardDeck GetDeckSnapShot() {
-            throw new NotImplementedException();
+            //TODO: optimize
+            var cards = CardDeck.GetAllCards();
+            var res = new List<PokerCard>();
+            for (var i = 0; i < cards.Length; i++) {
+                if (Table.Contains(ref cards[i])) continue;
+                if (Players.Any(player => player.Contains(ref cards[i]))) continue;
+                res.Add(cards[i]);
+            }
+            return new CardDeck(cards);
         }
 
 

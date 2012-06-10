@@ -18,7 +18,25 @@ namespace Poker.Models {
             get { return _players; }
         }
 
-        public void InvalidateStat() {
+        private bool _dirty = true;
+        public bool Dirty {
+            get { return _dirty; }
+        }
+
+        public void ResetDirty() {
+            _dirty = false;
+        }
+
+        public void InvalidateState() {
+            _dirty = true;
+        }
+
+        public void ResetStat()
+        {
+            foreach (var player in _players)
+            {
+                player.ResetStat();
+            }
         }
     }
 }

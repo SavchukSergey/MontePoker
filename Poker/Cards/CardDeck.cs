@@ -7,6 +7,14 @@ namespace Poker.Cards {
 
         private IList<PokerCard> _cards = new List<PokerCard>();
 
+        public CardDeck() {
+
+        }
+
+        public CardDeck(IList<PokerCard> cards) {
+            _cards = cards;
+        }
+
         public void Reset() {
             _cards.Clear();
             for (var i = 1; i <= 13; i++) {
@@ -35,6 +43,14 @@ namespace Poker.Cards {
         public CardDeck Clone() {
             var res = new CardDeck { _cards = _cards.ToList() };
             return res;
+        }
+
+        public static PokerCard[] GetAllCards() {
+            var cards = new PokerCard[52];
+            for (var i = 0; i < 52; i++) {
+                cards[i] = new PokerCard { Rank = (CardRank)((i % 13) + 1), Suit = (CardSuit)(i / 13) };
+            }
+            return cards;
         }
     }
 }

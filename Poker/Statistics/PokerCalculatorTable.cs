@@ -22,5 +22,8 @@ namespace Poker.Statistics {
             CardE.Suit = CardSuit.None;
         }
 
+        public bool Contains(ref PokerCard card) {
+            return CardA == card || CardB == card || CardC == card || CardD == card || CardE == card;
+        }
     }
 }
