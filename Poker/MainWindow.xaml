@@ -23,7 +23,7 @@
             </ListView.ItemsPanel>
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <local:PokerPlayerView Margin="10" />
+                    <local:PokerPlayerView Margin="10" CardClick="OnPlayerCardsClick"/>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

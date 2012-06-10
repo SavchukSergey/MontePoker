@@ -3,7 +3,7 @@ using Poker.Cards;
 using Poker.Evaluation;
 
 namespace Poker.Statistics {
-    public class PokerPlayerStatistics
+    public class PokerCalculatorPlayer
     {
 
         public PokerCard CardA;

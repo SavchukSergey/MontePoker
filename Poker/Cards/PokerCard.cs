@@ -1,9 +1,14 @@
 ﻿namespace Poker.Cards {
     public struct PokerCard {
+        
+        public PokerCard(CardRank rank, CardSuit suit) {
+            Rank = rank;
+            Suit = suit;
+        }
 
-        public CardRank Rank { get; set; }
+        public CardRank Rank;
 
-        public CardSuit Suit { get; set; }
+        public CardSuit Suit;
 
     }
 }

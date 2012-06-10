@@ -29,8 +29,8 @@
                     <ColumnDefinition />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
-                <local:PokerCardView DataContext="{Binding Path=CardA}" Grid.Row="0" Grid.Column="0" Margin="2" />
-                <local:PokerCardView DataContext="{Binding Path=CardB}" Grid.Row="0" Grid.Column="1" Margin="2" />
+                <local:PokerCardView DataContext="{Binding Path=CardA}" Grid.Row="0" Grid.Column="0" Margin="2" CardClick="OnCardClick" />
+                <local:PokerCardView DataContext="{Binding Path=CardB}" Grid.Row="0" Grid.Column="1" Margin="2" CardClick="OnCardClick" />
             </Grid>
             <Grid Grid.Row="2">
                 <Grid.RowDefinitions>

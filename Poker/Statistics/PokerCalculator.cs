@@ -4,37 +4,38 @@ using Poker.Cards;
 using Poker.Evaluation;
 
 namespace Poker.Statistics {
-    public class PokerTableStatistics {
+    public class PokerCalculator {
 
         private int _gamesPlayed;
         public int GamesPlayed {
             get { return _gamesPlayed; }
         }
 
-        private readonly IList<PokerPlayerStatistics> _players = new List<PokerPlayerStatistics>();
-        public IList<PokerPlayerStatistics> Players {
+        private readonly IList<PokerCalculatorPlayer> _players = new List<PokerCalculatorPlayer>();
+        public IList<PokerCalculatorPlayer> Players {
             get { return _players; }
+        }
+
+        public PokerCalculatorTable Table;
+        
+        private readonly CardDeck _cardDeck = new CardDeck();
+        public CardDeck CardDeck {
+            get { return _cardDeck; }
         }
 
         private class PokerPlayerHand {
 
-            public PokerPlayerStatistics Player;
+            public PokerCalculatorPlayer Player;
 
             public readonly PokerCard[] Cards = new PokerCard[7];
 
             public HandEvaluation Evaluation;
         }
 
-        public PokerCard CardA;
-        public PokerCard CardB;
-        public PokerCard CardC;
-        public PokerCard CardD;
-        public PokerCard CardE;
-
         public void PlayGame() {
 
             _gamesPlayed++;
-            var deck = GetAvailableCardsSnapShot();
+            var deck = GetDeckSnapShot();
             IList<PokerPlayerHand> hands = new List<PokerPlayerHand>();
             for (var i = 0; i < _players.Count; i++) {
                 var player = _players[i];
@@ -56,32 +57,32 @@ namespace Poker.Statistics {
                 hands.Add(hand);
             }
             PokerCard cardA, cardB, cardC, cardD, cardE;
-            if (!CardA.Empty()) {
-                cardA = CardA;
+            if (!Table.CardA.Empty()) {
+                cardA = Table.CardA;
             } else {
                 deck.DealOne(out cardA);
             }
-            if (!CardB.Empty()) {
-                cardB = CardB;
+            if (!Table.CardB.Empty()) {
+                cardB = Table.CardB;
             } else {
                 deck.DealOne(out cardB);
             }
-            if (!CardC.Empty()) {
-                cardC = CardC;
+            if (!Table.CardC.Empty()) {
+                cardC = Table.CardC;
             } else {
                 deck.DealOne(out cardC);
             }
-            if (!CardD.Empty()) {
-                cardD = CardD;
+            if (!Table.CardD.Empty()) {
+                cardD = Table.CardD;
             } else {
                 deck.DealOne(out cardD);
             }
-            if (!CardE.Empty()) {
-                cardE = CardE;
+            if (!Table.CardE.Empty()) {
+                cardE = Table.CardE;
             } else {
                 deck.DealOne(out cardE);
             }
-          
+
             var bestScore = -1;
             var split = false;
             for (var i = 0; i < hands.Count; i++) {
@@ -117,23 +118,14 @@ namespace Poker.Statistics {
             }
         }
 
-        protected CardDeck GetAvailableCardsSnapShot() {
+        protected CardDeck GetDeckSnapShot() {
             throw new NotImplementedException();
         }
 
 
         public void Reset() {
             _gamesPlayed = 0;
-            CardA.Rank = CardRank.None;
-            CardA.Suit = CardSuit.None;
-            CardB.Rank = CardRank.None;
-            CardB.Suit = CardSuit.None;
-            CardC.Rank = CardRank.None;
-            CardC.Suit = CardSuit.None;
-            CardD.Rank = CardRank.None;
-            CardD.Suit = CardSuit.None;
-            CardE.Rank = CardRank.None;
-            CardE.Suit = CardSuit.None;
+            Table.Reset();
         }
 
     }

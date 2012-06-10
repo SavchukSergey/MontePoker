@@ -25,7 +25,11 @@ namespace Poker.Cards {
         }
 
         public void DealOne(out PokerCard card) {
-            throw new NotImplementedException();
+            if (_cards.Count > 0) {
+                card = _cards[0];
+            } else {
+                card = new PokerCard(CardRank.None, CardSuit.None);
+            }
         }
 
         public CardDeck Clone() {
