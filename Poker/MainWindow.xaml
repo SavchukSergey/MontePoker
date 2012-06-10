@@ -14,7 +14,7 @@
             <RowDefinition />
         </Grid.RowDefinitions>
         <local:PokerTableCardsView DataContext="{Binding Path=TableCards}" Grid.Row="0" Grid.Column="0" CardClick="OnTableCardsClick"/>
-        <local:PokerCardDeckView DataContext="{Binding Path=CardDeck}" Grid.Row="0" Grid.Column="2" />
+        <local:PokerCardDeckView x:Name="deck" DataContext="{Binding Path=CardDeck}" Grid.Row="0" Grid.Column="2" />
         <ListView ItemsSource="{Binding Path=Players}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>

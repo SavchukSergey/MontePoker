@@ -4,6 +4,11 @@ using Poker.Cards;
 namespace Poker.Models {
     public class PokerCardViewModel : INotifyPropertyChanged {
 
+        public PokerCardViewModel() {
+            _suit = CardSuit.None;
+            _rank = CardRank.None;
+        }
+
         private CardSuit _suit;
         public CardSuit Suit {
             get { return _suit; }
@@ -28,7 +33,7 @@ namespace Poker.Models {
             }
         }
 
-        private bool _visible;
+        private bool _visible = true;
         public bool Visible {
             get { return _visible; }
             set {
@@ -58,6 +63,8 @@ namespace Poker.Models {
         public void Empty() {
             _rank = CardRank.None;
             _suit = CardSuit.None;
+            OnPropertyChanged(new PropertyChangedEventArgs("Rank"));
+            OnPropertyChanged(new PropertyChangedEventArgs("Suit"));
             OnPropertyChanged(new PropertyChangedEventArgs("IsEmpty"));
         }
 

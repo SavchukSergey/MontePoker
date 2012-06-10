@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
@@ -11,7 +12,7 @@ namespace Poker.Views {
     /// </summary>
     public partial class PokerCardView : UserControl {
 
-        public static readonly RoutedEvent CardClickEvent = EventManager.RegisterRoutedEvent("CardClick", RoutingStrategy.Direct, typeof(RoutedEventHandler), typeof(PokerCardView));
+        public static readonly RoutedEvent CardClickEvent = EventManager.RegisterRoutedEvent("CardClick", RoutingStrategy.Direct, typeof(CardEventHandler), typeof(PokerCardView));
 
         private const double DIM_X = 2;
         private const double DIM_Y = 2.5;
@@ -22,9 +23,29 @@ namespace Poker.Views {
         }
 
         private void OnDataContextChanged(object sender, DependencyPropertyChangedEventArgs e) {
-            var card = (PokerCardViewModel)e.NewValue;
-            var id = GetImageId(card);
+            var oldCard = e.OldValue as PokerCardViewModel;
+            if (oldCard != null) {
+                oldCard.PropertyChanged -= OnCardPropertyChanged;
+            }
+            var newCard = e.NewValue as PokerCardViewModel;
+            if (newCard != null) {
+                newCard.PropertyChanged += OnCardPropertyChanged;
+            }
+            UpdateImage(newCard);
+        }
+
+        private void OnCardPropertyChanged(object sender, PropertyChangedEventArgs propertyChangedEventArgs) {
+            switch (propertyChangedEventArgs.PropertyName) {
+                case "Rank":
+                case "Suit":
+                    UpdateImage(DataContext as PokerCardViewModel);
+                    break;
+            }
+        }
+
+        private void UpdateImage(PokerCardViewModel model) {
             try {
+                var id = GetImageId(model);
                 var uri = new Uri(string.Format("pack://application:,,,/Resources/Cards/{0}.png", id));
                 var bi = new BitmapImage(uri);
                 image.Source = bi;
@@ -108,13 +129,13 @@ namespace Poker.Views {
             return arrangeBounds;
         }
 
-        public event EventHandler<CardClickEventArgs> CardClick {
+        public event CardEventHandler CardClick {
             add { AddHandler(CardClickEvent, value); }
             remove { RemoveHandler(CardClickEvent, value); }
         }
 
         private void UserControl_Click(object sender, RoutedEventArgs e) {
-            RaiseEvent(new RoutedEventArgs(CardClickEvent, this));
+            RaiseEvent(new CardClickEventArgs(CardClickEvent, this));
         }
 
     }

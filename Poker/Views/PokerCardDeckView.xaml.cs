@@ -10,45 +10,30 @@ namespace Poker.Views {
     /// </summary>
     public partial class PokerCardDeckView : UserControl {
 
-        private readonly CardSuit[] _suits = new[] { CardSuit.Hearts, CardSuit.Diamonds, CardSuit.Clubs, CardSuit.Spades };
+        public static readonly RoutedEvent CardClickEvent = EventManager.RegisterRoutedEvent("CardClick", RoutingStrategy.Direct, typeof(CardEventHandler), typeof(PokerCardDeckView));
 
-        private readonly CardRank[] _ranks = new[] {
-            CardRank.Ace,
-            CardRank.Two,
-            CardRank.Three,
-            CardRank.Four,
-            CardRank.Five, 
-            CardRank.Six,
-            CardRank.Seven,
-            CardRank.Eight, 
-            CardRank.Nine, 
-            CardRank.Ten, 
-            CardRank.Jack, 
-            CardRank.Queen, 
-            CardRank.King
-        };
 
         public PokerCardDeckView() {
             InitializeComponent();
-            for (var i = 0; i < _suits.Length; i++) {
-                var suit = _suits[i];
-                for (var j = 0; j < _ranks.Length; j++) {
-                    var rank = _ranks[j];
-                    var view = new PokerCardView();
-                    Grid.SetRow(view, i);
-                    Grid.SetColumn(view, j);
-                    view.Margin = new Thickness(2);
-                    view.DataContext = new PokerCardViewModel { Rank = rank, Suit = suit };
-                    view.MouseDown += onCardMouseDown;
-                    inner.Children.Add(view);
-                }
+            DataContextChanged += OnDataContextChanged;
+        }
+
+        private void OnDataContextChanged(object sender, DependencyPropertyChangedEventArgs e) {
+            var deck = (PokerCardDeckViewModel)e.NewValue;
+            for (int i = 0; i < deck.Cards.Count; i++) {
+                var item = deck.Cards[i];
+                var view = new PokerCardView();
+                Grid.SetRow(view, i / 13);
+                Grid.SetColumn(view, i % 13);
+                view.Margin = new Thickness(2);
+                view.DataContext = item;
+                view.CardClick += ViewOnCardClick;
+                inner.Children.Add(view);
             }
         }
 
-        private PokerCardViewModel _selectedCard;
-
-        private void onCardMouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e) {
-            var view = (PokerCardView)sender;
+        private void ViewOnCardClick(object sender, CardClickEventArgs args) {
+            var view = args.CardView;
             var card = (PokerCardViewModel)view.DataContext;
             if (_selectedCard != null && _selectedCard == card) {
                 _selectedCard.Highlighted = false;
@@ -60,9 +45,11 @@ namespace Poker.Views {
                 _selectedCard = card;
                 _selectedCard.Highlighted = true;
             }
-            OnCardClick(new CardClickEventArgs(view));
+            RaiseEvent(new CardClickEventArgs(CardClickEvent, args.CardView));
             InvalidateCards();
         }
+
+        private PokerCardViewModel _selectedCard;
 
         private void InvalidateCards() {
             foreach (PokerCardView child in inner.Children) {
@@ -70,12 +57,10 @@ namespace Poker.Views {
             }
         }
 
-        protected virtual void OnCardClick(CardClickEventArgs args) {
-            var handler = CardClick;
-            if (handler != null) {
-                handler(this, args);
-            }
+        public event CardEventHandler CardClick {
+            add { AddHandler(CardClickEvent, value); }
+            remove { RemoveHandler(CardClickEvent, value); }
         }
-        public event EventHandler<CardClickEventArgs> CardClick;
+
     }
 }

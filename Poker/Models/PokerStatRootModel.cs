@@ -17,5 +17,8 @@ namespace Poker.Models {
         public ObservableCollection<PokerPlayerViewModel> Players {
             get { return _players; }
         }
+
+        public void InvalidateStat() {
+        }
     }
 }

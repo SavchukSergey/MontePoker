@@ -1,5 +1,5 @@
 syntax: glob
-_ReSharper.Poker/
+_ReSharper.Poker.Calc
 Poker.Calc.suo
 Poker/bin/
 Poker/obj/

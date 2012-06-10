@@ -20,7 +20,23 @@ namespace Poker {
             DataContext = _model;
         }
 
-        protected void OnTableCardsClick(object sender, RoutedEventArgs e) {
+        protected void OnTableCardsClick(object sender, CardClickEventArgs e) {
+            var view = e.CardView;
+            var card = (PokerCardViewModel)view.DataContext;
+            var sc = _model.CardDeck.SelectedCard;
+            if (sc == null || !card.IsEmpty) {
+                _model.CardDeck.ShowCard(card.Rank, card.Suit);
+                card.Empty();
+            }
+            if (sc != null) {
+                card.Rank = sc.Rank;
+                card.Suit = sc.Suit;
+                card.Visible = true;
+                sc.Visible = false;
+            }
+            _model.CardDeck.DeselectAll();
+            _model.InvalidateStat();
         }
+
     }
 }

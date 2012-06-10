@@ -8,20 +8,21 @@ namespace Poker.Views {
     /// </summary>
     public partial class PokerTableCardsView : UserControl {
 
-        public static readonly RoutedEvent CardClickEvent = EventManager.RegisterRoutedEvent("CardClick", RoutingStrategy.Direct, typeof(RoutedEventHandler), typeof(PokerTableCardsView));
+        public static readonly RoutedEvent CardClickEvent = EventManager.RegisterRoutedEvent("CardClick", RoutingStrategy.Direct, typeof(CardEventHandler), typeof(PokerTableCardsView));
 
         public PokerTableCardsView() {
             InitializeComponent();
         }
 
-        protected void OnCardClick(object sender, RoutedEventArgs e) {
+        protected void OnCardClick(object sender, CardClickEventArgs e) {
             var view = (PokerCardView)sender;
-            RaiseEvent(new RoutedEventArgs(CardClickEvent, view));
+            RaiseEvent(new CardClickEventArgs(CardClickEvent, view));
         }
 
-        public event EventHandler<CardClickEventArgs> CardClick {
+        public event CardEventHandler CardClick {
             add { AddHandler(CardClickEvent, value); }
             remove { RemoveHandler(CardClickEvent, value); }
         }
+
     }
 }
