@@ -1,4 +1,7 @@
-﻿namespace Poker.Cards {
+﻿using System.Collections.Generic;
+using System.Linq;
+
+namespace Poker.Cards {
     public struct PokerCard {
 
         public PokerCard(CardRank rank, CardSuit suit) {
@@ -16,6 +19,74 @@
 
         public static bool operator !=(PokerCard cardA, PokerCard cardB) {
             return cardA.Rank != cardB.Rank || cardA.Suit != cardB.Suit;
+        }
+
+        public static PokerCard[] ParseList(string src) {
+            var cardsStrings = src.Split(' ');
+            IList<PokerCard> cards = new List<PokerCard>();
+            foreach (var cardString in cardsStrings) {
+                var card = Parse(cardString);
+                cards.Add(card);
+            }
+            return cards.ToArray();
+        }
+
+        public static PokerCard Parse(string src) {
+            var rank = ParseRank(ref src);
+            var suit = ParseSuit(ref src);
+            return new PokerCard(rank, suit);
+        }
+
+        private static CardRank ParseRank(ref string src) {
+            CardRank rank;
+            if (src.StartsWith("A")) {
+                rank = CardRank.Ace;
+            } else if (src.StartsWith("K")) {
+                rank = CardRank.King;
+            } else if (src.StartsWith("Q")) {
+                rank = CardRank.Queen;
+            } else if (src.StartsWith("J")) {
+                rank = CardRank.Jack;
+            } else if (src.StartsWith("10")) {
+                rank = CardRank.Ten;
+                src = src.Substring(1);
+            } else if (src.StartsWith("9")) {
+                rank = CardRank.Nine;
+            } else if (src.StartsWith("8")) {
+                rank = CardRank.Eight;
+            } else if (src.StartsWith("7")) {
+                rank = CardRank.Seven;
+            } else if (src.StartsWith("6")) {
+                rank = CardRank.Six;
+            } else if (src.StartsWith("5")) {
+                rank = CardRank.Five;
+            } else if (src.StartsWith("4")) {
+                rank = CardRank.Four;
+            } else if (src.StartsWith("3")) {
+                rank = CardRank.Three;
+            } else if (src.StartsWith("2")) {
+                rank = CardRank.Two;
+            } else {
+                rank = CardRank.None;
+            }
+            src = src.Substring(1);
+            return rank;
+        }
+
+        private static CardSuit ParseSuit(ref string src) {
+            if (src.StartsWith("S")) {
+                return CardSuit.Spades;
+            }
+            if (src.StartsWith("C")) {
+                return CardSuit.Clubs;
+            }
+            if (src.StartsWith("D")) {
+                return CardSuit.Diamonds;
+            }
+            if (src.StartsWith("H")) {
+                return CardSuit.Hearts;
+            }
+            return CardSuit.None;
         }
 
         public override string ToString() {

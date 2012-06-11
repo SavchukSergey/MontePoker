@@ -118,13 +118,13 @@ namespace Poker.Evaluation {
             CardsEvaluation summary;
             SummarizeCards(cards, out summary);
             var straightScores = -1;
-            if (StraightScores[summary.HeartsMask] >= 0) {
+            if (StraightScores[summary.HeartsMask] > 0) {
                 straightScores = StraightScores[summary.HeartsMask];
-            } else if (StraightScores[summary.DiamondsMask] >= 0) {
+            } else if (StraightScores[summary.DiamondsMask] > 0) {
                 straightScores = StraightScores[summary.DiamondsMask];
-            } else if (StraightScores[summary.ClubsMask] >= 0) {
+            } else if (StraightScores[summary.ClubsMask] > 0) {
                 straightScores = StraightScores[summary.ClubsMask];
-            } else if (StraightScores[summary.SpadesMask] >= 0) {
+            } else if (StraightScores[summary.SpadesMask] > 0) {
                 straightScores = StraightScores[summary.SpadesMask];
             }
             if (straightScores > 0) {
