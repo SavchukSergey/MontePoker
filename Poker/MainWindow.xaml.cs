@@ -30,10 +30,14 @@ namespace Poker {
         }
 
         private void onTimerTick(object state) {
-            if (_model.Dirty)
-            {
+            if (_model.Dirty) {
                 _model.ResetStat();
                 _model.ResetDirty();
+            } else {
+                for (int i = 0; i < _model.Players.Count; i++) {
+                    var playerModel = _model.Players[i];
+                    var player = _calculator.Players[i];
+                }
             }
         }
 
