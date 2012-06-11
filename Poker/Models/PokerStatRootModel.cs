@@ -31,12 +31,5 @@ namespace Poker.Models {
             _dirty = true;
         }
 
-        public void ResetStat()
-        {
-            foreach (var player in _players)
-            {
-                player.ResetStat();
-            }
-        }
     }
 }

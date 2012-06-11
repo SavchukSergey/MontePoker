@@ -24,20 +24,24 @@ namespace Poker {
                 _model.Players.Add(player);
             }
             DataContext = _model;
-            //_calcThread = new Thread(CalcThreadEntryPoint);
-            //_calcThread.Start();
-            //_refreshTimer = new Timer(onTimerTick, null, TimeSpan.Zero, TimeSpan.FromMilliseconds(250));
+            _calcThread = new Thread(CalcThreadEntryPoint);
+            _calcThread.Start();
+            _refreshTimer = new Timer(onTimerTick, null, TimeSpan.Zero, TimeSpan.FromMilliseconds(250));
         }
 
         private void onTimerTick(object state) {
+            Dispatcher.Invoke(new Action(OnTimerTick));
+
+        }
+
+        private void OnTimerTick() {
             if (_model.Dirty) {
-                _model.ResetStat();
+                _calculator.Reset();
                 _model.ResetDirty();
-            } else {
-                for (int i = 0; i < _model.Players.Count; i++) {
-                    var playerModel = _model.Players[i];
-                    var player = _calculator.Players[i];
-                }
+            }
+            for (int i = 0; i < _model.Players.Count; i++) {
+                var playerModel = _model.Players[i];
+                var player = _calculator.Players[i];
             }
         }
 

@@ -38,8 +38,5 @@ namespace Poker.Models {
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public void ResetStat() {
-            throw new System.NotImplementedException();
-        }
     }
 }

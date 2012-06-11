@@ -129,6 +129,7 @@ namespace Poker.Statistics {
         public void Reset() {
             _gamesPlayed = 0;
             Table.Reset();
+            _players.Clear();
         }
 
     }

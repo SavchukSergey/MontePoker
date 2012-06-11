@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using Poker.Statistics;
 
 namespace Poker.Models {
     public class PokerPlayerStatisticsViewModel : INotifyPropertyChanged {
@@ -154,5 +155,24 @@ namespace Poker.Models {
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
+
+        public void CopyFrom(PokerCalculatorPlayer player)
+        {
+            Wins = player.Wins;
+            Losts = player.Losts;
+            Splits = player.Splits;
+
+            RoyalFlush = player.RoyalFlush;
+            StraightFlush = player.StraightFlush;
+            FourOfKind = player.FourOfKind;
+            FullHouse = player.FullHouse;
+            Flush = player.Flush;
+            Straight = player.Straight;
+            ThreeOfKind = player.ThreeOfKind;
+            TwoPairs = player.TwoPairs;
+            OnePair = player.OnePair;
+            HighCard = player.HighCard;
+        }
+
     }
 }

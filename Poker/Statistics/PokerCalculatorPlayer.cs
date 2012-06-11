@@ -3,8 +3,7 @@ using Poker.Cards;
 using Poker.Evaluation;
 
 namespace Poker.Statistics {
-    public class PokerCalculatorPlayer
-    {
+    public class PokerCalculatorPlayer {
 
         public PokerCard CardA;
 
@@ -41,7 +40,9 @@ namespace Poker.Statistics {
         public int HighCard { get; set; }
 
         public void Reset() {
-            //TODO: reset cards
+            CardA.Empty();
+            CardB.Empty();
+
             Wins = 0;
             Losts = 0;
             Splits = 0;
