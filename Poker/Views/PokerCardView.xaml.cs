@@ -5,6 +5,7 @@ using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using Poker.Cards;
 using Poker.Models;
+using Poker.Views.Cards;
 
 namespace Poker.Views {
     /// <summary>
@@ -43,15 +44,30 @@ namespace Poker.Views {
             }
         }
 
-        private void UpdateImage(PokerCardViewModel model) {
-            try {
-                var id = GetImageId(model);
-                var uri = new Uri(string.Format("pack://application:,,,/Resources/Cards/{0}.png", id));
-                var bi = new BitmapImage(uri);
-                image.Source = bi;
-            } catch {
-                image.Source = null;
+        private BaseCardView GetCardView(PokerCard card) {
+            switch (card.ToSimpleString()) {
+                case "2C":
+                    return new C2();
+                case "3C":
+                    return new C3();
+                case "4C":
+                    return new C4();
+                default:
+                    return null;
             }
+        }
+
+        private void UpdateImage(PokerCardViewModel model) {
+            var cardView = GetCardView(model.Card);
+            inner.Child = cardView;
+            //try {
+            //    var id = GetImageId(model);
+            //    var uri = new Uri(string.Format("pack://application:,,,/Resources/Cards/{0}.png", id));
+            //    var bi = new BitmapImage(uri);
+            //    image.Source = bi;
+            //} catch {
+            //    image.Source = null;
+            //}
         }
 
         private static string GetImageId(PokerCardViewModel card) {
@@ -116,18 +132,18 @@ namespace Poker.Views {
         }
 
 
-        protected override Size ArrangeOverride(Size arrangeBounds) {
-            var w = arrangeBounds.Width;
-            var h = arrangeBounds.Height;
-            var kw = w / DIM_X;
-            var kh = h / DIM_Y;
-            var k = Math.Min(kw, kh);
-            var hp = (w - k * DIM_X) / 2;
-            var vp = (h - k * DIM_Y) / 2;
-            inner.Arrange(new Rect(hp, vp, k * DIM_X, k * DIM_Y));
-            //inner.Margin = new Thickness(hp, vp, hp, vp);
-            return arrangeBounds;
-        }
+        //protected override Size ArrangeOverride(Size arrangeBounds) {
+        //    var w = arrangeBounds.Width;
+        //    var h = arrangeBounds.Height;
+        //    var kw = w / DIM_X;
+        //    var kh = h / DIM_Y;
+        //    var k = Math.Min(kw, kh);
+        //    var hp = (w - k * DIM_X) / 2;
+        //    var vp = (h - k * DIM_Y) / 2;
+        //    inner.Arrange(new Rect(hp, vp, k * DIM_X, k * DIM_Y));
+        //    //inner.Margin = new Thickness(hp, vp, hp, vp);
+        //    return arrangeBounds;
+        //}
 
         public event CardEventHandler CardClick {
             add { AddHandler(CardClickEvent, value); }

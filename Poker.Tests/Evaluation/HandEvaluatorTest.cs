@@ -80,7 +80,7 @@ namespace Poker.Tests.Evaluation {
         }
 
         [Test]
-        public void EvaluateFlusRoyalCard() {
+        public void EvaluateFlushRoyalCard() {
             var cards = PokerCard.ParseList("AD KD 2C JD 10D 4S QD");
             HandEvaluation eval;
             HandEvaluator.EvaluateHand(cards, out eval);

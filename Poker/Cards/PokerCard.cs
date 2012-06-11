@@ -90,51 +90,7 @@ namespace Poker.Cards {
         }
 
         public override string ToString() {
-            var str = "";
-            switch (Rank) {
-                case CardRank.Ace:
-                    str += 'A';
-                    break;
-                case CardRank.Two:
-                    str += '2';
-                    break;
-                case CardRank.Three:
-                    str += '3';
-                    break;
-                case CardRank.Four:
-                    str += '4';
-                    break;
-                case CardRank.Five:
-                    str += '5';
-                    break;
-                case CardRank.Six:
-                    str += '6';
-                    break;
-                case CardRank.Seven:
-                    str += '7';
-                    break;
-                case CardRank.Eight:
-                    str += '8';
-                    break;
-                case CardRank.Nine:
-                    str += '9';
-                    break;
-                case CardRank.Ten:
-                    str += "10";
-                    break;
-                case CardRank.Jack:
-                    str += "J";
-                    break;
-                case CardRank.Queen:
-                    str += "Q";
-                    break;
-                case CardRank.King:
-                    str += "K";
-                    break;
-                default:
-                    str += Rank.ToString();
-                    break;
-            }
+            string str = GetRankString();
             switch (Suit) {
                 case CardSuit.Spades:
                     str += (char)0x2660;
@@ -156,6 +112,60 @@ namespace Poker.Cards {
             return str;
         }
 
+        public string ToSimpleString() {
+            string str = GetRankString();
+            switch (Suit) {
+                case CardSuit.Spades:
+                    str += "S";
+                    break;
+                case CardSuit.Hearts:
+                    str += "H";
+                    break;
+                case CardSuit.Clubs:
+                    str += "C";
+                    break;
+                case CardSuit.Diamonds:
+                    str += "D";
+                    break;
+                default:
+                    str += Suit.ToString();
+                    break;
 
+            }
+            return str;
+        }
+
+        private string GetRankString() {
+            switch (Rank) {
+                case CardRank.Ace:
+                    return "A";
+                case CardRank.Two:
+                    return "2";
+                case CardRank.Three:
+                    return "3";
+                case CardRank.Four:
+                    return "4";
+                case CardRank.Five:
+                    return "5";
+                case CardRank.Six:
+                    return "6";
+                case CardRank.Seven:
+                    return "7";
+                case CardRank.Eight:
+                    return "8";
+                case CardRank.Nine:
+                    return "9";
+                case CardRank.Ten:
+                    return "10";
+                case CardRank.Jack:
+                    return "J";
+                case CardRank.Queen:
+                    return "Q";
+                case CardRank.King:
+                    return "K";
+                default:
+                    return Rank.ToString();
+            }
+        }
     }
 }
