@@ -31,6 +31,7 @@ namespace Poker.Statistics {
         public void PlayGame() {
             _gamesPlayed++;
             var deck = GetDeckSnapShot();
+            deck.Shuffle();
             IList<PokerPlayerHand> hands = new List<PokerPlayerHand>();
             for (var i = 0; i < _players.Count; i++) {
                 var player = _players[i];

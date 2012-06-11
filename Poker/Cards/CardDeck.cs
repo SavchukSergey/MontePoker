@@ -5,14 +5,14 @@ using System.Linq;
 namespace Poker.Cards {
     public class CardDeck {
 
-        private IList<PokerCard> _cards = new List<PokerCard>();
+        private Queue<PokerCard> _cards = new Queue<PokerCard>();
 
         public CardDeck() {
 
         }
 
-        public CardDeck(IList<PokerCard> cards) {
-            _cards = cards;
+        public CardDeck(IEnumerable<PokerCard> cards) {
+            _cards = new Queue<PokerCard>(cards);
         }
 
         public void Reset() {
@@ -23,25 +23,25 @@ namespace Poker.Cards {
                         Rank = (CardRank)i,
                         Suit = (CardSuit)j
                     };
-                    _cards.Add(card);
+                    _cards.Enqueue(card);
                 }
             }
         }
 
         public void Shuffle() {
-            throw new NotImplementedException();
+            _cards = new Queue<PokerCard>(_cards.OrderBy(item => Guid.NewGuid()));
         }
 
         public void DealOne(out PokerCard card) {
             if (_cards.Count > 0) {
-                card = _cards[0];
+                card = _cards.Dequeue();
             } else {
                 card = new PokerCard(CardRank.None, CardSuit.None);
             }
         }
 
         public CardDeck Clone() {
-            var res = new CardDeck { _cards = _cards.ToList() };
+            var res = new CardDeck { _cards = new Queue<PokerCard>(_cards) };
             return res;
         }
 

@@ -9,6 +9,10 @@ namespace Poker.Models {
             _rank = CardRank.None;
         }
 
+        public PokerCard Card {
+            get { return new PokerCard(Rank, Suit); }
+        }
+
         private CardSuit _suit;
         public CardSuit Suit {
             get { return _suit; }

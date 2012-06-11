@@ -19,7 +19,7 @@ namespace Poker.Evaluation {
             for (var i = 0; i < 8192; i++) {
                 var count = 0;
                 var highest5 = 0;
-                var walker = i << 12;
+                var walker = 1 << 12;
                 while (walker > 0) {
                     if ((i & walker) > 0) {
                         if (count < 5) {
@@ -84,16 +84,16 @@ namespace Poker.Evaluation {
             for (var i = 0; i < cards.Length; i++) {
                 switch (cards[i].Suit) {
                     case CardSuit.Hearts:
-                        groups.HeartsMask |= cards[i].Rank.Scores();
+                        groups.HeartsMask |= cards[i].Rank.ScoresMask();
                         break;
                     case CardSuit.Diamonds:
-                        groups.DiamondsMask |= cards[i].Rank.Scores();
+                        groups.DiamondsMask |= cards[i].Rank.ScoresMask();
                         break;
                     case CardSuit.Spades:
-                        groups.SpadesMask |= cards[i].Rank.Scores();
+                        groups.SpadesMask |= cards[i].Rank.ScoresMask();
                         break;
                     case CardSuit.Clubs:
-                        groups.ClubsMask |= cards[i].Rank.Scores();
+                        groups.ClubsMask |= cards[i].Rank.ScoresMask();
                         break;
                 }
                 ranks[(int)cards[i].Rank].Count++;
@@ -127,7 +127,7 @@ namespace Poker.Evaluation {
             } else if (StraightScores[summary.SpadesMask] >= 0) {
                 straightScores = StraightScores[summary.SpadesMask];
             }
-            if (straightScores >= 0) {
+            if (straightScores > 0) {
                 if (straightScores == ROYAL_FLUSH_MASK) {
                     eval.HandType = HandType.RoyalFlush;
                     eval.Scores = (int)HandScoresBase.RoyalFlush;
@@ -166,7 +166,7 @@ namespace Poker.Evaluation {
             }
 
             straightScores = StraightScores[summary.HeartsMask | summary.DiamondsMask | summary.ClubsMask | summary.SpadesMask];
-            if (straightScores >= 0) {
+            if (straightScores > 0) {
                 eval.HandType = HandType.Straight;
                 eval.Scores = (int)HandScoresBase.Straight + straightScores;
                 return;

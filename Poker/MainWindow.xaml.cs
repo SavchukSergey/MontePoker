@@ -38,10 +38,22 @@ namespace Poker {
             if (_model.Dirty) {
                 _calculator.Reset();
                 _model.ResetDirty();
+                foreach (var player in _model.Players) {
+                    var calcPlayer = new PokerCalculatorPlayer();
+                    calcPlayer.CardA = player.CardA.Card;
+                    calcPlayer.CardB = player.CardB.Card;
+                    _calculator.Players.Add(calcPlayer);
+                }
+                _calculator.Table.CardA = _model.TableCards.CardA.Card;
+                _calculator.Table.CardB = _model.TableCards.CardB.Card;
+                _calculator.Table.CardC = _model.TableCards.CardC.Card;
+                _calculator.Table.CardD = _model.TableCards.CardD.Card;
+                _calculator.Table.CardE = _model.TableCards.CardE.Card;
             }
             for (int i = 0; i < _model.Players.Count; i++) {
                 var playerModel = _model.Players[i];
                 var player = _calculator.Players[i];
+                playerModel.Statistics.CopyFrom(player);
             }
         }
 
