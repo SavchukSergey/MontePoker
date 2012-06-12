@@ -60,6 +60,7 @@
     <Compile Include="Cards\CardDeck.cs" />
     <Compile Include="Cards\PokerCardExt.cs" />
     <Compile Include="Models\PokerCardDeckViewModel.cs" />
+    <Compile Include="Models\PokerGlobalStatistics.cs" />
     <Compile Include="Models\PokerPlayerStatisticsViewModel.cs" />
     <Compile Include="Models\PokerStatRootModel.cs" />
     <Compile Include="Statistics\PokerCalculatorTable.cs" />

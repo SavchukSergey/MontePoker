@@ -7,13 +7,15 @@ using System.Linq;
 using Poker.Statistics;
 
 namespace Poker.Models {
-    public class PokerStatRootModel : INotifyPropertyChanged {
+    public class PokerStatRootModel {
 
         private readonly PokerCalculator _calculator = new PokerCalculator();
         private readonly PokerCardDeckViewModel _cardDeck = new PokerCardDeckViewModel();
         private readonly PokerTableCardsViewModel _tableCards = new PokerTableCardsViewModel();
         private readonly ObservableCollection<PokerPlayerViewModel> _players = new ObservableCollection<PokerPlayerViewModel>();
+        private readonly PokerGlobalStatistics _statistics = new PokerGlobalStatistics();
         private bool _dirty = true;
+        private int _gamesPlayed;
 
         private readonly object _sync = new object();
 
@@ -97,15 +99,8 @@ namespace Poker.Models {
             get { return _players; }
         }
 
-        private int _gamesPlayed;
-        public int GamesPlayed {
-            get { return _gamesPlayed; }
-            set {
-                if (_gamesPlayed != value) {
-                    _gamesPlayed = value;
-                    OnPropertyChanged(new PropertyChangedEventArgs("GamesPlayed"));
-                }
-            }
+        public PokerGlobalStatistics Statistics {
+            get { return _statistics; }
         }
 
         public void Sync() {
@@ -122,29 +117,24 @@ namespace Poker.Models {
                     _calculator.Table.CardC = _tableCards.CardC.Card;
                     _calculator.Table.CardD = _tableCards.CardD.Card;
                     _calculator.Table.CardE = _tableCards.CardE.Card;
+                    _gamesPlayed = 0;
                 }
             }
             for (int i = 0; i < _players.Count; i++) {
                 var playerModel = _players[i];
                 var player = _calculator.Players[i];
-                playerModel.Statistics.CopyFrom(player);
+                playerModel.Statistics.CopyFrom(this, player);
             }
+            _statistics.GamesPlayed = _gamesPlayed;
         }
 
         public void PlayGame() {
             lock (_sync) {
                 _calculator.PlayGame();
+                _gamesPlayed++;
             }
         }
 
-        protected virtual void OnPropertyChanged(PropertyChangedEventArgs args) {
-            var handler = PropertyChanged;
-            if (handler != null) {
-                handler(this, args);
-            }
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
 
     }
 }

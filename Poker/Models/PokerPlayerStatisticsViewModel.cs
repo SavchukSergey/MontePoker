@@ -16,6 +16,17 @@ namespace Poker.Models {
             }
         }
 
+        private string _winsPercentage;
+        public string WinsPercentage {
+            get { return _winsPercentage; }
+            set {
+                if (_winsPercentage != value) {
+                    _winsPercentage = value;
+                    OnPropertyChanged(new PropertyChangedEventArgs("WinsPercentage"));
+                }
+            }
+        }
+
         private int _losts;
         public int Losts {
             get { return _losts; }
@@ -23,6 +34,17 @@ namespace Poker.Models {
                 if (_losts != value) {
                     _losts = value;
                     OnPropertyChanged(new PropertyChangedEventArgs("Losts"));
+                }
+            }
+        }
+
+        private string _lostsPercentage;
+        public string LostsPercentage {
+            get { return _lostsPercentage; }
+            set {
+                if (_lostsPercentage != value) {
+                    _lostsPercentage = value;
+                    OnPropertyChanged(new PropertyChangedEventArgs("LostsPercentage"));
                 }
             }
         }
@@ -157,8 +179,12 @@ namespace Poker.Models {
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public void CopyFrom(PokerCalculatorPlayer player)
-        {
+        private string Percentage(PokerStatRootModel rootModel, double val) {
+            var total = rootModel.Statistics.GamesPlayed > 0 ? rootModel.Statistics.GamesPlayed : 1;
+            return Math.Round(val / total * 100, 2) + "%";
+        }
+
+        public void CopyFrom(PokerStatRootModel rootModel, PokerCalculatorPlayer player) {
             Wins = player.Wins;
             Losts = player.Losts;
             Splits = player.Splits;
@@ -173,7 +199,24 @@ namespace Poker.Models {
             TwoPairs = player.TwoPairs;
             OnePair = player.OnePair;
             HighCard = player.HighCard;
+
+            WinsPercentage = Percentage(rootModel, player.Wins);
+            LostsPercentage = Percentage(rootModel, player.Losts);
+            //Splits = player.Splits;
+
+            //RoyalFlush = player.RoyalFlush;
+            //StraightFlush = player.StraightFlush;
+            //FourOfKind = player.FourOfKind;
+            //FullHouse = player.FullHouse;
+            //Flush = player.Flush;
+            //Straight = player.Straight;
+            //ThreeOfKind = player.ThreeOfKind;
+            //TwoPairs = player.TwoPairs;
+            //OnePair = player.OnePair;
+            //HighCard = player.HighCard;
         }
+
+        //TODO: add check that percenate is not greater than 100%.. Sometimes it happens..
 
     }
 }
