@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:Poker.Views"
         Title="MainWindow" Height="350" Width="525">
-    <Grid>
+    <Grid Background="#208020">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="5*" />
             <ColumnDefinition Width="1*" />
@@ -15,7 +15,7 @@
         </Grid.RowDefinitions>
         <local:PokerTableCardsView DataContext="{Binding Path=TableCards}" Grid.Row="0" Grid.Column="0" CardClick="OnTableCardsClick"/>
         <local:PokerCardDeckView x:Name="deck" DataContext="{Binding Path=CardDeck}" Grid.Row="0" Grid.Column="2" />
-        <ListView ItemsSource="{Binding Path=Players}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3">
+        <ListView ItemsSource="{Binding Path=Players}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Background="#208020">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel Orientation="Horizontal" />
