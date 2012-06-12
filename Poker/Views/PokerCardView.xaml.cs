@@ -57,6 +57,8 @@ namespace Poker.Views {
                     return new C5();
                 case "6C":
                     return new C6();
+                case "7C":
+                    return new C7();
                 case "10C":
                     return new C10();
                 case "JC":
