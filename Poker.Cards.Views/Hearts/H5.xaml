@@ -5,6 +5,10 @@
     x:Class="Poker.Cards.Views.Hearts.H5"
     Width="204" Height="284" ClipToBounds="True"
     >
+    <Views:BaseCardViewEx.Resources>
+        <x:Array x:Name="paths" x:Key="paths" Type="{x:Type Path}">
+        </x:Array>
+    </Views:BaseCardViewEx.Resources>
     <FixedPage xmlns:x="http://schemas.microsoft.com/xps/2005/06/resourcedictionary-key" xml:lang="en-US" >
         <FixedPage.RenderTransform>
             <MatrixTransform Matrix="1 0 0 1 -305 -404"/>
