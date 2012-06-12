@@ -78,6 +78,18 @@
     <Compile Include="Views\Cards\C4.xaml.cs">
       <DependentUpon>C4.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Cards\CJ.xaml.cs">
+      <DependentUpon>CJ.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Cards\HQ.xaml.cs">
+      <DependentUpon>HQ.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Cards\Empty.xaml.cs">
+      <DependentUpon>Empty.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Cards\CQ.xaml.cs">
+      <DependentUpon>CQ.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\PokerCardDeckView.xaml.cs">
       <DependentUpon>PokerCardDeckView.xaml</DependentUpon>
     </Compile>
@@ -120,6 +132,22 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Cards\C4.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Cards\CJ.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Cards\HQ.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Cards\Empty.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Cards\CQ.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

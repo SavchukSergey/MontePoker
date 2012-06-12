@@ -123,7 +123,7 @@ namespace Poker.Statistics {
                 if (Players.Any(player => player.Contains(ref cards[i]))) continue;
                 res.Add(cards[i]);
             }
-            return new CardDeck(cards);
+            return new CardDeck(res);
         }
 
 

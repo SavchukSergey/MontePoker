@@ -52,8 +52,14 @@ namespace Poker.Views {
                     return new C3();
                 case "4C":
                     return new C4();
+                case "JC":
+                    return new CJ();
+                case "QC":
+                    return new CQ();
+                case "QH":
+                    return new HQ();
                 default:
-                    return null;
+                    return new Empty();
             }
         }
 
