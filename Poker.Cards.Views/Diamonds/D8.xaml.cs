@@ -1,9 +1,4 @@
-﻿using Poker.Cards.Views;
-
-namespace Poker.Cards.Views {
-    /// <summary>
-    /// Interaction logic for C2.xaml
-    /// </summary>
+﻿namespace Poker.Cards.Views.Diamonds {
     public partial class D8 : BaseCardView {
         public D8() {
             InitializeComponent();
