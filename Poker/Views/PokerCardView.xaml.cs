@@ -128,6 +128,33 @@ namespace Poker.Views {
                 case "KD":
                     return new DK();
 
+                case "AS":
+                    return new SA();
+                case "2S":
+                    return new S2();
+                case "3S":
+                    return new S3();
+                case "4S":
+                    return new S4();
+                case "5S":
+                    return new S5();
+                case "6S":
+                    return new S6();
+                case "7S":
+                    return new S7();
+                case "8S":
+                    return new S8();
+                case "9S":
+                    return new S9();
+                case "10S":
+                    return new S10();
+                case "JS":
+                    return new SJ();
+                case "QS":
+                    return new SQ();
+                case "KS":
+                    return new SK();
+
                 default:
                     return new Empty();
             }
