@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using Poker.Cards;
 using Poker.Cards.Views;
 using Poker.Cards.Views.Clubs;
@@ -35,10 +36,19 @@ namespace Poker.Views {
         }
 
         private void OnCardPropertyChanged(object sender, PropertyChangedEventArgs propertyChangedEventArgs) {
+            var card = DataContext as PokerCardViewModel;
+            var innerView = inner.Child as BaseCardView;
+
             switch (propertyChangedEventArgs.PropertyName) {
                 case "Rank":
                 case "Suit":
-                    UpdateImage(DataContext as PokerCardViewModel);
+                    UpdateImage(card);
+                    break;
+                case "Highlighted":
+                    if (card != null && innerView != null) {
+                        Color color = card.Highlighted ? Color.FromRgb(192, 192, 0) : Color.FromRgb(255, 255, 255);
+                        innerView.CardBackground = new SolidColorBrush(color);
+                    }
                     break;
             }
         }
@@ -98,7 +108,7 @@ namespace Poker.Views {
                     return new HQ();
                 case "KH":
                     return new HK();
-                
+
                 case "AD":
                     return new DA();
                 case "2D":
