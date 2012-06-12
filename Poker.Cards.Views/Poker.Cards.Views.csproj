@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseCardView.cs" />
+    <Compile Include="BaseCardViewEx.cs" />
     <Compile Include="Clubs\C2.xaml.cs">
       <DependentUpon>C2.xaml</DependentUpon>
     </Compile>
