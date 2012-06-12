@@ -83,6 +83,9 @@
     <Compile Include="CK.xaml.cs">
       <DependentUpon>CK.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CA.xaml.cs">
+      <DependentUpon>CA.xaml</DependentUpon>
+    </Compile>
     <Compile Include="HK.xaml.cs">
       <DependentUpon>HK.xaml</DependentUpon>
     </Compile>
@@ -175,6 +178,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="CK.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CA.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

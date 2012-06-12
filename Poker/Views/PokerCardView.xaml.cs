@@ -47,6 +47,8 @@ namespace Poker.Views {
 
         private BaseCardView GetCardView(PokerCard card) {
             switch (card.ToSimpleString()) {
+                case "AC":
+                    return new CA();
                 case "2C":
                     return new C2();
                 case "3C":
