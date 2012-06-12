@@ -58,6 +58,8 @@ namespace Poker.Views {
                     return new CQ();
                 case "QH":
                     return new HQ();
+                case "KD":
+                    return new DK();
                 default:
                     return new Empty();
             }
