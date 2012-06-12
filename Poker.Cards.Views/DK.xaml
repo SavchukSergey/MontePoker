@@ -1,7 +1,7 @@
 ﻿<Views:BaseCardView
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:Cards="clr-namespace:Poker.Cards.Views" xmlns:Views="clr-namespace:Poker.Cards.Views"
+     xmlns:Views="clr-namespace:Poker.Cards.Views"
     x:Class="Poker.Cards.Views.DK"
     Width="204" Height="284" ClipToBounds="True"
     >

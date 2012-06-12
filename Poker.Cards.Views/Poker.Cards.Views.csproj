@@ -62,6 +62,9 @@
     <Compile Include="CJ.xaml.cs">
       <DependentUpon>CJ.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DQ.xaml.cs">
+      <DependentUpon>DQ.xaml</DependentUpon>
+    </Compile>
     <Compile Include="D8.xaml.cs">
       <DependentUpon>D8.xaml</DependentUpon>
     </Compile>
@@ -120,6 +123,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="C2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DQ.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

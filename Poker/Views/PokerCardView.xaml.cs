@@ -73,6 +73,8 @@ namespace Poker.Views {
                     return new D9();
                 case "10D":
                     return new D10();
+                case "QD":
+                    return new DQ();
                 case "KD":
                     return new DK();
                 default:
