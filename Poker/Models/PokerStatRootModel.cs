@@ -13,6 +13,8 @@ namespace Poker.Models {
         private readonly PokerCardDeckViewModel _cardDeck = new PokerCardDeckViewModel();
         private readonly PokerTableCardsViewModel _tableCards = new PokerTableCardsViewModel();
         private readonly ObservableCollection<PokerPlayerViewModel> _players = new ObservableCollection<PokerPlayerViewModel>();
+        private bool _dirty = true;
+
         private readonly object _sync = new object();
 
         public PokerStatRootModel() {
@@ -93,11 +95,6 @@ namespace Poker.Models {
 
         public ObservableCollection<PokerPlayerViewModel> Players {
             get { return _players; }
-        }
-
-        private bool _dirty = true;
-        public bool Dirty {
-            get { return _dirty; }
         }
 
         private int _gamesPlayed;
