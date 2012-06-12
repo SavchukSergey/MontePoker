@@ -86,6 +86,33 @@
     <Compile Include="Clubs\CA.xaml.cs">
       <DependentUpon>CA.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Hearts\HA.xaml.cs">
+      <DependentUpon>HA.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Hearts\HJ.xaml.cs">
+      <DependentUpon>HJ.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Hearts\H8.xaml.cs">
+      <DependentUpon>H8.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Hearts\H7.xaml.cs">
+      <DependentUpon>H7.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Hearts\H6.xaml.cs">
+      <DependentUpon>H6.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Hearts\H5.xaml.cs">
+      <DependentUpon>H5.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Hearts\H4.xaml.cs">
+      <DependentUpon>H4.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Hearts\H3.xaml.cs">
+      <DependentUpon>H3.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Hearts\H2.xaml.cs">
+      <DependentUpon>H2.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Diamonds\DJ.xaml.cs">
       <DependentUpon>DJ.xaml</DependentUpon>
     </Compile>
@@ -104,7 +131,7 @@
     <Compile Include="Diamonds\D3.xaml.cs">
       <DependentUpon>D3.xaml</DependentUpon>
     </Compile>
-    <Compile Include="HK.xaml.cs">
+    <Compile Include="Hearts\HK.xaml.cs">
       <DependentUpon>HK.xaml</DependentUpon>
     </Compile>
     <Compile Include="Diamonds\DQ.xaml.cs">
@@ -134,13 +161,13 @@
     <Compile Include="Empty.xaml.cs">
       <DependentUpon>Empty.xaml</DependentUpon>
     </Compile>
-    <Compile Include="H10.xaml.cs">
+    <Compile Include="Hearts\H10.xaml.cs">
       <DependentUpon>H10.xaml</DependentUpon>
     </Compile>
-    <Compile Include="H9.xaml.cs">
+    <Compile Include="Hearts\H9.xaml.cs">
       <DependentUpon>H9.xaml</DependentUpon>
     </Compile>
-    <Compile Include="HQ.xaml.cs">
+    <Compile Include="Hearts\HQ.xaml.cs">
       <DependentUpon>HQ.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -203,6 +230,42 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Hearts\HA.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Hearts\HJ.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Hearts\H8.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Hearts\H7.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Hearts\H6.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Hearts\H5.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Hearts\H4.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Hearts\H3.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Hearts\H2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Diamonds\DJ.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -227,7 +290,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="HK.xaml">
+    <Page Include="Hearts\HK.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -241,7 +304,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="HQ.xaml">
+    <Page Include="Hearts\HQ.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -307,13 +370,13 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="H10.xaml">
+    <Page Include="Hearts\H10.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="H9.xaml">
+    <Page Include="Hearts\H9.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
