@@ -151,62 +151,6 @@
       <Name>Poker.Cards.Views</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Cards\c10.png" />
-    <Resource Include="Resources\Cards\c2.png" />
-    <Resource Include="Resources\Cards\c3.png" />
-    <Resource Include="Resources\Cards\c4.png" />
-    <Resource Include="Resources\Cards\c5.png" />
-    <Resource Include="Resources\Cards\c6.png" />
-    <Resource Include="Resources\Cards\c7.png" />
-    <Resource Include="Resources\Cards\c8.png" />
-    <Resource Include="Resources\Cards\c9.png" />
-    <Resource Include="Resources\Cards\ca.png" />
-    <Resource Include="Resources\Cards\cj.png" />
-    <Resource Include="Resources\Cards\ck.png" />
-    <Resource Include="Resources\Cards\cq.png" />
-    <Resource Include="Resources\Cards\d10.png" />
-    <Resource Include="Resources\Cards\d2.png" />
-    <Resource Include="Resources\Cards\d3.png" />
-    <Resource Include="Resources\Cards\d4.png" />
-    <Resource Include="Resources\Cards\d5.png" />
-    <Resource Include="Resources\Cards\d6.png" />
-    <Resource Include="Resources\Cards\d7.png" />
-    <Resource Include="Resources\Cards\d8.png" />
-    <Resource Include="Resources\Cards\d9.png" />
-    <Resource Include="Resources\Cards\da.png" />
-    <Resource Include="Resources\Cards\dj.png" />
-    <Resource Include="Resources\Cards\dk.png" />
-    <Resource Include="Resources\Cards\dq.png" />
-    <Resource Include="Resources\Cards\h10.png" />
-    <Resource Include="Resources\Cards\h2.png" />
-    <Resource Include="Resources\Cards\h3.png" />
-    <Resource Include="Resources\Cards\h4.png" />
-    <Resource Include="Resources\Cards\h5.png" />
-    <Resource Include="Resources\Cards\h6.png" />
-    <Resource Include="Resources\Cards\h7.png" />
-    <Resource Include="Resources\Cards\h8.png" />
-    <Resource Include="Resources\Cards\h9.png" />
-    <Resource Include="Resources\Cards\ha.png" />
-    <Resource Include="Resources\Cards\hj.png" />
-    <Resource Include="Resources\Cards\hk.png" />
-    <Resource Include="Resources\Cards\hq.png" />
-    <Resource Include="Resources\Cards\s10.png" />
-    <Resource Include="Resources\Cards\s2.png" />
-    <Resource Include="Resources\Cards\s3.png" />
-    <Resource Include="Resources\Cards\s4.png" />
-    <Resource Include="Resources\Cards\s5.png" />
-    <Resource Include="Resources\Cards\s6.png" />
-    <Resource Include="Resources\Cards\s7.png" />
-    <Resource Include="Resources\Cards\s8.png" />
-    <Resource Include="Resources\Cards\s9.png" />
-    <Resource Include="Resources\Cards\sa.png" />
-    <Resource Include="Resources\Cards\sj.png" />
-    <Resource Include="Resources\Cards\sq.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Cards\sk.png" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
