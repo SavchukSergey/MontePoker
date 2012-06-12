@@ -50,67 +50,85 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseCardView.cs" />
-    <Compile Include="C2.xaml.cs">
+    <Compile Include="Clubs\C2.xaml.cs">
       <DependentUpon>C2.xaml</DependentUpon>
     </Compile>
-    <Compile Include="C3.xaml.cs">
+    <Compile Include="Clubs\C3.xaml.cs">
       <DependentUpon>C3.xaml</DependentUpon>
     </Compile>
-    <Compile Include="C4.xaml.cs">
+    <Compile Include="Clubs\C4.xaml.cs">
       <DependentUpon>C4.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CJ.xaml.cs">
+    <Compile Include="Clubs\CJ.xaml.cs">
       <DependentUpon>CJ.xaml</DependentUpon>
     </Compile>
-    <Compile Include="C5.xaml.cs">
+    <Compile Include="Clubs\C5.xaml.cs">
       <DependentUpon>C5.xaml</DependentUpon>
     </Compile>
-    <Compile Include="C10.xaml.cs">
+    <Compile Include="Clubs\C10.xaml.cs">
       <DependentUpon>C10.xaml</DependentUpon>
     </Compile>
-    <Compile Include="C6.xaml.cs">
+    <Compile Include="Clubs\C6.xaml.cs">
       <DependentUpon>C6.xaml</DependentUpon>
     </Compile>
-    <Compile Include="C7.xaml.cs">
+    <Compile Include="Clubs\C7.xaml.cs">
       <DependentUpon>C7.xaml</DependentUpon>
     </Compile>
-    <Compile Include="C8.xaml.cs">
+    <Compile Include="Clubs\C8.xaml.cs">
       <DependentUpon>C8.xaml</DependentUpon>
     </Compile>
-    <Compile Include="C9.xaml.cs">
+    <Compile Include="Clubs\C9.xaml.cs">
       <DependentUpon>C9.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CK.xaml.cs">
+    <Compile Include="Clubs\CK.xaml.cs">
       <DependentUpon>CK.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CA.xaml.cs">
+    <Compile Include="Clubs\CA.xaml.cs">
       <DependentUpon>CA.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Diamonds\DJ.xaml.cs">
+      <DependentUpon>DJ.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Diamonds\DA.xaml.cs">
+      <DependentUpon>DA.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Diamonds\D7.xaml.cs">
+      <DependentUpon>D7.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Diamonds\D5.xaml.cs">
+      <DependentUpon>D5.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Diamonds\D4.xaml.cs">
+      <DependentUpon>D4.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Diamonds\D3.xaml.cs">
+      <DependentUpon>D3.xaml</DependentUpon>
     </Compile>
     <Compile Include="HK.xaml.cs">
       <DependentUpon>HK.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DQ.xaml.cs">
+    <Compile Include="Diamonds\DQ.xaml.cs">
       <DependentUpon>DQ.xaml</DependentUpon>
     </Compile>
-    <Compile Include="D8.xaml.cs">
+    <Compile Include="Diamonds\D8.xaml.cs">
       <DependentUpon>D8.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CQ.xaml.cs">
+    <Compile Include="Clubs\CQ.xaml.cs">
       <DependentUpon>CQ.xaml</DependentUpon>
     </Compile>
-    <Compile Include="D10.xaml.cs">
+    <Compile Include="Diamonds\D10.xaml.cs">
       <DependentUpon>D10.xaml</DependentUpon>
     </Compile>
-    <Compile Include="D2.xaml.cs">
+    <Compile Include="Diamonds\D2.xaml.cs">
       <DependentUpon>D2.xaml</DependentUpon>
     </Compile>
-    <Compile Include="D6.xaml.cs">
+    <Compile Include="Diamonds\D6.xaml.cs">
       <DependentUpon>D6.xaml</DependentUpon>
     </Compile>
-    <Compile Include="D9.xaml.cs">
+    <Compile Include="Diamonds\D9.xaml.cs">
       <DependentUpon>D9.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DK.xaml.cs">
+    <Compile Include="Diamonds\DK.xaml.cs">
       <DependentUpon>DK.xaml</DependentUpon>
     </Compile>
     <Compile Include="Empty.xaml.cs">
@@ -149,39 +167,63 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="C2.xaml">
+    <Page Include="Clubs\C2.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="C5.xaml">
+    <Page Include="Clubs\C5.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="C10.xaml">
+    <Page Include="Clubs\C10.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="C6.xaml">
+    <Page Include="Clubs\C6.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="C7.xaml">
+    <Page Include="Clubs\C7.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="C8.xaml">
+    <Page Include="Clubs\C8.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="C9.xaml">
+    <Page Include="Clubs\C9.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="CK.xaml">
+    <Page Include="Clubs\CK.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="CA.xaml">
+    <Page Include="Clubs\CA.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Diamonds\DJ.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Diamonds\DA.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Diamonds\D7.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Diamonds\D5.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Diamonds\D4.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Diamonds\D3.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -189,11 +231,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="DQ.xaml">
+    <Page Include="Diamonds\DQ.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="D8.xaml">
+    <Page Include="Diamonds\D8.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -205,55 +247,55 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="C3.xaml">
+    <Page Include="Clubs\C3.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="C4.xaml">
+    <Page Include="Clubs\C4.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="CJ.xaml">
+    <Page Include="Clubs\CJ.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="CQ.xaml">
+    <Page Include="Clubs\CQ.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="D10.xaml">
+    <Page Include="Diamonds\D10.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="D2.xaml">
+    <Page Include="Diamonds\D2.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="D6.xaml">
+    <Page Include="Diamonds\D6.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="D9.xaml">
+    <Page Include="Diamonds\D9.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="DK.xaml">
+    <Page Include="Diamonds\DK.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

@@ -81,16 +81,28 @@ namespace Poker.Views {
                     return new HQ();
                 case "KH":
                     return new HK();
+                case "AD":
+                    return new DA();
                 case "2D":
                     return new D2();
+                case "3D":
+                    return new D3();
+                case "4D":
+                    return new D4();
+                case "5D":
+                    return new D5();
                 case "6D":
                     return new D6();
+                case "7D":
+                    return new D7();
                 case "8D":
                     return new D8();
                 case "9D":
                     return new D9();
                 case "10D":
                     return new D10();
+                case "JD":
+                    return new DJ();
                 case "QD":
                     return new DQ();
                 case "KD":
