@@ -5,6 +5,7 @@ using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using Poker.Cards;
 using Poker.Cards.Views;
+using Poker.Cards.Views.Clubs;
 using Poker.Models;
 using Poker.Cards.Views;
 
