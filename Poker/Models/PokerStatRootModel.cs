@@ -4,9 +4,16 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
+using Poker.Statistics;
 
 namespace Poker.Models {
-    public class PokerStatRootModel {
+    public class PokerStatRootModel : INotifyPropertyChanged {
+
+        private readonly PokerCalculator _calculator = new PokerCalculator();
+        private readonly PokerCardDeckViewModel _cardDeck = new PokerCardDeckViewModel();
+        private readonly PokerTableCardsViewModel _tableCards = new PokerTableCardsViewModel();
+        private readonly ObservableCollection<PokerPlayerViewModel> _players = new ObservableCollection<PokerPlayerViewModel>();
+        private readonly object _sync = new object();
 
         public PokerStatRootModel() {
             _tableCards.CardA.PropertyChanged += TableCardsOnPropertyChanged;
@@ -36,7 +43,8 @@ namespace Poker.Models {
         private void PlayerCardsOnPropertyChanged(object sender, PropertyChangedEventArgs args) {
             switch (args.PropertyName) {
                 case "Card":
-                    InvalidateState();
+                    _dirty = true;
+                    Sync();
                     break;
             }
         }
@@ -44,7 +52,8 @@ namespace Poker.Models {
         private void TableCardsOnPropertyChanged(object sender, PropertyChangedEventArgs args) {
             switch (args.PropertyName) {
                 case "Card":
-                    InvalidateState();
+                    _dirty = true;
+                    Sync();
                     break;
             }
         }
@@ -74,17 +83,14 @@ namespace Poker.Models {
             if (_tableCards.CardE.IsEmpty) yield return _tableCards.CardE;
         }
 
-        private readonly PokerCardDeckViewModel _cardDeck = new PokerCardDeckViewModel();
         public PokerCardDeckViewModel CardDeck {
             get { return _cardDeck; }
         }
 
-        private readonly PokerTableCardsViewModel _tableCards = new PokerTableCardsViewModel();
         public PokerTableCardsViewModel TableCards {
             get { return _tableCards; }
         }
 
-        private readonly ObservableCollection<PokerPlayerViewModel> _players = new ObservableCollection<PokerPlayerViewModel>();
         public ObservableCollection<PokerPlayerViewModel> Players {
             get { return _players; }
         }
@@ -94,13 +100,54 @@ namespace Poker.Models {
             get { return _dirty; }
         }
 
-        public void ResetDirty() {
-            _dirty = false;
+        private int _gamesPlayed;
+        public int GamesPlayed {
+            get { return _gamesPlayed; }
+            set {
+                if (_gamesPlayed != value) {
+                    _gamesPlayed = value;
+                    OnPropertyChanged(new PropertyChangedEventArgs("GamesPlayed"));
+                }
+            }
         }
 
-        public void InvalidateState() {
-            _dirty = true;
+        public void Sync() {
+            if (_dirty) {
+                lock (_sync) {
+                    _calculator.Reset();
+                    _dirty = false;
+                    foreach (var player in _players) {
+                        var calcPlayer = new PokerCalculatorPlayer { CardA = player.CardA.Card, CardB = player.CardB.Card };
+                        _calculator.Players.Add(calcPlayer);
+                    }
+                    _calculator.Table.CardA = _tableCards.CardA.Card;
+                    _calculator.Table.CardB = _tableCards.CardB.Card;
+                    _calculator.Table.CardC = _tableCards.CardC.Card;
+                    _calculator.Table.CardD = _tableCards.CardD.Card;
+                    _calculator.Table.CardE = _tableCards.CardE.Card;
+                }
+            }
+            for (int i = 0; i < _players.Count; i++) {
+                var playerModel = _players[i];
+                var player = _calculator.Players[i];
+                playerModel.Statistics.CopyFrom(player);
+            }
         }
+
+        public void PlayGame() {
+            lock (_sync) {
+                _calculator.PlayGame();
+            }
+        }
+
+        protected virtual void OnPropertyChanged(PropertyChangedEventArgs args) {
+            var handler = PropertyChanged;
+            if (handler != null) {
+                handler(this, args);
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
     }
 }
