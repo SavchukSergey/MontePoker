@@ -50,6 +50,11 @@ namespace Poker.Views {
                         innerView.CardBackground = new SolidColorBrush(color);
                     }
                     break;
+                case "Visible":
+                    if (card != null && innerView != null) {
+                        innerView.Visibility = card.Visible ? Visibility.Visible : Visibility.Hidden;
+                    }
+                    break;
             }
         }
 

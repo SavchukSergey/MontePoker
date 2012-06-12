@@ -33,6 +33,10 @@
                 <local:PokerCardView DataContext="{Binding Path=CardB}" Grid.Row="0" Grid.Column="1" Margin="2" CardClick="OnCardClick" />
             </Grid>
             <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition />
                     <RowDefinition />
@@ -41,6 +45,10 @@
                 <Label Grid.Row="0" Grid.Column="0" Content="Wins" />
                 <Label Grid.Row="1" Grid.Column="0" Content="Losts" />
                 <Label Grid.Row="2" Grid.Column="0" Content="Splits" />
+
+                <Label Grid.Row="0" Grid.Column="1" Content="{Binding Path=Statistics.Wins}" />
+                <Label Grid.Row="1" Grid.Column="1" Content="{Binding Path=Statistics.Losts}" />
+                <Label Grid.Row="2" Grid.Column="1" Content="{Binding Path=Statistics.Splits}" />
             </Grid>
         </Grid>
         <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="1">
