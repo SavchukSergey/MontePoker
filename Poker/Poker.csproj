@@ -68,49 +68,6 @@
     <Compile Include="Models\PokerCardViewModel.cs" />
     <Compile Include="Models\PokerTableCardsViewModel.cs" />
     <Compile Include="Views\CardClickEventArgs.cs" />
-    <Compile Include="Views\Cards\BaseCardView.cs" />
-    <Compile Include="Views\Cards\C2.xaml.cs">
-      <DependentUpon>C2.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Cards\C3.xaml.cs">
-      <DependentUpon>C3.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Cards\C4.xaml.cs">
-      <DependentUpon>C4.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Cards\CJ.xaml.cs">
-      <DependentUpon>CJ.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Cards\D6.xaml.cs">
-      <DependentUpon>D6.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Cards\H9.xaml.cs">
-      <DependentUpon>H9.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Cards\H10.xaml.cs">
-      <DependentUpon>H10.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Cards\D9.xaml.cs">
-      <DependentUpon>D9.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Cards\D10.xaml.cs">
-      <DependentUpon>D10.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Cards\D2.xaml.cs">
-      <DependentUpon>D2.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Cards\DK.xaml.cs">
-      <DependentUpon>DK.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Cards\HQ.xaml.cs">
-      <DependentUpon>HQ.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Cards\Empty.xaml.cs">
-      <DependentUpon>Empty.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Cards\CQ.xaml.cs">
-      <DependentUpon>CQ.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\PokerCardDeckView.xaml.cs">
       <DependentUpon>PokerCardDeckView.xaml</DependentUpon>
     </Compile>
@@ -144,62 +101,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\Cards\C2.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Cards\C3.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\Cards\C4.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\Cards\CJ.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\Cards\D6.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\Cards\H9.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\Cards\H10.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\Cards\D9.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\Cards\D10.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\Cards\D2.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\Cards\DK.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\Cards\HQ.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\Cards\Empty.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\Cards\CQ.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Views\PokerCardDeckView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -243,7 +144,12 @@
     </None>
     <AppDesigner Include="Properties\" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Poker.Cards.Views\Poker.Cards.Views.csproj">
+      <Project>{97408ADB-CAB7-4CB2-BB86-9CFB1CF95628}</Project>
+      <Name>Poker.Cards.Views</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Cards\c10.png" />
     <Resource Include="Resources\Cards\c2.png" />

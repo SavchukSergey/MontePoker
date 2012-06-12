@@ -4,8 +4,9 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using Poker.Cards;
+using Poker.Cards.Views;
 using Poker.Models;
-using Poker.Views.Cards;
+using Poker.Cards.Views;
 
 namespace Poker.Views {
     /// <summary>
