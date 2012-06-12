@@ -1,5 +1,5 @@
 ﻿namespace Poker.Cards.Views.Hearts {
-    public partial class HJ : BaseCardView {
+    public partial class HJ : BaseCardViewEx {
         public HJ() {
             InitializeComponent();
         }

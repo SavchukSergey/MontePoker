@@ -1,4 +1,4 @@
-﻿<Views:BaseCardView
+﻿<Views:BaseCardViewEx
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:Cards="clr-namespace:Poker.Cards.Views" xmlns:Views="clr-namespace:Poker.Cards.Views"
@@ -21,4 +21,4 @@
             <Path Data="F 1 M 1896.78,455.459 C 1903.92,455.933 1907.65,449.832 1908.38,445.023 1908.81,444.259 1909.05,444.474 1909.21,445.065 1909.56,451.239 1915.09,456.285 1920.2,455.595 1928.53,455.487 1933.59,446.22 1932.17,438.376 1930.43,428.795 1925.27,423.025 1921.36,417.083 1916.94,410.931 1910.99,402.044 1909.07,397.766 1909.07,397.766 1903.02,406.971 1895.16,417.796 1889.89,425.034 1885.68,432.878 1885.29,439.631 1884.84,447.347 1888.01,454.263 1896.78,455.459 Z" Fill="#d40000" RenderTransform="0.9,0,0,0.9,-1311.16,250.335"/>
         </Canvas>
     </FixedPage>
-</Views:BaseCardView>
+</Views:BaseCardViewEx>

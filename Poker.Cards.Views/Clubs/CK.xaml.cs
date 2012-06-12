@@ -1,5 +1,5 @@
 ﻿namespace Poker.Cards.Views.Clubs {
-    public partial class CK : BaseCardView {
+    public partial class CK : BaseCardViewEx {
         public CK() {
             InitializeComponent();
         }

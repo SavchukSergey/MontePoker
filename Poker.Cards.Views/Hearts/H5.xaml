@@ -1,4 +1,4 @@
-﻿<Views:BaseCardView
+﻿<Views:BaseCardViewEx
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:Views="clr-namespace:Poker.Cards.Views"
@@ -23,4 +23,4 @@
             <Path Data="F 1 M 2439.96,423.581 C 2438.38,427.053 2438.2,432.986 2442.93,433.789 2446.49,434.247 2447.94,432.591 2448.23,430.047 2448.37,429.304 2448.79,429.259 2448.93,430.105 2449.13,432.715 2451.71,434.238 2453.73,433.855 2459.26,432.91 2458.94,426.827 2457.13,422.7 2454.4,417.22 2451.53,413.762 2448.89,408.248 2445.85,413.989 2442.38,418.653 2439.96,423.581 Z" Fill="#d40000" RenderTransform="0.9,0,0,0.9,-1712.98,250.335"/>
         </Canvas>
     </FixedPage>
-</Views:BaseCardView>
+</Views:BaseCardViewEx>

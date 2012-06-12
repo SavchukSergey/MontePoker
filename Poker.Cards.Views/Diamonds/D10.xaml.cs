@@ -1,5 +1,5 @@
 ﻿namespace Poker.Cards.Views.Diamonds {
-    public partial class D10 : BaseCardView {
+    public partial class D10 : BaseCardViewEx {
         public D10() {
             InitializeComponent();
         }

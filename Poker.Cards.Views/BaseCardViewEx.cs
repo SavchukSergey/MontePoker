@@ -30,7 +30,9 @@ namespace Poker.Cards.Views {
 
         protected override void OnBackgroundChanged(DependencyPropertyChangedEventArgs args) {
             var path = GetBgPath();
-            path.Fill = (Brush)args.NewValue;
+            if (path != null) {
+                path.Fill = (Brush)args.NewValue;
+            }
             base.OnBackgroundChanged(args);
         }
 
