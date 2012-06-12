@@ -82,7 +82,6 @@ namespace Poker {
                 sc.Visible = false;
             }
             _model.CardDeck.DeselectAll();
-            _model.InvalidateState();
         }
 
 

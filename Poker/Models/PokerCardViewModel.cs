@@ -19,6 +19,7 @@ namespace Poker.Models {
             set {
                 if (_suit != value) {
                     _suit = value;
+                    OnPropertyChanged(new PropertyChangedEventArgs("Card"));
                     OnPropertyChanged(new PropertyChangedEventArgs("Suit"));
                     OnPropertyChanged(new PropertyChangedEventArgs("IsEmpty"));
                 }
@@ -31,6 +32,7 @@ namespace Poker.Models {
             set {
                 if (_rank != value) {
                     _rank = value;
+                    OnPropertyChanged(new PropertyChangedEventArgs("Card"));
                     OnPropertyChanged(new PropertyChangedEventArgs("Rank"));
                     OnPropertyChanged(new PropertyChangedEventArgs("IsEmpty"));
                 }
@@ -67,6 +69,7 @@ namespace Poker.Models {
         public void Empty() {
             _rank = CardRank.None;
             _suit = CardSuit.None;
+            OnPropertyChanged(new PropertyChangedEventArgs("Card"));
             OnPropertyChanged(new PropertyChangedEventArgs("Rank"));
             OnPropertyChanged(new PropertyChangedEventArgs("Suit"));
             OnPropertyChanged(new PropertyChangedEventArgs("IsEmpty"));

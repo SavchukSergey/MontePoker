@@ -76,35 +76,37 @@ namespace Poker.Evaluation {
             groups.ClubsMask = 0;
             var ranks = stackalloc CardRankGroup[13];
             for (var i = 0; i < 13; i++) {
-                var rank = (CardRank)i;
+                var rank = (CardRank)(i + 1);
                 ranks[i].Rank = rank;
                 ranks[i].Score = rank.Scores();
                 ranks[i].Count = 0;
             }
             for (var i = 0; i < cards.Length; i++) {
+                var rank = cards[i].Rank;
                 switch (cards[i].Suit) {
                     case CardSuit.Hearts:
-                        groups.HeartsMask |= cards[i].Rank.ScoresMask();
+                        groups.HeartsMask |= rank.ScoresMask();
                         break;
                     case CardSuit.Diamonds:
-                        groups.DiamondsMask |= cards[i].Rank.ScoresMask();
+                        groups.DiamondsMask |= rank.ScoresMask();
                         break;
                     case CardSuit.Spades:
-                        groups.SpadesMask |= cards[i].Rank.ScoresMask();
+                        groups.SpadesMask |= rank.ScoresMask();
                         break;
                     case CardSuit.Clubs:
-                        groups.ClubsMask |= cards[i].Rank.ScoresMask();
+                        groups.ClubsMask |= rank.ScoresMask();
                         break;
                 }
-                ranks[(int)cards[i].Rank].Count++;
+                ranks[(int)rank - 1].Count++;
             }
             for (var i = 0; i < 4; i++) {
+                var groupA = ranks[i];
                 for (var j = i + 1; j < 13; j++) {
-                    var groupA = ranks[i];
                     var groupB = ranks[j];
                     if (groupB.Count > groupA.Count || (groupB.Count == groupA.Count && groupB.Score > groupA.Score)) {
                         ranks[i] = groupB;
                         ranks[j] = groupA;
+                        groupA = groupB;
                     }
                 }
             }

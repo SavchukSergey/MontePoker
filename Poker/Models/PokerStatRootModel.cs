@@ -1,7 +1,25 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace Poker.Models {
     public class PokerStatRootModel {
+
+        public PokerStatRootModel() {
+            _tableCards.CardA.PropertyChanged += TableCardsOnPropertyChanged;
+            _tableCards.CardB.PropertyChanged += TableCardsOnPropertyChanged;
+            _tableCards.CardC.PropertyChanged += TableCardsOnPropertyChanged;
+            _tableCards.CardD.PropertyChanged += TableCardsOnPropertyChanged;
+            _tableCards.CardE.PropertyChanged += TableCardsOnPropertyChanged;
+        }
+
+        private void TableCardsOnPropertyChanged(object sender, PropertyChangedEventArgs propertyChangedEventArgs) {
+            switch (propertyChangedEventArgs.PropertyName) {
+                case "Card":
+                    InvalidateState();
+                    break;
+            }
+        }
 
         private readonly PokerCardDeckViewModel _cardDeck = new PokerCardDeckViewModel();
         public PokerCardDeckViewModel CardDeck {

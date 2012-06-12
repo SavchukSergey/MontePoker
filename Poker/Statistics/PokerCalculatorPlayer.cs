@@ -9,10 +9,6 @@ namespace Poker.Statistics {
 
         public PokerCard CardB;
 
-        public void AcceptCard(ref PokerCard card) {
-            throw new NotImplementedException();
-        }
-
         public int Wins { get; set; }
 
         public int Losts { get; set; }
