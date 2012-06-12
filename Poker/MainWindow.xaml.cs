@@ -100,7 +100,6 @@ namespace Poker {
                 sc.Visible = false;
             }
             _model.CardDeck.DeselectAll();
-            _model.InvalidateState();
         }
 
         protected override void OnClosed(EventArgs e) {
@@ -109,5 +108,26 @@ namespace Poker {
             _refreshTimer.Dispose();
         }
 
+        private PokerCardViewModel _selectedCard;
+
+
+        private void OnDeckCardClick(object sender, CardClickEventArgs args)
+        {
+            var view = args.CardView;
+            var card = (PokerCardViewModel)view.DataContext;
+
+            if (_model.TryDefaultDestination(card)) return;
+
+            if (_selectedCard != null && _selectedCard == card) {
+                _selectedCard.Highlighted = false;
+                _selectedCard = null;
+            } else {
+                if (_selectedCard != null) {
+                    _selectedCard.Highlighted = false;
+                }
+                _selectedCard = card;
+                _selectedCard.Highlighted = true;
+            }
+        }
     }
 }

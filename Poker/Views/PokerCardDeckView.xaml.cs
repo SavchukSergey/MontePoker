@@ -1,7 +1,5 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using Poker.Cards;
 using Poker.Models;
 
 namespace Poker.Views {
@@ -11,7 +9,6 @@ namespace Poker.Views {
     public partial class PokerCardDeckView : UserControl {
 
         public static readonly RoutedEvent CardClickEvent = EventManager.RegisterRoutedEvent("CardClick", RoutingStrategy.Direct, typeof(CardEventHandler), typeof(PokerCardDeckView));
-
 
         public PokerCardDeckView() {
             InitializeComponent();
@@ -33,23 +30,9 @@ namespace Poker.Views {
         }
 
         private void ViewOnCardClick(object sender, CardClickEventArgs args) {
-            var view = args.CardView;
-            var card = (PokerCardViewModel)view.DataContext;
-            if (_selectedCard != null && _selectedCard == card) {
-                _selectedCard.Highlighted = false;
-                _selectedCard = null;
-            } else {
-                if (_selectedCard != null) {
-                    _selectedCard.Highlighted = false;
-                }
-                _selectedCard = card;
-                _selectedCard.Highlighted = true;
-            }
             RaiseEvent(new CardClickEventArgs(CardClickEvent, args.CardView));
             InvalidateCards();
         }
-
-        private PokerCardViewModel _selectedCard;
 
         private void InvalidateCards() {
             foreach (PokerCardView child in inner.Children) {

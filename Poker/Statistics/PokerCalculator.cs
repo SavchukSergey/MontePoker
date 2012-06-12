@@ -91,10 +91,6 @@ namespace Poker.Statistics {
 
                 HandEvaluation eval;
                 HandEvaluator.EvaluateHand(hand.Cards, out eval);
-                if (eval.HandType != HandType.FourOfKind)
-                {
-                    
-                }
                 if (eval.Scores > bestScore) {
                     bestScore = eval.Scores;
                     split = false;
