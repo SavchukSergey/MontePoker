@@ -81,6 +81,9 @@
     <Compile Include="Views\Cards\CJ.xaml.cs">
       <DependentUpon>CJ.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Cards\D6.xaml.cs">
+      <DependentUpon>D6.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Cards\H9.xaml.cs">
       <DependentUpon>H9.xaml</DependentUpon>
     </Compile>
@@ -154,6 +157,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Cards\CJ.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Cards\D6.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

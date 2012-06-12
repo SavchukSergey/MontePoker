@@ -104,5 +104,11 @@ namespace Poker {
             _model.InvalidateState();
         }
 
+        protected override void OnClosed(EventArgs e) {
+            base.OnClosed(e);
+            _calcThread.Abort();
+            _refreshTimer.Dispose();
+        }
+
     }
 }
