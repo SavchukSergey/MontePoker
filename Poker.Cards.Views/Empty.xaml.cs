@@ -1,6 +1,4 @@
-﻿using Poker.Cards.Views;
-
-namespace Poker.Cards.Views {
+﻿namespace Poker.Cards.Views {
     public partial class Empty : BaseCardView {
         public Empty() {
             InitializeComponent();
