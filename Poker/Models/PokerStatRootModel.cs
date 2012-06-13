@@ -103,6 +103,9 @@ namespace Poker.Models {
             get { return _statistics; }
         }
 
+        public void Reset() {
+        }
+
         public void Sync() {
             if (_dirty) {
                 lock (_sync) {
@@ -120,12 +123,12 @@ namespace Poker.Models {
                     _gamesPlayed = 0;
                 }
             }
+            _statistics.GamesPlayed = _gamesPlayed;
             for (int i = 0; i < _players.Count; i++) {
                 var playerModel = _players[i];
                 var player = _calculator.Players[i];
                 playerModel.Statistics.CopyFrom(this, player);
             }
-            _statistics.GamesPlayed = _gamesPlayed;
         }
 
         public void PlayGame() {

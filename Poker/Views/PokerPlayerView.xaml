@@ -6,6 +6,9 @@
              xmlns:local="clr-namespace:Poker.Views"
              mc:Ignorable="d" 
              >
+    <UserControl.Resources>
+        <local:PercentageConverter x:Key="percentage" />
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition />
@@ -47,18 +50,19 @@
                 <Label Grid.Row="1" Grid.Column="0" Content="Losts" />
                 <Label Grid.Row="2" Grid.Column="0" Content="Splits" />
 
-                <Label Grid.Row="0" Grid.Column="1" Content="{Binding Path=Statistics.Wins}" />
-                <Label Grid.Row="1" Grid.Column="1" Content="{Binding Path=Statistics.Losts}" />
-                <Label Grid.Row="2" Grid.Column="1" Content="{Binding Path=Statistics.Splits}" />
+                <Label Grid.Row="0" Grid.Column="1" Content="{Binding Path=Statistics.Wins.Count}" />
+                <Label Grid.Row="1" Grid.Column="1" Content="{Binding Path=Statistics.Losts.Count}" />
+                <Label Grid.Row="2" Grid.Column="1" Content="{Binding Path=Statistics.Splits.Count}" />
 
-                <Label Grid.Row="0" Grid.Column="2" Content="{Binding Path=Statistics.WinsPercentage}" />
-                <Label Grid.Row="1" Grid.Column="2" Content="{Binding Path=Statistics.LostsPercentage}" />
-                <Label Grid.Row="2" Grid.Column="2" Content="{Binding Path=Statistics.Splits}" />
+                <Label Grid.Row="0" Grid.Column="2" Content="{Binding Path=Statistics.Wins.Percentage, Converter={StaticResource percentage}}" />
+                <Label Grid.Row="1" Grid.Column="2" Content="{Binding Path=Statistics.Losts.Percentage, Converter={StaticResource percentage}}" />
+                <Label Grid.Row="2" Grid.Column="2" Content="{Binding Path=Statistics.Splits.Percentage, Converter={StaticResource percentage}}" />
             </Grid>
         </Grid>
         <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="1">
             <Grid>
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
                     <ColumnDefinition />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
@@ -74,7 +78,7 @@
                     <RowDefinition />
                     <RowDefinition />
                 </Grid.RowDefinitions>
-                <Label Grid.Row="0" Grid.Column="0" Content="Royal Flushes" />
+                <Label Grid.Row="0" Grid.Column="0" Content="Royal Flush" />
                 <Label Grid.Row="1" Grid.Column="0" Content="Straight Flush" />
                 <Label Grid.Row="2" Grid.Column="0" Content="Four of Kind" />
                 <Label Grid.Row="3" Grid.Column="0" Content="Full House" />
@@ -85,16 +89,28 @@
                 <Label Grid.Row="8" Grid.Column="0" Content="One Pair" />
                 <Label Grid.Row="9" Grid.Column="0" Content="High Card" />
 
-                <Label Grid.Row="0" Grid.Column="1" Content="{Binding Path=Statistics.RoyalFlush}" />
-                <Label Grid.Row="1" Grid.Column="1" Content="{Binding Path=Statistics.StraightFlush}" />
-                <Label Grid.Row="2" Grid.Column="1" Content="{Binding Path=Statistics.FourOfKind}" />
-                <Label Grid.Row="3" Grid.Column="1" Content="{Binding Path=Statistics.FullHouse}" />
-                <Label Grid.Row="4" Grid.Column="1" Content="{Binding Path=Statistics.Flush}" />
-                <Label Grid.Row="5" Grid.Column="1" Content="{Binding Path=Statistics.Straight}" />
-                <Label Grid.Row="6" Grid.Column="1" Content="{Binding Path=Statistics.ThreeOfKind}" />
-                <Label Grid.Row="7" Grid.Column="1" Content="{Binding Path=Statistics.TwoPairs}" />
-                <Label Grid.Row="8" Grid.Column="1" Content="{Binding Path=Statistics.OnePair}" />
-                <Label Grid.Row="9" Grid.Column="1" Content="{Binding Path=Statistics.HighCard}" />
+                <Label Grid.Row="0" Grid.Column="1" Content="{Binding Path=Statistics.RoyalFlush.Count}" />
+                <Label Grid.Row="1" Grid.Column="1" Content="{Binding Path=Statistics.StraightFlush.Count}" />
+                <Label Grid.Row="2" Grid.Column="1" Content="{Binding Path=Statistics.FourOfKind.Count}" />
+                <Label Grid.Row="3" Grid.Column="1" Content="{Binding Path=Statistics.FullHouse.Count}" />
+                <Label Grid.Row="4" Grid.Column="1" Content="{Binding Path=Statistics.Flush.Count}" />
+                <Label Grid.Row="5" Grid.Column="1" Content="{Binding Path=Statistics.Straight.Count}" />
+                <Label Grid.Row="6" Grid.Column="1" Content="{Binding Path=Statistics.ThreeOfKind.Count}" />
+                <Label Grid.Row="7" Grid.Column="1" Content="{Binding Path=Statistics.TwoPairs.Count}" />
+                <Label Grid.Row="8" Grid.Column="1" Content="{Binding Path=Statistics.OnePair.Count}" />
+                <Label Grid.Row="9" Grid.Column="1" Content="{Binding Path=Statistics.HighCard.Count}" />
+
+                <Label Grid.Row="0" Grid.Column="2" Content="{Binding Path=Statistics.RoyalFlush.Percentage, Converter={StaticResource percentage}}" />
+                <Label Grid.Row="1" Grid.Column="2" Content="{Binding Path=Statistics.StraightFlush.Percentage, Converter={StaticResource percentage}}" />
+                <Label Grid.Row="2" Grid.Column="2" Content="{Binding Path=Statistics.FourOfKind.Percentage, Converter={StaticResource percentage}}" />
+                <Label Grid.Row="3" Grid.Column="2" Content="{Binding Path=Statistics.FullHouse.Percentage, Converter={StaticResource percentage}}" />
+                <Label Grid.Row="4" Grid.Column="2" Content="{Binding Path=Statistics.Flush.Percentage, Converter={StaticResource percentage}}" />
+                <Label Grid.Row="5" Grid.Column="2" Content="{Binding Path=Statistics.Straight.Percentage, Converter={StaticResource percentage}}" />
+                <Label Grid.Row="6" Grid.Column="2" Content="{Binding Path=Statistics.ThreeOfKind.Percentage, Converter={StaticResource percentage}}" />
+                <Label Grid.Row="7" Grid.Column="2" Content="{Binding Path=Statistics.TwoPairs.Percentage, Converter={StaticResource percentage}}" />
+                <Label Grid.Row="8" Grid.Column="2" Content="{Binding Path=Statistics.OnePair.Percentage, Converter={StaticResource percentage}}" />
+                <Label Grid.Row="9" Grid.Column="2" Content="{Binding Path=Statistics.HighCard.Percentage, Converter={StaticResource percentage}}" />
+                
             </Grid>
         </StackPanel>
     </Grid>
