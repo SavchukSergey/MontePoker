@@ -89,6 +89,10 @@ namespace Poker.Models {
             _losts.Count = player.Losts;
             _splits.Count = player.Splits;
 
+            _wins.Percentage = Percentage(rootModel, player.Wins);
+            _losts.Percentage = Percentage(rootModel, player.Losts);
+            _splits.Percentage = Percentage(rootModel, player.Splits);
+
             _royalFlush.Count = player.RoyalFlush;
             _straightFlush.Count = player.StraightFlush;
             _fourOfKind.Count = player.FourOfKind;
@@ -99,10 +103,6 @@ namespace Poker.Models {
             _twoPairs.Count = player.TwoPairs;
             _onePair.Count = player.OnePair;
             _highCard.Count = player.HighCard;
-
-            _wins.Percentage = Percentage(rootModel, player.Wins);
-            _losts.Percentage = Percentage(rootModel, player.Losts);
-            _splits.Percentage =  Percentage(rootModel, player.Splits);
 
             _royalFlush.Percentage = Percentage(rootModel, player.RoyalFlush);
             _straightFlush.Percentage = Percentage(rootModel, player.StraightFlush);
@@ -117,5 +117,21 @@ namespace Poker.Models {
         }
 
 
+        public void Reset() {
+            _wins.Reset();
+            _losts.Reset();
+            _splits.Reset();
+
+            _royalFlush.Reset();
+            _straightFlush.Reset();
+            _fourOfKind.Reset();
+            _fullHouse.Reset();
+            _flush.Reset();
+            _straight.Reset();
+            _threeOfKind.Reset();
+            _twoPairs.Reset();
+            _onePair.Reset();
+            _highCard.Reset();
+        }
     }
 }

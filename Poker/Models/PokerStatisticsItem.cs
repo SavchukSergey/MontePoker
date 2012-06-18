@@ -26,6 +26,11 @@ namespace Poker.Models {
             }
         }
 
+        public void Reset() {
+            Count = 0;
+            Percentage = 0;
+        }
+
         protected virtual void OnPropertyChanged(PropertyChangedEventArgs args) {
             var handler = PropertyChanged;
             if (handler != null) {

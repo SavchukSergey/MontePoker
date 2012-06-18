@@ -42,6 +42,7 @@ namespace Poker.Models {
 
         public void Fold() {
             InGame = false;
+            Statistics.Reset();
         }
 
         protected virtual void OnPropertyChanged(PropertyChangedEventArgs args) {

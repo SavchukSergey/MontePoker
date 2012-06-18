@@ -54,13 +54,13 @@
                 <Label Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Content="Losts" />
                 <Label Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Content="Splits" />
 
-                <Label Grid.Row="0" Grid.Column="1" Content="{Binding Path=Statistics.Wins.Count}" />
-                <Label Grid.Row="1" Grid.Column="1" Content="{Binding Path=Statistics.Losts.Count}" />
-                <Label Grid.Row="2" Grid.Column="1" Content="{Binding Path=Statistics.Splits.Count}" />
+                <Label Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Content="{Binding Path=Statistics.Wins.Count}" />
+                <Label Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Content="{Binding Path=Statistics.Losts.Count}" />
+                <Label Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Content="{Binding Path=Statistics.Splits.Count}" />
 
-                <Label Grid.Row="0" Grid.Column="2" Content="{Binding Path=Statistics.Wins.Percentage, Converter={StaticResource percentage}}" />
-                <Label Grid.Row="1" Grid.Column="2" Content="{Binding Path=Statistics.Losts.Percentage, Converter={StaticResource percentage}}" />
-                <Label Grid.Row="2" Grid.Column="2" Content="{Binding Path=Statistics.Splits.Percentage, Converter={StaticResource percentage}}" />
+                <Label Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" Content="{Binding Path=Statistics.Wins.Percentage, Converter={StaticResource percentage}}" FontSize="24" />
+                <Label Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" Content="{Binding Path=Statistics.Losts.Percentage, Converter={StaticResource percentage}}" FontSize="24" />
+                <Label Grid.Row="2" Grid.Column="2" VerticalAlignment="Center" Content="{Binding Path=Statistics.Splits.Percentage, Converter={StaticResource percentage}}" FontSize="24" />
             </Grid>
         </Grid>
         <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="1">
