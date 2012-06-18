@@ -174,7 +174,7 @@ namespace Poker.Views {
         }
 
         private void UpdateImage(PokerCardViewModel model) {
-            var cardView = GetCardView(model.Card);
+            var cardView = GetCardView(model != null ? model.Card : PokerCard.Empty);
             inner.Child = cardView;
         }
 

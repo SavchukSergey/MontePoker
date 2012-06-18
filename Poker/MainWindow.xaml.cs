@@ -87,8 +87,7 @@ namespace Poker {
         private PokerCardViewModel _selectedCard;
 
 
-        private void OnDeckCardClick(object sender, CardClickEventArgs args)
-        {
+        private void OnDeckCardClick(object sender, CardClickEventArgs args) {
             var view = args.CardView;
             var card = (PokerCardViewModel)view.DataContext;
 
@@ -103,6 +102,13 @@ namespace Poker {
                 }
                 _selectedCard = card;
                 _selectedCard.Highlighted = true;
+            }
+        }
+
+        private void OnNewHandClick(object sender, RoutedEventArgs e) {
+            var model = DataContext as PokerStatRootModel;
+            if (model != null) {
+                model.NewHand();
             }
         }
     }

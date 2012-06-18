@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using Poker.Models;
 
 namespace Poker.Views {
     /// <summary>
@@ -20,6 +21,13 @@ namespace Poker.Views {
         public event CardEventHandler CardClick {
             add { AddHandler(CardClickEvent, value); }
             remove { RemoveHandler(CardClickEvent, value); }
+        }
+
+        private void btnFold_Click(object sender, RoutedEventArgs e) {
+            var player = DataContext as PokerPlayerViewModel;
+            if (player != null) {
+                player.Fold();
+            }
         }
     }
 }

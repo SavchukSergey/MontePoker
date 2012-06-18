@@ -13,7 +13,10 @@
             <RowDefinition />
             <RowDefinition />
         </Grid.RowDefinitions>
-        <local:PokerTableCardsView DataContext="{Binding Path=TableCards}" Grid.Row="0" Grid.Column="0" CardClick="OnTableCardsClick"/>
+        <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="0">
+            <Button Content="New Hand" Click="OnNewHandClick" />
+            <local:PokerTableCardsView DataContext="{Binding Path=TableCards}" CardClick="OnTableCardsClick"/>
+        </StackPanel>
         <local:PokerCardDeckView x:Name="deck" DataContext="{Binding Path=CardDeck}" Grid.Row="0" Grid.Column="2" CardClick="OnDeckCardClick" />
         <ListView ItemsSource="{Binding Path=Players}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Background="#408040">
             <ListView.ItemsPanel>

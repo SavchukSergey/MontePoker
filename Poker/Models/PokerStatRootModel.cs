@@ -26,21 +26,32 @@ namespace Poker.Models {
             _tableCards.CardD.PropertyChanged += TableCardsOnPropertyChanged;
             _tableCards.CardE.PropertyChanged += TableCardsOnPropertyChanged;
 
-            _players.CollectionChanged += PlayersOnCollectionChanged;
+            _players.CollectionChanged += OnPlayersCollectionChanged;
         }
 
-        private void PlayersOnCollectionChanged(object sender, NotifyCollectionChangedEventArgs args) {
+        private void OnPlayersCollectionChanged(object sender, NotifyCollectionChangedEventArgs args) {
             if (args.OldItems != null) {
                 foreach (PokerPlayerViewModel player in args.OldItems) {
+                    player.PropertyChanged -= OnPlayerPropertyChanged;
                     player.CardA.PropertyChanged -= PlayerCardsOnPropertyChanged;
                     player.CardB.PropertyChanged -= PlayerCardsOnPropertyChanged;
                 }
             }
             if (args.NewItems != null) {
                 foreach (PokerPlayerViewModel player in args.NewItems) {
+                    player.PropertyChanged += OnPlayerPropertyChanged;
                     player.CardA.PropertyChanged += PlayerCardsOnPropertyChanged;
                     player.CardB.PropertyChanged += PlayerCardsOnPropertyChanged;
                 }
+            }
+        }
+
+        private void OnPlayerPropertyChanged(object sender, PropertyChangedEventArgs propertyChangedEventArgs) {
+            switch (propertyChangedEventArgs.PropertyName) {
+                case "InGame":
+                    _dirty = true;
+                    Sync();
+                    break;
             }
         }
 
@@ -103,7 +114,11 @@ namespace Poker.Models {
             get { return _statistics; }
         }
 
-        public void Reset() {
+        public void NewHand() {
+            _tableCards.Reset();
+            foreach (var player in _players) {
+                player.Reset();
+            }
         }
 
         public void Sync() {
@@ -112,8 +127,10 @@ namespace Poker.Models {
                     _calculator.Reset();
                     _dirty = false;
                     foreach (var player in _players) {
-                        var calcPlayer = new PokerCalculatorPlayer { CardA = player.CardA.Card, CardB = player.CardB.Card };
-                        _calculator.Players.Add(calcPlayer);
+                        if (player.InGame) {
+                            var calcPlayer = new PokerCalculatorPlayer { CardA = player.CardA.Card, CardB = player.CardB.Card };
+                            _calculator.Players.Add(calcPlayer);
+                        }
                     }
                     _calculator.Table.CardA = _tableCards.CardA.Card;
                     _calculator.Table.CardB = _tableCards.CardB.Card;
@@ -124,10 +141,14 @@ namespace Poker.Models {
                 }
             }
             _statistics.GamesPlayed = _gamesPlayed;
+            var calcIndex = 0;
             for (int i = 0; i < _players.Count; i++) {
                 var playerModel = _players[i];
-                var player = _calculator.Players[i];
-                playerModel.Statistics.CopyFrom(this, player);
+                if (playerModel.InGame) {
+                    var player = _calculator.Players[calcIndex];
+                    playerModel.Statistics.CopyFrom(this, player);
+                    calcIndex++;
+                }
             }
         }
 

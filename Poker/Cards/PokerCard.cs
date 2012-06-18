@@ -9,6 +9,10 @@ namespace Poker.Cards {
             Suit = suit;
         }
 
+        public static PokerCard Empty {
+            get { return new PokerCard(CardRank.None, CardSuit.None); }
+        }
+
         public CardRank Rank;
 
         public CardSuit Suit;
@@ -165,6 +169,26 @@ namespace Poker.Cards {
                     return "K";
                 default:
                     return Rank.ToString();
+            }
+        }
+
+        public bool Equals(PokerCard other)
+        {
+            return Equals(other.Rank, Rank) && Equals(other.Suit, Suit);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (obj.GetType() != typeof (PokerCard)) return false;
+            return Equals((PokerCard) obj);
+        }
+
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                return (Rank.GetHashCode()*397) ^ Suit.GetHashCode();
             }
         }
     }

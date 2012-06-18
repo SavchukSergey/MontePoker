@@ -16,16 +16,18 @@ namespace Poker.Views {
         }
 
         private void OnDataContextChanged(object sender, DependencyPropertyChangedEventArgs e) {
-            var deck = (PokerCardDeckViewModel)e.NewValue;
-            for (int i = 0; i < deck.Cards.Count; i++) {
-                var item = deck.Cards[i];
-                var view = new PokerCardView();
-                Grid.SetRow(view, i / 13);
-                Grid.SetColumn(view, i % 13);
-                view.Margin = new Thickness(2);
-                view.DataContext = item;
-                view.CardClick += ViewOnCardClick;
-                inner.Children.Add(view);
+            var deck = e.NewValue as PokerCardDeckViewModel;
+            if (deck != null) {
+                for (int i = 0; i < deck.Cards.Count; i++) {
+                    var item = deck.Cards[i];
+                    var view = new PokerCardView();
+                    Grid.SetRow(view, i / 13);
+                    Grid.SetColumn(view, i % 13);
+                    view.Margin = new Thickness(2);
+                    view.DataContext = item;
+                    view.CardClick += ViewOnCardClick;
+                    inner.Children.Add(view);
+                }
             }
         }
 

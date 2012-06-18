@@ -34,5 +34,12 @@ namespace Poker.Models {
 
         public event PropertyChangedEventHandler PropertyChanged;
 
+        public void Reset() {
+            _cardA.Empty();
+            _cardB.Empty();
+            _cardC.Empty();
+            _cardD.Empty();
+            _cardE.Empty();
+        }
     }
 }

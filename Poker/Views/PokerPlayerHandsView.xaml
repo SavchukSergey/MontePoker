@@ -1,0 +1,64 @@
+﻿<UserControl x:Class="Poker.Views.PokerPlayerHandsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:Poker.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <local:PercentageConverter x:Key="percentage" />
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" Grid.Column="0" Content="Royal Flush" />
+        <Label Grid.Row="1" Grid.Column="0" Content="Straight Flush" />
+        <Label Grid.Row="2" Grid.Column="0" Content="Four of Kind" />
+        <Label Grid.Row="3" Grid.Column="0" Content="Full House" />
+        <Label Grid.Row="4" Grid.Column="0" Content="Flush" />
+        <Label Grid.Row="5" Grid.Column="0" Content="Straight" />
+        <Label Grid.Row="6" Grid.Column="0" Content="Three of Kind" />
+        <Label Grid.Row="7" Grid.Column="0" Content="Two Pairs" />
+        <Label Grid.Row="8" Grid.Column="0" Content="One Pair" />
+        <Label Grid.Row="9" Grid.Column="0" Content="High Card" />
+
+        <Label Grid.Row="0" Grid.Column="1" Content="{Binding Path=RoyalFlush.Count}" />
+        <Label Grid.Row="1" Grid.Column="1" Content="{Binding Path=StraightFlush.Count}" />
+        <Label Grid.Row="2" Grid.Column="1" Content="{Binding Path=FourOfKind.Count}" />
+        <Label Grid.Row="3" Grid.Column="1" Content="{Binding Path=FullHouse.Count}" />
+        <Label Grid.Row="4" Grid.Column="1" Content="{Binding Path=Flush.Count}" />
+        <Label Grid.Row="5" Grid.Column="1" Content="{Binding Path=Straight.Count}" />
+        <Label Grid.Row="6" Grid.Column="1" Content="{Binding Path=ThreeOfKind.Count}" />
+        <Label Grid.Row="7" Grid.Column="1" Content="{Binding Path=TwoPairs.Count}" />
+        <Label Grid.Row="8" Grid.Column="1" Content="{Binding Path=OnePair.Count}" />
+        <Label Grid.Row="9" Grid.Column="1" Content="{Binding Path=HighCard.Count}" />
+
+        <Label Grid.Row="0" Grid.Column="2" Content="{Binding Path=RoyalFlush.Percentage, Converter={StaticResource percentage}}" />
+        <Label Grid.Row="1" Grid.Column="2" Content="{Binding Path=StraightFlush.Percentage, Converter={StaticResource percentage}}" />
+        <Label Grid.Row="2" Grid.Column="2" Content="{Binding Path=FourOfKind.Percentage, Converter={StaticResource percentage}}" />
+        <Label Grid.Row="3" Grid.Column="2" Content="{Binding Path=FullHouse.Percentage, Converter={StaticResource percentage}}" />
+        <Label Grid.Row="4" Grid.Column="2" Content="{Binding Path=Flush.Percentage, Converter={StaticResource percentage}}" />
+        <Label Grid.Row="5" Grid.Column="2" Content="{Binding Path=Straight.Percentage, Converter={StaticResource percentage}}" />
+        <Label Grid.Row="6" Grid.Column="2" Content="{Binding Path=ThreeOfKind.Percentage, Converter={StaticResource percentage}}" />
+        <Label Grid.Row="7" Grid.Column="2" Content="{Binding Path=TwoPairs.Percentage, Converter={StaticResource percentage}}" />
+        <Label Grid.Row="8" Grid.Column="2" Content="{Binding Path=OnePair.Percentage, Converter={StaticResource percentage}}" />
+        <Label Grid.Row="9" Grid.Column="2" Content="{Binding Path=HighCard.Percentage, Converter={StaticResource percentage}}" />
+
+    </Grid>
+</UserControl>
