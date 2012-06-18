@@ -48,8 +48,7 @@ namespace Poker {
             var card = (PokerCardViewModel)view.DataContext;
             var sc = _model.CardDeck.SelectedCard;
             if (sc == null || !card.IsEmpty) {
-                _model.CardDeck.ShowCard(card.Rank, card.Suit);
-                card.Empty();
+               _model.ReturnCardToDeck(card);
             }
             if (sc != null) {
                 card.Rank = sc.Rank;
@@ -66,8 +65,7 @@ namespace Poker {
             var card = (PokerCardViewModel)view.DataContext;
             var sc = _model.CardDeck.SelectedCard;
             if (sc == null || !card.IsEmpty) {
-                _model.CardDeck.ShowCard(card.Rank, card.Suit);
-                card.Empty();
+                _model.ReturnCardToDeck(card);
             }
             if (sc != null) {
                 card.Rank = sc.Rank;

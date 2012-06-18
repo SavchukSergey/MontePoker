@@ -114,10 +114,16 @@ namespace Poker.Models {
             get { return _statistics; }
         }
 
+        public void ReturnCardToDeck(PokerCardViewModel card) {
+            _cardDeck.ShowCard(card.Rank, card.Suit);
+            card.Empty();
+        }
+
         public void NewHand() {
-            _tableCards.Reset();
+            _tableCards.ReturnCardsTo(this);
             foreach (var player in _players) {
-                player.Reset();
+                player.ReturnCardsTo(this);
+                player.InGame = true;
             }
         }
 

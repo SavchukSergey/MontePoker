@@ -34,12 +34,12 @@ namespace Poker.Models {
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public void Reset() {
-            _cardA.Empty();
-            _cardB.Empty();
-            _cardC.Empty();
-            _cardD.Empty();
-            _cardE.Empty();
+        public void ReturnCardsTo(PokerStatRootModel root) {
+            if (!_cardA.IsEmpty) root.ReturnCardToDeck(_cardA);
+            if (!_cardB.IsEmpty) root.ReturnCardToDeck(_cardB);
+            if (!_cardC.IsEmpty) root.ReturnCardToDeck(_cardC);
+            if (!_cardD.IsEmpty) root.ReturnCardToDeck(_cardD);
+            if (!_cardE.IsEmpty) root.ReturnCardToDeck(_cardE);
         }
     }
 }

@@ -32,7 +32,7 @@ namespace Poker.Models {
 
         public bool InGame {
             get { return _inGame; }
-            private set {
+            set {
                 if (_inGame != value) {
                     _inGame = value;
                     OnPropertyChanged(new PropertyChangedEventArgs("InGame"));
@@ -54,10 +54,9 @@ namespace Poker.Models {
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public void Reset() {
-            _cardA.Empty();
-            _cardB.Empty();
-            InGame = true;
+        public void ReturnCardsTo(PokerStatRootModel root) {
+            if (!_cardA.IsEmpty) root.ReturnCardToDeck(_cardA);
+            if (!_cardB.IsEmpty) root.ReturnCardToDeck(_cardB);
         }
     }
 }
