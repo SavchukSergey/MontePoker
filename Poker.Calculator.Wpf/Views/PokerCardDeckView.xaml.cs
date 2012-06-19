@@ -2,7 +2,7 @@
 using System.Windows.Controls;
 using Poker.Models;
 
-namespace Poker.Views {
+namespace Poker.Calculator.Wpf.Views {
     /// <summary>
     /// Interaction logic for PokerCardView.xaml
     /// </summary>

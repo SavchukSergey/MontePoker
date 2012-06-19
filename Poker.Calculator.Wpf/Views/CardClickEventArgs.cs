@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace Poker.Views {
+namespace Poker.Calculator.Wpf.Views {
     public class CardClickEventArgs : RoutedEventArgs {
         private readonly PokerCardView _cardView;
 

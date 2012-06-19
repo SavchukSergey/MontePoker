@@ -1,6 +1,5 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
-using Poker.Views;
 
 namespace Poker.Calculator.Wpf.Views {
     /// <summary>

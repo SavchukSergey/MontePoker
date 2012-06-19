@@ -1,8 +1,8 @@
-﻿<UserControl x:Class="Poker.Views.PokerCardView"
+﻿<UserControl x:Class="Poker.Calculator.Wpf.Views.PokerCardView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              MouseDown="UserControl_Click" mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:Clubs="clr-namespace:Poker.Cards.Views.Clubs;assembly=Poker.Cards.Views" d:DesignHeight="259" d:DesignWidth="369">
+             d:DesignHeight="259" d:DesignWidth="369">
     <Viewbox Stretch="Uniform" x:Name="inner">
     </Viewbox>
 </UserControl>

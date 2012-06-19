@@ -72,20 +72,6 @@
     <Compile Include="Models\PokerPlayerViewModel.cs" />
     <Compile Include="Models\PokerCardViewModel.cs" />
     <Compile Include="Models\PokerTableCardsViewModel.cs" />
-    <Compile Include="Views\CardClickEventArgs.cs" />
-    <Compile Include="Views\PercentageConverter.cs" />
-    <Compile Include="Views\PokerCardDeckView.xaml.cs">
-      <DependentUpon>PokerCardDeckView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\PokerPlayerHandsView.xaml.cs">
-      <DependentUpon>PokerPlayerHandsView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\PokerPlayerView.xaml.cs">
-      <DependentUpon>PokerPlayerView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\PokerCardView.xaml.cs">
-      <DependentUpon>PokerCardView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Cards\CardRank.cs" />
     <Compile Include="Cards\CardRankExt.cs" />
     <Compile Include="Cards\CardSuit.cs" />
@@ -95,22 +81,6 @@
     <Compile Include="Evaluation\HandScoresBase.cs" />
     <Compile Include="Evaluation\HandType.cs" />
     <Compile Include="Evaluation\HandEvaluator.cs" />
-    <Page Include="Views\PokerCardDeckView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\PokerPlayerHandsView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\PokerPlayerView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\PokerCardView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cards\PokerCard.cs" />
@@ -143,6 +113,9 @@
       <Project>{97408ADB-CAB7-4CB2-BB86-9CFB1CF95628}</Project>
       <Name>Poker.Cards.Views</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

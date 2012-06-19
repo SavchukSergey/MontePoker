@@ -55,6 +55,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Views\CardClickEventArgs.cs" />
+    <Compile Include="Views\PercentageConverter.cs" />
+    <Compile Include="Views\PokerCardDeckView.xaml.cs">
+      <DependentUpon>PokerCardDeckView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PokerCardView.xaml.cs">
+      <DependentUpon>PokerCardView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PokerPlayerHandsView.xaml.cs">
+      <DependentUpon>PokerPlayerHandsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PokerPlayerView.xaml.cs">
+      <DependentUpon>PokerPlayerView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\PokerTableCardsView.xaml.cs">
       <DependentUpon>PokerTableCardsView.xaml</DependentUpon>
     </Compile>
@@ -70,6 +84,22 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\PokerCardDeckView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\PokerCardView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\PokerPlayerHandsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\PokerPlayerView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\PokerTableCardsView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -100,6 +130,10 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Poker.Cards.Views\Poker.Cards.Views.csproj">
+      <Project>{97408ADB-CAB7-4CB2-BB86-9CFB1CF95628}</Project>
+      <Name>Poker.Cards.Views</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Poker\Poker.csproj">
       <Project>{D4DDB0AD-B017-437D-93F4-D189D11986B6}</Project>
       <Name>Poker</Name>

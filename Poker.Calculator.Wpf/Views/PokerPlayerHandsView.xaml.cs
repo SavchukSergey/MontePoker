@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace Poker.Views {
+namespace Poker.Calculator.Wpf.Views {
     /// <summary>
     /// Interaction logic for PokerPlayerStatisticsView.xaml
     /// </summary>
