@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{D4DDB0AD-B017-437D-93F4-D189D11986B6}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{A2AF3D78-801F-4461-AF48-4710944A8D01}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Poker</RootNamespace>
-    <AssemblyName>Poker</AssemblyName>
+    <RootNamespace>Poker.Calculator.Wpf</RootNamespace>
+    <AssemblyName>Poker.Calculator.Wpf</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
@@ -17,7 +17,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -25,20 +25,15 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-  </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -56,72 +51,24 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cards\CardDeck.cs" />
-    <Compile Include="Cards\PokerCardExt.cs" />
-    <Compile Include="Models\PokerCardDeckViewModel.cs" />
-    <Compile Include="Models\PokerGlobalStatistics.cs" />
-    <Compile Include="Models\PokerPlayerStatisticsViewModel.cs" />
-    <Compile Include="Models\PokerStatisticsItem.cs" />
-    <Compile Include="Models\PokerStatRootModel.cs" />
-    <Compile Include="Statistics\PokerCalculatorBuilder.cs" />
-    <Compile Include="Statistics\PokerCalculatorData.cs" />
-    <Compile Include="Statistics\PokerCalculatorResult.cs" />
-    <Compile Include="Statistics\PokerCalculatorTable.cs" />
-    <Compile Include="Statistics\PokerCalculatorPlayer.cs" />
-    <Compile Include="Statistics\PokerCalculator.cs" />
-    <Compile Include="Models\PokerPlayerViewModel.cs" />
-    <Compile Include="Models\PokerCardViewModel.cs" />
-    <Compile Include="Models\PokerTableCardsViewModel.cs" />
-    <Compile Include="Views\CardClickEventArgs.cs" />
-    <Compile Include="Views\PercentageConverter.cs" />
-    <Compile Include="Views\PokerCardDeckView.xaml.cs">
-      <DependentUpon>PokerCardDeckView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\PokerPlayerHandsView.xaml.cs">
-      <DependentUpon>PokerPlayerHandsView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\PokerTableCardsView.xaml.cs">
-      <DependentUpon>PokerTableCardsView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\PokerPlayerView.xaml.cs">
-      <DependentUpon>PokerPlayerView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\PokerCardView.xaml.cs">
-      <DependentUpon>PokerCardView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Cards\CardRank.cs" />
-    <Compile Include="Cards\CardRankExt.cs" />
-    <Compile Include="Cards\CardSuit.cs" />
-    <Compile Include="Evaluation\CardRankGroup.cs" />
-    <Compile Include="Evaluation\CardsEvaluation.cs" />
-    <Compile Include="Evaluation\HandEvaluation.cs" />
-    <Compile Include="Evaluation\HandScoresBase.cs" />
-    <Compile Include="Evaluation\HandType.cs" />
-    <Compile Include="Evaluation\HandEvaluator.cs" />
-    <Page Include="Views\PokerCardDeckView.xaml">
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\PokerPlayerHandsView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\PokerTableCardsView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\PokerPlayerView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\PokerCardView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cards\PokerCard.cs" />
-    <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -146,9 +93,9 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Poker.Cards.Views\Poker.Cards.Views.csproj">
-      <Project>{97408ADB-CAB7-4CB2-BB86-9CFB1CF95628}</Project>
-      <Name>Poker.Cards.Views</Name>
+    <ProjectReference Include="..\Poker\Poker.csproj">
+      <Project>{D4DDB0AD-B017-437D-93F4-D189D11986B6}</Project>
+      <Name>Poker</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
