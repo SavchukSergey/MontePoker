@@ -65,22 +65,8 @@ namespace Poker.Tests.Evaluation {
         }
 
         [Test]
-        public void EvaluateFourOfKindCard() {
-            var cards = PokerCard.ParseList("AH 10S 10C 10D 4S 9C 10H");
-            HandEvaluation eval;
-            HandEvaluator.EvaluateHand(cards, out eval);
-            Assert.AreEqual(HandType.FourOfKind, eval.HandType);
-        }
-
-        [Test]
-        public void EvaluateStraightFlushCard() {
-            var cards = PokerCard.ParseList("2S 3S 4S AC 5S JD 6S");
-            HandEvaluation eval;
-            HandEvaluator.EvaluateHand(cards, out eval);
-            Assert.AreEqual(HandType.StraightFlush, eval.HandType);
-        }
-
-        [Test]
+        [TestCase(HandType.FourOfKind, "AH 10S 10C 10D 4S 9C 10H", Description = "Four of Kind")]
+        [TestCase(HandType.StraightFlush, "2S 3S 4S AC 5S JD 6S", Description = "Straight Flush")]
         [TestCase(HandType.RoyalFlush, "AD KD 2C JD 10D 4S QD", Description = "Royal Flush")]
         public void HandTypeTest(HandType handType, string cardsString) {
             var cards = PokerCard.ParseList(cardsString);
