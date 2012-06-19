@@ -13,7 +13,6 @@ namespace Poker.Calculator.Wpf.Models {
         private readonly ObservableCollection<PokerPlayerViewModel> _players = new ObservableCollection<PokerPlayerViewModel>();
         private readonly PokerGlobalStatistics _statistics = new PokerGlobalStatistics();
         private bool _dirty = true;
-        private int _gamesPlayed;
 
         private readonly object _sync = new object();
 
@@ -142,13 +141,11 @@ namespace Poker.Calculator.Wpf.Models {
                     builder.AddTableCard(_tableCards.CardC.Card);
                     builder.AddTableCard(_tableCards.CardD.Card);
                     builder.AddTableCard(_tableCards.CardE.Card);
-                    _gamesPlayed = 0;
-
                     _calculator = builder.Build();
                 }
             }
             var info = _calculator.GetResult();
-            _statistics.GamesPlayed = _gamesPlayed;
+            _statistics.GamesPlayed = info.GamesPlayed;
             var calcIndex = 0;
             for (int i = 0; i < _players.Count; i++) {
                 var playerModel = _players[i];
@@ -163,7 +160,6 @@ namespace Poker.Calculator.Wpf.Models {
         public void PlayGame() {
             lock (_sync) {
                 _calculator.PlayGame();
-                _gamesPlayed++;
             }
         }
 

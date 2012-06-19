@@ -58,6 +58,7 @@ Global
 		{1E195230-2525-43B5-9278-219992B48805}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
 		{1E195230-2525-43B5-9278-219992B48805}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
 		{1E195230-2525-43B5-9278-219992B48805}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1E195230-2525-43B5-9278-219992B48805}.Debug|x86.Build.0 = Debug|Any CPU
 		{1E195230-2525-43B5-9278-219992B48805}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1E195230-2525-43B5-9278-219992B48805}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1E195230-2525-43B5-9278-219992B48805}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
