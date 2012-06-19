@@ -167,7 +167,8 @@ namespace Poker.Evaluation {
                 return;
             }
 
-            straightScores = StraightScores[summary.HeartsMask | summary.DiamondsMask | summary.ClubsMask | summary.SpadesMask];
+            var rankBits = summary.HeartsMask | summary.DiamondsMask | summary.ClubsMask | summary.SpadesMask;
+            straightScores = StraightScores[rankBits];
             if (straightScores > 0) {
                 eval.HandType = HandType.Straight;
                 eval.Scores = (int)HandScoresBase.Straight + straightScores;
@@ -192,7 +193,7 @@ namespace Poker.Evaluation {
                 return;
             }
             eval.HandType = HandType.HighCard;
-            eval.Scores = (int)HandScoresBase.HighCard + HighCardScores[straightScores];
+            eval.Scores = (int)HandScoresBase.HighCard + HighCardScores[rankBits];
         }
 
     }

@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System.Linq;
+using NUnit.Framework;
 using Poker.Cards;
 using Poker.Evaluation;
 
@@ -80,11 +81,37 @@ namespace Poker.Tests.Evaluation {
         }
 
         [Test]
-        public void EvaluateFlushRoyalCard() {
-            var cards = PokerCard.ParseList("AD KD 2C JD 10D 4S QD");
+        [TestCase(HandType.RoyalFlush, "AD KD 2C JD 10D 4S QD", Description = "Royal Flush")]
+        public void HandTypeTest(HandType handType, string cardsString) {
+            var cards = PokerCard.ParseList(cardsString);
             HandEvaluation eval;
             HandEvaluator.EvaluateHand(cards, out eval);
-            Assert.AreEqual(HandType.RoyalFlush, eval.HandType);
+            Assert.AreEqual(handType, eval.HandType);
+        }
+
+        [Test]
+        [TestCase("1 AH 9C 10C 2D 4S 7S JS", "0 KH 9C 10C 2D 4S 7S JS", Description = "High Card - Kicker")]
+        [TestCase("1 AH AC JC 2D 4S 9C 7C", "0 AH AC 10C 2D 4S 9C 7C", Description = "One Pair - Kicker")]
+        [TestCase("1 AH AC 10C 10D 4S JC 7C", "0 AH AC 10C 10D 4S 9C 7C", Description = "Two Pairs - Kicker")]
+        [TestCase("1 AH 10S 10C 10D 4S 9C 7C", "0 KH 10S 10C 10D 4S 9C 7C", Description = "Three of Kind - Kicker")]
+        public void OneKickerTest(params string[] cardsList) {
+            var bestEval = new HandEvaluation { Scores = -1 };
+            foreach (var playerInfo in cardsList) {
+                var playerCards = PokerCard.ParseList(playerInfo.Substring(2));
+                HandEvaluation eval;
+                HandEvaluator.EvaluateHand(playerCards.ToArray(), out eval);
+                if (eval.Scores > bestEval.Scores) {
+                    bestEval = eval;
+                }
+            }
+            for (int i = 0; i < cardsList.Length; i++) {
+                var playerCards = PokerCard.ParseList(cardsList[i].Substring(2));
+
+                HandEvaluation eval;
+                HandEvaluator.EvaluateHand(playerCards.ToArray(), out eval);
+                var win = cardsList[i].StartsWith("1 ");
+                Assert.AreEqual(win, eval.Scores == bestEval.Scores);
+            }
         }
     }
 }
