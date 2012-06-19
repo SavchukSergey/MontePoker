@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 
-namespace Poker.Models {
+namespace Poker.Calculator.Wpf.Models {
     public class PokerStatisticsItem : INotifyPropertyChanged {
 
         private int _count;

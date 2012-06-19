@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Linq;
 using Poker.Cards;
 
-namespace Poker.Models {
+namespace Poker.Calculator.Wpf.Models {
     public class PokerCardDeckViewModel : INotifyPropertyChanged {
 
         private readonly ObservableCollection<PokerCardViewModel> _cards = new ObservableCollection<PokerCardViewModel>();

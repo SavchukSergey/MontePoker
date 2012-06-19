@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
 using Poker.Statistics;
 
-namespace Poker.Models {
+namespace Poker.Calculator.Wpf.Models {
     public class PokerStatRootModel {
 
         private PokerCalculator _calculator; //TODO: check null references

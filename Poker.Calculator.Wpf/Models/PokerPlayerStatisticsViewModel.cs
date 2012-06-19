@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using Poker.Statistics;
 
-namespace Poker.Models {
+namespace Poker.Calculator.Wpf.Models {
     public class PokerPlayerStatisticsViewModel : INotifyPropertyChanged {
 
         private readonly PokerStatisticsItem _wins = new PokerStatisticsItem();

@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
-using Poker.Models;
+using Poker.Calculator.Wpf.Models;
 
 namespace Poker.Calculator.Wpf.Views {
     /// <summary>

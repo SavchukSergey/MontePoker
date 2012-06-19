@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace Poker.Models {
+namespace Poker.Calculator.Wpf.Models {
     public class PokerTableCardsViewModel : INotifyPropertyChanged {
 
         private readonly PokerCardViewModel _cardA = new PokerCardViewModel();

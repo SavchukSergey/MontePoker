@@ -2,13 +2,13 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using Poker.Calculator.Wpf.Models;
 using Poker.Cards;
 using Poker.Cards.Views;
 using Poker.Cards.Views.Clubs;
 using Poker.Cards.Views.Diamonds;
 using Poker.Cards.Views.Hearts;
 using Poker.Cards.Views.Spades;
-using Poker.Models;
 
 namespace Poker.Calculator.Wpf.Views {
     /// <summary>

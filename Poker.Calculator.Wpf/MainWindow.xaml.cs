@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Threading;
 using System.Windows;
+using Poker.Calculator.Wpf.Models;
 using Poker.Calculator.Wpf.Views;
-using Poker.Models;
 using Poker.Statistics;
 
 namespace Poker {

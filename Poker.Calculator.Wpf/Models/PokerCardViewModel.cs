@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using Poker.Cards;
 
-namespace Poker.Models {
+namespace Poker.Calculator.Wpf.Models {
     public class PokerCardViewModel : INotifyPropertyChanged {
 
         private PokerCard _card;

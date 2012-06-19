@@ -55,6 +55,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\PokerCardDeckViewModel.cs" />
+    <Compile Include="Models\PokerCardViewModel.cs" />
+    <Compile Include="Models\PokerGlobalStatistics.cs" />
+    <Compile Include="Models\PokerPlayerStatisticsViewModel.cs" />
+    <Compile Include="Models\PokerPlayerViewModel.cs" />
+    <Compile Include="Models\PokerStatisticsItem.cs" />
+    <Compile Include="Models\PokerStatRootModel.cs" />
+    <Compile Include="Models\PokerTableCardsViewModel.cs" />
     <Compile Include="Views\CardClickEventArgs.cs" />
     <Compile Include="Views\PercentageConverter.cs" />
     <Compile Include="Views\PokerCardDeckView.xaml.cs">
