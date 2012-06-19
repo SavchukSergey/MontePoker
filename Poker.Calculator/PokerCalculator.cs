@@ -8,15 +8,19 @@ namespace Poker.Calculator {
 
         private readonly IList<PokerCalculatorPlayer> _players;
         private PokerCalculatorTable _table;
+        private readonly CardDeck _deck;
+        private readonly IList<PokerPlayerHand> _hands = new List<PokerPlayerHand>();
+        private int _gamesPlayed;
 
         public PokerCalculator(PokerCalculatorData data) {
             _players = data.Players.ToList();
             _table = data.Table;
-        }
+            _deck = data.Deck;
 
-        private int _gamesPlayed;
-        public int GamesPlayed {
-            get { return _gamesPlayed; }
+            foreach (var player in _players) {
+                var hand = new PokerPlayerHand { Player = player };
+                _hands.Add(hand);
+            }
         }
 
         private class PokerPlayerHand {
@@ -30,21 +34,21 @@ namespace Poker.Calculator {
 
         public PokerCalculatorResult GetResult() {
             var res = new PokerCalculatorResult();
+            res.GamesPlayed = _gamesPlayed;
             foreach (var player in _players) {
+                //TODO: return custom structure
                 res.Players.Add(player);
             }
-            //TODO: return custom structure
             return res;
         }
 
         public void PlayGame() {
             _gamesPlayed++;
-            var deck = GetDeckSnapShot();
+            var deck = _deck.Clone();
             deck.Shuffle();
-            IList<PokerPlayerHand> hands = new List<PokerPlayerHand>();
             for (var i = 0; i < _players.Count; i++) {
                 var player = _players[i];
-                var hand = new PokerPlayerHand { Player = player };
+                var hand = _hands[i];
                 if (!player.CardA.IsEmpty()) {
                     hand.Cards[0] = player.CardA;
                 } else {
@@ -59,7 +63,6 @@ namespace Poker.Calculator {
                     deck.DealOne(out card);
                     hand.Cards[1] = card;
                 }
-                hands.Add(hand);
             }
             PokerCard cardA, cardB, cardC, cardD, cardE;
             if (!_table.CardA.IsEmpty()) {
@@ -90,8 +93,8 @@ namespace Poker.Calculator {
 
             var bestScore = -1;
             var split = false;
-            for (var i = 0; i < hands.Count; i++) {
-                var hand = hands[i];
+            for (var i = 0; i < _hands.Count; i++) {
+                var hand = _hands[i];
                 hand.Cards[2] = cardA;
                 hand.Cards[3] = cardB;
                 hand.Cards[4] = cardC;
@@ -109,8 +112,8 @@ namespace Poker.Calculator {
                 hand.Player.Increase(eval.HandType);
                 hand.Evaluation = eval;
             }
-            for (var i = 0; i < hands.Count; i++) {
-                var hand = hands[i];
+            for (var i = 0; i < _hands.Count; i++) {
+                var hand = _hands[i];
                 if (hand.Evaluation.Scores == bestScore) {
                     if (!split) {
                         hand.Player.Wins++;
@@ -121,18 +124,6 @@ namespace Poker.Calculator {
                     hand.Player.Losts++;
                 }
             }
-        }
-
-        protected CardDeck GetDeckSnapShot() {
-            //TODO: optimize
-            var cards = CardDeck.GetAllCards();
-            var res = new List<PokerCard>();
-            for (var i = 0; i < cards.Length; i++) {
-                if (_table.Contains(ref cards[i])) continue;
-                if (_players.Any(player => player.Contains(ref cards[i]))) continue;
-                res.Add(cards[i]);
-            }
-            return new CardDeck(res);
         }
 
     }

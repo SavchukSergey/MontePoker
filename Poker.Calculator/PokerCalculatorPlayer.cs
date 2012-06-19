@@ -1,5 +1,4 @@
-﻿using System;
-using Poker.Cards;
+﻿using Poker.Cards;
 using Poker.Evaluation;
 
 namespace Poker.Calculator {
@@ -34,27 +33,6 @@ namespace Poker.Calculator {
         public int OnePair { get; set; }
 
         public int HighCard { get; set; }
-
-        //TODO: remove if unused
-        [Obsolete]
-        public void Reset() {
-            CardA.IsEmpty();
-            CardB.IsEmpty();
-
-            Wins = 0;
-            Losts = 0;
-            Splits = 0;
-            RoyalFlush = 0;
-            StraightFlush = 0;
-            FourOfKind = 0;
-            FullHouse = 0;
-            Flush = 0;
-            Straight = 0;
-            ThreeOfKind = 0;
-            TwoPairs = 0;
-            OnePair = 0;
-            HighCard = 0;
-        }
 
         public void Increase(HandType handType) {
             switch (handType) {

@@ -41,7 +41,7 @@ namespace Poker.Cards {
         }
 
         public CardDeck Clone() {
-            var res = new CardDeck { _cards = new Queue<PokerCard>(_cards) };
+            var res = new CardDeck (_cards);
             return res;
         }
 

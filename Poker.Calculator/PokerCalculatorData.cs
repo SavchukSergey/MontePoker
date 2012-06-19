@@ -19,5 +19,7 @@ namespace Poker.Calculator {
 
         public PokerCalculatorTable Table;
 
+        public CardDeck Deck { get; set; }
+
     }
 }

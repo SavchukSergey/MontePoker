@@ -7,7 +7,7 @@ using System.Linq;
 namespace Poker.Calculator.Wpf.Models {
     public class PokerStatRootModel {
 
-        private PokerCalculator _calculator; //TODO: check null references
+        private PokerCalculator _calculator;
         private readonly PokerCardDeckViewModel _cardDeck = new PokerCardDeckViewModel();
         private readonly PokerTableCardsViewModel _tableCards = new PokerTableCardsViewModel();
         private readonly ObservableCollection<PokerPlayerViewModel> _players = new ObservableCollection<PokerPlayerViewModel>();
@@ -17,8 +17,7 @@ namespace Poker.Calculator.Wpf.Models {
 
         private readonly object _sync = new object();
 
-        public PokerStatRootModel()
-        {
+        public PokerStatRootModel() {
             _calculator = new PokerCalculatorBuilder().Build();
             _tableCards.CardA.PropertyChanged += TableCardsOnPropertyChanged;
             _tableCards.CardB.PropertyChanged += TableCardsOnPropertyChanged;
@@ -148,8 +147,8 @@ namespace Poker.Calculator.Wpf.Models {
                     _calculator = builder.Build();
                 }
             }
-            _statistics.GamesPlayed = _gamesPlayed;
             var info = _calculator.GetResult();
+            _statistics.GamesPlayed = _gamesPlayed;
             var calcIndex = 0;
             for (int i = 0; i < _players.Count; i++) {
                 var playerModel = _players[i];
