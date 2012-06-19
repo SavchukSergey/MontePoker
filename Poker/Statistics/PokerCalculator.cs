@@ -7,17 +7,18 @@ using Poker.Evaluation;
 namespace Poker.Statistics {
     public class PokerCalculator {
 
+        private readonly IList<PokerCalculatorPlayer> _players;
+        private PokerCalculatorTable _table;
+
+        public PokerCalculator(PokerCalculatorData data) {
+            _players = data.Players.ToList();
+            _table = data.Table;
+        }
+
         private int _gamesPlayed;
         public int GamesPlayed {
             get { return _gamesPlayed; }
         }
-
-        private readonly IList<PokerCalculatorPlayer> _players = new List<PokerCalculatorPlayer>();
-        public IList<PokerCalculatorPlayer> Players {
-            get { return _players; }
-        }
-
-        public PokerCalculatorTable Table;
 
         private class PokerPlayerHand {
 
@@ -28,6 +29,15 @@ namespace Poker.Statistics {
             public HandEvaluation Evaluation;
         }
 
+        public PokerCalculatorResult GetResult() {
+            var res = new PokerCalculatorResult();
+            foreach (var player in _players) {
+                res.Players.Add(player);
+            }
+            //TODO: return custom structure
+            return res;
+        }
+
         public void PlayGame() {
             _gamesPlayed++;
             var deck = GetDeckSnapShot();
@@ -36,14 +46,14 @@ namespace Poker.Statistics {
             for (var i = 0; i < _players.Count; i++) {
                 var player = _players[i];
                 var hand = new PokerPlayerHand { Player = player };
-                if (!player.CardA.Empty()) {
+                if (!player.CardA.IsEmpty()) {
                     hand.Cards[0] = player.CardA;
                 } else {
                     PokerCard card;
                     deck.DealOne(out card);
                     hand.Cards[0] = card;
                 }
-                if (!player.CardB.Empty()) {
+                if (!player.CardB.IsEmpty()) {
                     hand.Cards[1] = player.CardB;
                 } else {
                     PokerCard card;
@@ -53,28 +63,28 @@ namespace Poker.Statistics {
                 hands.Add(hand);
             }
             PokerCard cardA, cardB, cardC, cardD, cardE;
-            if (!Table.CardA.Empty()) {
-                cardA = Table.CardA;
+            if (!_table.CardA.IsEmpty()) {
+                cardA = _table.CardA;
             } else {
                 deck.DealOne(out cardA);
             }
-            if (!Table.CardB.Empty()) {
-                cardB = Table.CardB;
+            if (!_table.CardB.IsEmpty()) {
+                cardB = _table.CardB;
             } else {
                 deck.DealOne(out cardB);
             }
-            if (!Table.CardC.Empty()) {
-                cardC = Table.CardC;
+            if (!_table.CardC.IsEmpty()) {
+                cardC = _table.CardC;
             } else {
                 deck.DealOne(out cardC);
             }
-            if (!Table.CardD.Empty()) {
-                cardD = Table.CardD;
+            if (!_table.CardD.IsEmpty()) {
+                cardD = _table.CardD;
             } else {
                 deck.DealOne(out cardD);
             }
-            if (!Table.CardE.Empty()) {
-                cardE = Table.CardE;
+            if (!_table.CardE.IsEmpty()) {
+                cardE = _table.CardE;
             } else {
                 deck.DealOne(out cardE);
             }
@@ -119,18 +129,11 @@ namespace Poker.Statistics {
             var cards = CardDeck.GetAllCards();
             var res = new List<PokerCard>();
             for (var i = 0; i < cards.Length; i++) {
-                if (Table.Contains(ref cards[i])) continue;
-                if (Players.Any(player => player.Contains(ref cards[i]))) continue;
+                if (_table.Contains(ref cards[i])) continue;
+                if (_players.Any(player => player.Contains(ref cards[i]))) continue;
                 res.Add(cards[i]);
             }
             return new CardDeck(res);
-        }
-
-
-        public void Reset() {
-            _gamesPlayed = 0;
-            Table.Reset();
-            _players.Clear();
         }
 
     }

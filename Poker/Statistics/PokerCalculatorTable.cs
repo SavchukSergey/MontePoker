@@ -1,4 +1,5 @@
-﻿using Poker.Cards;
+﻿using System;
+using Poker.Cards;
 
 namespace Poker.Statistics {
     public struct PokerCalculatorTable {
@@ -9,6 +10,8 @@ namespace Poker.Statistics {
         public PokerCard CardD;
         public PokerCard CardE;
 
+        [Obsolete]
+        //TODO: remove
         public void Reset() {
             CardA.Rank = CardRank.None;
             CardA.Suit = CardSuit.None;

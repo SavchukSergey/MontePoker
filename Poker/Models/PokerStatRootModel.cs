@@ -9,7 +9,7 @@ using Poker.Statistics;
 namespace Poker.Models {
     public class PokerStatRootModel {
 
-        private readonly PokerCalculator _calculator = new PokerCalculator();
+        private PokerCalculator _calculator; //TODO: check null references
         private readonly PokerCardDeckViewModel _cardDeck = new PokerCardDeckViewModel();
         private readonly PokerTableCardsViewModel _tableCards = new PokerTableCardsViewModel();
         private readonly ObservableCollection<PokerPlayerViewModel> _players = new ObservableCollection<PokerPlayerViewModel>();
@@ -19,7 +19,9 @@ namespace Poker.Models {
 
         private readonly object _sync = new object();
 
-        public PokerStatRootModel() {
+        public PokerStatRootModel()
+        {
+            _calculator = new PokerCalculatorBuilder().Build();
             _tableCards.CardA.PropertyChanged += TableCardsOnPropertyChanged;
             _tableCards.CardB.PropertyChanged += TableCardsOnPropertyChanged;
             _tableCards.CardC.PropertyChanged += TableCardsOnPropertyChanged;
@@ -130,28 +132,31 @@ namespace Poker.Models {
         public void Sync() {
             if (_dirty) {
                 lock (_sync) {
-                    _calculator.Reset();
+                    var builder = new PokerCalculatorBuilder();
+
                     _dirty = false;
                     foreach (var player in _players) {
                         if (player.InGame) {
-                            var calcPlayer = new PokerCalculatorPlayer { CardA = player.CardA.Card, CardB = player.CardB.Card };
-                            _calculator.Players.Add(calcPlayer);
+                            builder.AddPlayer(player.CardA.Card, player.CardB.Card);
                         }
                     }
-                    _calculator.Table.CardA = _tableCards.CardA.Card;
-                    _calculator.Table.CardB = _tableCards.CardB.Card;
-                    _calculator.Table.CardC = _tableCards.CardC.Card;
-                    _calculator.Table.CardD = _tableCards.CardD.Card;
-                    _calculator.Table.CardE = _tableCards.CardE.Card;
+                    builder.AddTableCard(_tableCards.CardA.Card);
+                    builder.AddTableCard(_tableCards.CardB.Card);
+                    builder.AddTableCard(_tableCards.CardC.Card);
+                    builder.AddTableCard(_tableCards.CardD.Card);
+                    builder.AddTableCard(_tableCards.CardE.Card);
                     _gamesPlayed = 0;
+
+                    _calculator = builder.Build();
                 }
             }
             _statistics.GamesPlayed = _gamesPlayed;
+            var info = _calculator.GetResult();
             var calcIndex = 0;
             for (int i = 0; i < _players.Count; i++) {
                 var playerModel = _players[i];
                 if (playerModel.InGame) {
-                    var player = _calculator.Players[calcIndex];
+                    var player = info.Players[calcIndex];
                     playerModel.Statistics.CopyFrom(this, player);
                     calcIndex++;
                 }

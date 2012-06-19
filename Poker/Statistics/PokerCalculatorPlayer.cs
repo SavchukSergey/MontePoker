@@ -36,8 +36,8 @@ namespace Poker.Statistics {
         public int HighCard { get; set; }
 
         public void Reset() {
-            CardA.Empty();
-            CardB.Empty();
+            CardA.IsEmpty();
+            CardB.IsEmpty();
 
             Wins = 0;
             Losts = 0;

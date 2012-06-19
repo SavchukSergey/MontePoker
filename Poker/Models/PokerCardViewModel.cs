@@ -72,7 +72,7 @@ namespace Poker.Models {
         }
 
         public bool IsEmpty {
-            get { return _card.Empty(); }
+            get { return _card.IsEmpty(); }
         }
 
         public void Empty() {

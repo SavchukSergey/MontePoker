@@ -64,6 +64,9 @@
     <Compile Include="Models\PokerPlayerStatisticsViewModel.cs" />
     <Compile Include="Models\PokerStatisticsItem.cs" />
     <Compile Include="Models\PokerStatRootModel.cs" />
+    <Compile Include="Statistics\PokerCalculatorBuilder.cs" />
+    <Compile Include="Statistics\PokerCalculatorData.cs" />
+    <Compile Include="Statistics\PokerCalculatorResult.cs" />
     <Compile Include="Statistics\PokerCalculatorTable.cs" />
     <Compile Include="Statistics\PokerCalculatorPlayer.cs" />
     <Compile Include="Statistics\PokerCalculator.cs" />
