@@ -2,7 +2,7 @@
 using Poker.Cards;
 using Poker.Evaluation;
 
-namespace Poker.Statistics {
+namespace Poker.Calculator {
     public class PokerCalculatorPlayer {
 
         public PokerCard CardA;
@@ -35,6 +35,8 @@ namespace Poker.Statistics {
 
         public int HighCard { get; set; }
 
+        //TODO: remove if unused
+        [Obsolete]
         public void Reset() {
             CardA.IsEmpty();
             CardB.IsEmpty();

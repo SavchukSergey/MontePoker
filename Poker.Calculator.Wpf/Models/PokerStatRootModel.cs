@@ -3,7 +3,6 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
-using Poker.Statistics;
 
 namespace Poker.Calculator.Wpf.Models {
     public class PokerStatRootModel {

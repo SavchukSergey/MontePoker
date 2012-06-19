@@ -138,6 +138,10 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Poker.Calculator\Poker.Calculator.csproj">
+      <Project>{1E195230-2525-43B5-9278-219992B48805}</Project>
+      <Name>Poker.Calculator</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Poker.Cards.Views\Poker.Cards.Views.csproj">
       <Project>{97408ADB-CAB7-4CB2-BB86-9CFB1CF95628}</Project>
       <Name>Poker.Cards.Views</Name>

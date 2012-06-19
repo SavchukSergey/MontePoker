@@ -1,6 +1,5 @@
 ﻿using System;
 using System.ComponentModel;
-using Poker.Statistics;
 
 namespace Poker.Calculator.Wpf.Models {
     public class PokerPlayerStatisticsViewModel : INotifyPropertyChanged {

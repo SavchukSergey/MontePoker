@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Poker.Statistics {
+namespace Poker.Calculator {
     public class PokerCalculatorResult {
 
         private readonly IList<PokerCalculatorPlayer> _players = new List<PokerCalculatorPlayer>();

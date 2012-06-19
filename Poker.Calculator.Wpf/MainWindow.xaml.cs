@@ -3,7 +3,6 @@ using System.Threading;
 using System.Windows;
 using Poker.Calculator.Wpf.Models;
 using Poker.Calculator.Wpf.Views;
-using Poker.Statistics;
 
 namespace Poker {
     /// <summary>

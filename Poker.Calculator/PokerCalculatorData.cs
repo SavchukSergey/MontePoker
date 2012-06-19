@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Poker.Cards;
 
-namespace Poker.Statistics {
+namespace Poker.Calculator {
     public class PokerCalculatorData {
 
         public PokerCalculatorData() {

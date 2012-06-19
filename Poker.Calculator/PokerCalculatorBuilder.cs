@@ -1,7 +1,7 @@
 ﻿using System;
 using Poker.Cards;
 
-namespace Poker.Statistics {
+namespace Poker.Calculator {
     public class PokerCalculatorBuilder {
 
         private readonly PokerCalculatorData _data = new PokerCalculatorData();

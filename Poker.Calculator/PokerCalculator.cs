@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Poker.Cards;
 using Poker.Evaluation;
 
-namespace Poker.Statistics {
+namespace Poker.Calculator {
     public class PokerCalculator {
 
         private readonly IList<PokerCalculatorPlayer> _players;

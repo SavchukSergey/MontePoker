@@ -58,12 +58,6 @@
   <ItemGroup>
     <Compile Include="Cards\CardDeck.cs" />
     <Compile Include="Cards\PokerCardExt.cs" />
-    <Compile Include="Statistics\PokerCalculatorBuilder.cs" />
-    <Compile Include="Statistics\PokerCalculatorData.cs" />
-    <Compile Include="Statistics\PokerCalculatorResult.cs" />
-    <Compile Include="Statistics\PokerCalculatorTable.cs" />
-    <Compile Include="Statistics\PokerCalculatorPlayer.cs" />
-    <Compile Include="Statistics\PokerCalculator.cs" />
     <Compile Include="Cards\CardRank.cs" />
     <Compile Include="Cards\CardRankExt.cs" />
     <Compile Include="Cards\CardSuit.cs" />
@@ -106,7 +100,9 @@
       <Name>Poker.Cards.Views</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Statistics\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

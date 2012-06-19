@@ -1,7 +1,7 @@
 ﻿using System;
 using Poker.Cards;
 
-namespace Poker.Statistics {
+namespace Poker.Calculator {
     public struct PokerCalculatorTable {
 
         public PokerCard CardA;
