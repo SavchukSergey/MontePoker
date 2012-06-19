@@ -1,8 +1,8 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
+using Poker.Views;
 
-namespace Poker.Views {
+namespace Poker.Calculator.Wpf.Views {
     /// <summary>
     /// Interaction logic for PokerCardView.xaml
     /// </summary>
