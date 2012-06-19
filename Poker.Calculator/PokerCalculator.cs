@@ -33,11 +33,9 @@ namespace Poker.Calculator {
         }
 
         public PokerCalculatorResult GetResult() {
-            var res = new PokerCalculatorResult();
-            res.GamesPlayed = _gamesPlayed;
+            var res = new PokerCalculatorResult { GamesPlayed = _gamesPlayed };
             foreach (var player in _players) {
-                //TODO: return custom structure
-                res.Players.Add(player);
+                res.Players.Add(player.Clone());
             }
             return res;
         }
