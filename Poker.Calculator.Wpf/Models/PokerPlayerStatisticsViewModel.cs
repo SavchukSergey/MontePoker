@@ -78,34 +78,18 @@ namespace Poker.Calculator.Wpf.Models {
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private double Percentage(PokerStatRootModel rootModel, double val) {
-            var total = rootModel.Statistics.GamesPlayed > 0 ? rootModel.Statistics.GamesPlayed : 1;
-            return Math.Round(val / total * 100, 3);
-        }
-
         public void CopyFrom(PokerStatRootModel rootModel, PokerCalculatorPlayer player) {
-            _wins.Count = player.Wins;
-            _losts.Count = player.Losts;
-            _splits.Count = player.Splits;
-
-            _wins.Percentage = Percentage(rootModel, player.Wins);
-            _losts.Percentage = Percentage(rootModel, player.Losts);
-            _splits.Percentage = Percentage(rootModel, player.Splits);
-
             var gamesPlayed = rootModel.Statistics.GamesPlayed;
 
-            _royalFlush.Count = player.RoyalFlush;
-            _straightFlush.Count = player.StraightFlush;
-            _fourOfKind.Count = player.FourOfKind;
-            _fullHouse.Count = player.FullHouse;
-            _flush.Count = player.Flush;
+            _wins.SetValue(player.Wins, gamesPlayed);
+            _splits.SetValue(player.Splits, gamesPlayed);
+            _losts.SetValue(player.Losts, gamesPlayed);
 
-            _royalFlush.Percentage = Percentage(rootModel, player.RoyalFlush);
-            _straightFlush.Percentage = Percentage(rootModel, player.StraightFlush);
-            _fourOfKind.Percentage = Percentage(rootModel, player.FourOfKind);
-            _fullHouse.Percentage = Percentage(rootModel, player.FullHouse);
-            _flush.Percentage = Percentage(rootModel, player.Flush);
-
+            _royalFlush.CopyFrom(player.RoyalFlush, gamesPlayed);
+            _straightFlush.CopyFrom(player.StraightFlush, gamesPlayed);
+            _fourOfKind.CopyFrom(player.FourOfKind, gamesPlayed);
+            _fullHouse.CopyFrom(player.FullHouse, gamesPlayed);
+            _flush.CopyFrom(player.Flush, gamesPlayed);
             _straight.CopyFrom(player.Straight, gamesPlayed);
             _threeOfKind.CopyFrom(player.ThreeOfKind, gamesPlayed);
             _twoPairs.CopyFrom(player.TwoPairs, gamesPlayed);

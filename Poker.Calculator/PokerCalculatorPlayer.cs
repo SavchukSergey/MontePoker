@@ -14,28 +14,28 @@ namespace Poker.Calculator {
 
         public int Splits { get; set; }
 
-        private int _royalFlush;
-        public int RoyalFlush {
+        private PokerCalculatorHand _royalFlush;
+        public PokerCalculatorHand RoyalFlush {
             get { return _royalFlush; }
         }
 
-        private int _straightFlush;
-        public int StraightFlush {
+        private PokerCalculatorHand _straightFlush;
+        public PokerCalculatorHand StraightFlush {
             get { return _straightFlush; }
         }
 
-        private int _fourOfKind;
-        public int FourOfKind {
+        private PokerCalculatorHand _fourOfKind;
+        public PokerCalculatorHand FourOfKind {
             get { return _fourOfKind; }
         }
 
-        private int _fullHouse;
-        public int FullHouse {
+        private PokerCalculatorHand _fullHouse;
+        public PokerCalculatorHand FullHouse {
             get { return _fullHouse; }
         }
 
-        private int _flush;
-        public int Flush {
+        private PokerCalculatorHand _flush;
+        public PokerCalculatorHand Flush {
             get { return _flush; }
         }
 
@@ -68,19 +68,19 @@ namespace Poker.Calculator {
             Wins++;
             switch (handType) {
                 case HandType.RoyalFlush:
-                    _royalFlush++;
+                    _royalFlush.Wins++;
                     break;
                 case HandType.StraightFlush:
-                    _straightFlush++;
+                    _straightFlush.Wins++;
                     break;
                 case HandType.FourOfKind:
-                    _fourOfKind++;
+                    _fourOfKind.Wins++;
                     break;
                 case HandType.FullHouse:
-                    _fullHouse++;
+                    _fullHouse.Wins++;
                     break;
                 case HandType.Flush:
-                    _flush++;
+                    _flush.Wins++;
                     break;
                 case HandType.Straight:
                     _straight.Wins++;
@@ -104,19 +104,19 @@ namespace Poker.Calculator {
             Splits++;
             switch (handType) {
                 case HandType.RoyalFlush:
-                    _royalFlush++;
+                    _royalFlush.Splits++;
                     break;
                 case HandType.StraightFlush:
-                    _straightFlush++;
+                    _straightFlush.Splits++;
                     break;
                 case HandType.FourOfKind:
-                    _fourOfKind++;
+                    _fourOfKind.Splits++;
                     break;
                 case HandType.FullHouse:
-                    _fullHouse++;
+                    _fullHouse.Splits++;
                     break;
                 case HandType.Flush:
-                    _flush++;
+                    _flush.Splits++;
                     break;
                 case HandType.Straight:
                     _straight.Splits++;
@@ -140,19 +140,19 @@ namespace Poker.Calculator {
             Losts++;
             switch (handType) {
                 case HandType.RoyalFlush:
-                    _royalFlush++;
+                    _royalFlush.Losts++;
                     break;
                 case HandType.StraightFlush:
-                    _straightFlush++;
+                    _straightFlush.Losts++;
                     break;
                 case HandType.FourOfKind:
-                    _fourOfKind++;
+                    _fourOfKind.Losts++;
                     break;
                 case HandType.FullHouse:
-                    _fullHouse++;
+                    _fullHouse.Losts++;
                     break;
                 case HandType.Flush:
-                    _flush++;
+                    _flush.Losts++;
                     break;
                 case HandType.Straight:
                     _straight.Losts++;
