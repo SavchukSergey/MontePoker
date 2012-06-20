@@ -68,6 +68,20 @@ namespace Poker.Tests.Evaluation {
             GameTest(cardsList);
         }
 
+        [Test]
+        [TestCase("1 AH AC 10C 10D 4S 9C 7C", "0 AH 9C 10C 2D 4S 7S JS", Description = "Two Pairs Vs High Card")]
+        [TestCase("1 AH AC 10C 10D 4S 9C 7C", "0 AH AC 10C 2D 4S 9C 7C", Description = "Two Pairs Vs One Pair")]
+        [TestCase("0 AH AC 10C 10D 4S 9C 7C", "1 10S 10C 10D 4S 9C 7C", Description = "Two Pairs Vs Three of Kind")]
+        [TestCase("0 AH AC 10C 10D 4S 9C 7C", "1 JH 10S 10C 10D 8S 9C 7C", Description = "Two Pairs Vs Straight")]
+        [TestCase("0 AH AC 10C 10D 4S 9C 7C", "1 KC 10S 10C 10D 4C 9C 7C", Description = "Two Pairs Vs Flush")]
+        [TestCase("0 AH AC 10C 10D 4S 9C 7C", "1 AH AC 10C 10D 10S 9C 7C", Description = "Two Pairs Vs Full House")]
+        [TestCase("0 AH AC 10C 10D 4S 9C 7C", "1 AH 9S 9C 9D 4S 9H 10H", Description = "Two Pairs Vs Four of Kind")]
+        [TestCase("0 AH AC 10C 10D 4S 9C 7C", "1 2S 3S 4S AC 5S JD 6S", Description = "Two Pairs Vs Straight Flush")]
+        [TestCase("0 AH AC 10C 10D 4S 9C 7C", "1 AH KH 2C JH 10H 4S QH", Description = "Two Pairs Vs Royal Flush")]
+        public void TwoPairsVersusTest(params string[] cardsList) {
+            GameTest(cardsList);
+        }
+
         protected void GameTest(params string[] cardsList)
         {
             var bestEval = new HandEvaluation { Scores = -1 };
