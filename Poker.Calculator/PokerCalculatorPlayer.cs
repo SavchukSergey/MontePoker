@@ -54,17 +54,18 @@ namespace Poker.Calculator {
             get { return _twoPairs; }
         }
 
-        private int _onePair;
-        public int OnePair {
+        private PokerCalculatorHand _onePair;
+        public PokerCalculatorHand OnePair {
             get { return _onePair; }
         }
 
-        private int _highCard;
-        public int HighCard {
+        private PokerCalculatorHand _highCard;
+        public PokerCalculatorHand HighCard {
             get { return _highCard; }
         }
 
-        public void Increase(HandType handType) {
+        public void IncreaseWins(HandType handType) {
+            Wins++;
             switch (handType) {
                 case HandType.RoyalFlush:
                     _royalFlush++;
@@ -91,13 +92,86 @@ namespace Poker.Calculator {
                     _twoPairs++;
                     break;
                 case HandType.OnePair:
-                    _onePair++;
+                    _onePair.Wins++;
                     break;
                 case HandType.HighCard:
-                    _highCard++;
+                    _highCard.Wins++;
                     break;
             }
         }
+
+        public void IncreaseSplits(HandType handType) {
+            Splits++;
+            switch (handType) {
+                case HandType.RoyalFlush:
+                    _royalFlush++;
+                    break;
+                case HandType.StraightFlush:
+                    _straightFlush++;
+                    break;
+                case HandType.FourOfKind:
+                    _fourOfKind++;
+                    break;
+                case HandType.FullHouse:
+                    _fullHouse++;
+                    break;
+                case HandType.Flush:
+                    _flush++;
+                    break;
+                case HandType.Straight:
+                    _straight++;
+                    break;
+                case HandType.ThreeOfKind:
+                    _threeOfKind++;
+                    break;
+                case HandType.TwoPairs:
+                    _twoPairs++;
+                    break;
+                case HandType.OnePair:
+                    _onePair.Splits++;
+                    break;
+                case HandType.HighCard:
+                    _highCard.Splits++;
+                    break;
+            }
+        }
+
+        public void IncreaseLosts(HandType handType) {
+            Losts++;
+            switch (handType) {
+                case HandType.RoyalFlush:
+                    _royalFlush++;
+                    break;
+                case HandType.StraightFlush:
+                    _straightFlush++;
+                    break;
+                case HandType.FourOfKind:
+                    _fourOfKind++;
+                    break;
+                case HandType.FullHouse:
+                    _fullHouse++;
+                    break;
+                case HandType.Flush:
+                    _flush++;
+                    break;
+                case HandType.Straight:
+                    _straight++;
+                    break;
+                case HandType.ThreeOfKind:
+                    _threeOfKind++;
+                    break;
+                case HandType.TwoPairs:
+                    _twoPairs++;
+                    break;
+                case HandType.OnePair:
+                    _onePair.Losts++;
+                    break;
+                case HandType.HighCard:
+                    _highCard.Losts++;
+                    break;
+            }
+        }
+
 
         public bool Contains(ref PokerCard card) {
             return CardA == card || CardB == card;

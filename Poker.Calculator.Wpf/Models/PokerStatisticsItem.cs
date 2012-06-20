@@ -40,5 +40,9 @@ namespace Poker.Calculator.Wpf.Models {
 
         public event PropertyChangedEventHandler PropertyChanged;
 
+        public void SetValue(int val, int total) {
+            Count = val;
+            Percentage = 100.0 * val / (total > 0 ? total : 1);
+        }
     }
 }

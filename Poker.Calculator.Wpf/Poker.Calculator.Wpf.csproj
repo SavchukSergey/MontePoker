@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\PokerStatisticsHandItem.cs" />
     <Compile Include="Models\PokerCardDeckViewModel.cs" />
     <Compile Include="Models\PokerCardViewModel.cs" />
     <Compile Include="Models\PokerGlobalStatistics.cs" />

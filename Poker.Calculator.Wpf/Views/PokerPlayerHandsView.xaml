@@ -10,6 +10,9 @@
     </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition />
+            <ColumnDefinition />
             <ColumnDefinition />
             <ColumnDefinition />
             <ColumnDefinition />
@@ -58,6 +61,39 @@
         <Label Grid.Row="7" Grid.Column="2" Content="{Binding Path=TwoPairs.Percentage, Converter={StaticResource percentage}}" />
         <Label Grid.Row="8" Grid.Column="2" Content="{Binding Path=OnePair.Percentage, Converter={StaticResource percentage}}" />
         <Label Grid.Row="9" Grid.Column="2" Content="{Binding Path=HighCard.Percentage, Converter={StaticResource percentage}}" />
+
+        <Label Grid.Row="0" Grid.Column="3" Content="{Binding Path=RoyalFlush.Wins.Percentage, Converter={StaticResource percentage}}" />
+        <Label Grid.Row="1" Grid.Column="3" Content="{Binding Path=StraightFlush.Wins.Percentage, Converter={StaticResource percentage}}" />
+        <Label Grid.Row="2" Grid.Column="3" Content="{Binding Path=FourOfKind.Wins.Percentage, Converter={StaticResource percentage}}" />
+        <Label Grid.Row="3" Grid.Column="3" Content="{Binding Path=FullHouse.Wins.Percentage, Converter={StaticResource percentage}}" />
+        <Label Grid.Row="4" Grid.Column="3" Content="{Binding Path=Flush.Wins.Percentage, Converter={StaticResource percentage}}" />
+        <Label Grid.Row="5" Grid.Column="3" Content="{Binding Path=Straight.Wins.Percentage, Converter={StaticResource percentage}}" />
+        <Label Grid.Row="6" Grid.Column="3" Content="{Binding Path=ThreeOfKind.Wins.Percentage, Converter={StaticResource percentage}}" />
+        <Label Grid.Row="7" Grid.Column="3" Content="{Binding Path=TwoPairs.Wins.Percentage, Converter={StaticResource percentage}}" />
+        <Label Grid.Row="8" Grid.Column="3" Content="{Binding Path=OnePair.Wins.Percentage, Converter={StaticResource percentage}}" />
+        <Label Grid.Row="9" Grid.Column="3" Content="{Binding Path=HighCard.Wins.Percentage, Converter={StaticResource percentage}}" />
+
+        <Label Grid.Row="0" Grid.Column="4" Content="{Binding Path=RoyalFlush.Splits.Percentage, Converter={StaticResource percentage}}" />
+        <Label Grid.Row="1" Grid.Column="4" Content="{Binding Path=StraightFlush.Splits.Percentage, Converter={StaticResource percentage}}" />
+        <Label Grid.Row="2" Grid.Column="4" Content="{Binding Path=FourOfKind.Splits.Percentage, Converter={StaticResource percentage}}" />
+        <Label Grid.Row="3" Grid.Column="4" Content="{Binding Path=FullHouse.Splits.Percentage, Converter={StaticResource percentage}}" />
+        <Label Grid.Row="4" Grid.Column="4" Content="{Binding Path=Flush.Splits.Percentage, Converter={StaticResource percentage}}" />
+        <Label Grid.Row="5" Grid.Column="4" Content="{Binding Path=Straight.Splits.Percentage, Converter={StaticResource percentage}}" />
+        <Label Grid.Row="6" Grid.Column="4" Content="{Binding Path=ThreeOfKind.Splits.Percentage, Converter={StaticResource percentage}}" />
+        <Label Grid.Row="7" Grid.Column="4" Content="{Binding Path=TwoPairs.Splits.Percentage, Converter={StaticResource percentage}}" />
+        <Label Grid.Row="8" Grid.Column="4" Content="{Binding Path=OnePair.Splits.Percentage, Converter={StaticResource percentage}}" />
+        <Label Grid.Row="9" Grid.Column="4" Content="{Binding Path=HighCard.Splits.Percentage, Converter={StaticResource percentage}}" />
+
+        <Label Grid.Row="0" Grid.Column="5" Content="{Binding Path=RoyalFlush.Losts.Percentage, Converter={StaticResource percentage}}" />
+        <Label Grid.Row="1" Grid.Column="5" Content="{Binding Path=StraightFlush.Losts.Percentage, Converter={StaticResource percentage}}" />
+        <Label Grid.Row="2" Grid.Column="5" Content="{Binding Path=FourOfKind.Losts.Percentage, Converter={StaticResource percentage}}" />
+        <Label Grid.Row="3" Grid.Column="5" Content="{Binding Path=FullHouse.Losts.Percentage, Converter={StaticResource percentage}}" />
+        <Label Grid.Row="4" Grid.Column="5" Content="{Binding Path=Flush.Losts.Percentage, Converter={StaticResource percentage}}" />
+        <Label Grid.Row="5" Grid.Column="5" Content="{Binding Path=Straight.Losts.Percentage, Converter={StaticResource percentage}}" />
+        <Label Grid.Row="6" Grid.Column="5" Content="{Binding Path=ThreeOfKind.Losts.Percentage, Converter={StaticResource percentage}}" />
+        <Label Grid.Row="7" Grid.Column="5" Content="{Binding Path=TwoPairs.Losts.Percentage, Converter={StaticResource percentage}}" />
+        <Label Grid.Row="8" Grid.Column="5" Content="{Binding Path=OnePair.Losts.Percentage, Converter={StaticResource percentage}}" />
+        <Label Grid.Row="9" Grid.Column="5" Content="{Binding Path=HighCard.Losts.Percentage, Converter={StaticResource percentage}}" />
 
     </Grid>
 </UserControl>

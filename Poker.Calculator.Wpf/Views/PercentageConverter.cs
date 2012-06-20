@@ -6,7 +6,7 @@ namespace Poker.Calculator.Wpf.Views {
     public class PercentageConverter : IValueConverter {
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
-            var val = (double)value;
+            var val = Math.Round((double) value, 3);
             return val.ToString(CultureInfo.CurrentCulture) + "%";
         }
 

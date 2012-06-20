@@ -43,6 +43,7 @@
     <Compile Include="PokerCalculator.cs" />
     <Compile Include="PokerCalculatorBuilder.cs" />
     <Compile Include="PokerCalculatorData.cs" />
+    <Compile Include="PokerCalculatorHand.cs" />
     <Compile Include="PokerCalculatorPlayer.cs" />
     <Compile Include="PokerCalculatorResult.cs" />
     <Compile Include="PokerCalculatorTable.cs" />

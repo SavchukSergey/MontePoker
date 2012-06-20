@@ -19,53 +19,53 @@ namespace Poker.Calculator.Wpf.Models {
             get { return _splits; }
         }
 
-        private readonly PokerStatisticsItem _royalFlush = new PokerStatisticsItem();
-        public PokerStatisticsItem RoyalFlush {
+        private readonly PokerStatisticsHandItem _royalFlush = new PokerStatisticsHandItem();
+        public PokerStatisticsHandItem RoyalFlush {
             get { return _royalFlush; }
         }
 
-        private readonly PokerStatisticsItem _straightFlush = new PokerStatisticsItem();
-        public PokerStatisticsItem StraightFlush {
+        private readonly PokerStatisticsHandItem _straightFlush = new PokerStatisticsHandItem();
+        public PokerStatisticsHandItem StraightFlush {
             get { return _straightFlush; }
         }
 
-        private readonly PokerStatisticsItem _fourOfKind = new PokerStatisticsItem();
-        public PokerStatisticsItem FourOfKind {
+        private readonly PokerStatisticsHandItem _fourOfKind = new PokerStatisticsHandItem();
+        public PokerStatisticsHandItem FourOfKind {
             get { return _fourOfKind; }
         }
 
-        private readonly PokerStatisticsItem _fullHouse = new PokerStatisticsItem();
-        public PokerStatisticsItem FullHouse {
+        private readonly PokerStatisticsHandItem _fullHouse = new PokerStatisticsHandItem();
+        public PokerStatisticsHandItem FullHouse {
             get { return _fullHouse; }
         }
 
-        private readonly PokerStatisticsItem _flush = new PokerStatisticsItem();
-        public PokerStatisticsItem Flush {
+        private readonly PokerStatisticsHandItem _flush = new PokerStatisticsHandItem();
+        public PokerStatisticsHandItem Flush {
             get { return _flush; }
         }
 
-        private readonly PokerStatisticsItem _straight = new PokerStatisticsItem();
-        public PokerStatisticsItem Straight {
+        private readonly PokerStatisticsHandItem _straight = new PokerStatisticsHandItem();
+        public PokerStatisticsHandItem Straight {
             get { return _straight; }
         }
 
-        private readonly PokerStatisticsItem _threeOfKind = new PokerStatisticsItem();
-        public PokerStatisticsItem ThreeOfKind {
+        private readonly PokerStatisticsHandItem _threeOfKind = new PokerStatisticsHandItem();
+        public PokerStatisticsHandItem ThreeOfKind {
             get { return _threeOfKind; }
         }
 
-        private readonly PokerStatisticsItem _twoPairs = new PokerStatisticsItem();
-        public PokerStatisticsItem TwoPairs {
+        private readonly PokerStatisticsHandItem _twoPairs = new PokerStatisticsHandItem();
+        public PokerStatisticsHandItem TwoPairs {
             get { return _twoPairs; }
         }
 
-        private readonly PokerStatisticsItem _onePair = new PokerStatisticsItem();
-        public PokerStatisticsItem OnePair {
+        private readonly PokerStatisticsHandItem _onePair = new PokerStatisticsHandItem();
+        public PokerStatisticsHandItem OnePair {
             get { return _onePair; }
         }
 
-        private readonly PokerStatisticsItem _highCard = new PokerStatisticsItem();
-        public PokerStatisticsItem HighCard {
+        private readonly PokerStatisticsHandItem _highCard = new PokerStatisticsHandItem();
+        public PokerStatisticsHandItem HighCard {
             get { return _highCard; }
         }
 
@@ -92,6 +92,8 @@ namespace Poker.Calculator.Wpf.Models {
             _losts.Percentage = Percentage(rootModel, player.Losts);
             _splits.Percentage = Percentage(rootModel, player.Splits);
 
+            var gamesPlayed = rootModel.Statistics.GamesPlayed;
+
             _royalFlush.Count = player.RoyalFlush;
             _straightFlush.Count = player.StraightFlush;
             _fourOfKind.Count = player.FourOfKind;
@@ -100,8 +102,6 @@ namespace Poker.Calculator.Wpf.Models {
             _straight.Count = player.Straight;
             _threeOfKind.Count = player.ThreeOfKind;
             _twoPairs.Count = player.TwoPairs;
-            _onePair.Count = player.OnePair;
-            _highCard.Count = player.HighCard;
 
             _royalFlush.Percentage = Percentage(rootModel, player.RoyalFlush);
             _straightFlush.Percentage = Percentage(rootModel, player.StraightFlush);
@@ -111,8 +111,9 @@ namespace Poker.Calculator.Wpf.Models {
             _straight.Percentage = Percentage(rootModel, player.Straight);
             _threeOfKind.Percentage = Percentage(rootModel, player.ThreeOfKind);
             _twoPairs.Percentage = Percentage(rootModel, player.TwoPairs);
-            _onePair.Percentage = Percentage(rootModel, player.OnePair);
-            _highCard.Percentage = Percentage(rootModel, player.HighCard);
+
+            _onePair.CopyFrom(player.OnePair, gamesPlayed);
+            _highCard.CopyFrom(player.HighCard, gamesPlayed);
         }
 
 

@@ -107,19 +107,18 @@ namespace Poker.Calculator {
                 } else if (eval.Scores == bestScore) {
                     split = true;
                 }
-                hand.Player.Increase(eval.HandType);
                 hand.Evaluation = eval;
             }
             for (var i = 0; i < _hands.Count; i++) {
                 var hand = _hands[i];
                 if (hand.Evaluation.Scores == bestScore) {
                     if (!split) {
-                        hand.Player.Wins++;
+                        hand.Player.IncreaseWins(hand.Evaluation.HandType);
                     } else {
-                        hand.Player.Splits++;
+                        hand.Player.IncreaseSplits(hand.Evaluation.HandType);
                     }
                 } else {
-                    hand.Player.Losts++;
+                    hand.Player.IncreaseLosts(hand.Evaluation.HandType);
                 }
             }
         }
