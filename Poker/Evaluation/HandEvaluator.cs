@@ -55,7 +55,7 @@ namespace Poker.Evaluation {
             for (var i = 0; i < 8192; i++) {
                 var count = 0;
                 var highest5 = 0;
-                var walker = i << 12;
+                var walker = 1 << 12;
                 while (walker > 0) {
                     if ((i & walker) > 0) {
                         if (count < 5) {

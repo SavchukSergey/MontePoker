@@ -30,8 +30,5 @@ namespace Poker.Cards.Views {
             }
         }
 
-        protected override void OnRender(DrawingContext dc) {
-            base.OnRender(dc);
-        }
     }
 }

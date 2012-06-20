@@ -37,6 +37,25 @@ namespace Poker.Tests.Evaluation {
         [TestCase("1 7S 3S 4S AC 5S JD 6S", "0 2S 3S 4S AC 5S JD 6S", Description = "Straight Flush - Kicker")]
         [TestCase("1 AD KD 2C JD 10D 4S QD", "1 AH KH 2C JH 10H 4S QH", Description = "Royal Flush - Kicker")]
         public void OneKickerTest(params string[] cardsList) {
+           GameTest(cardsList);
+        }
+
+        [Test]
+        [TestCase("0 AH 9C 10C 2D 4S 7S JS", "1 AH AC 10C 2D 4S 9C 7C", Description = "High Card Vs One Pair")]
+        [TestCase("0 AH 9C 10C 2D 4S 7S JS", "1 AH AC 10C 10D 4S 9C 7C", Description = "High Card Vs Two Pairs")]
+        [TestCase("0 AH 9C 10C 2D 4S 7S JS", "1 10S 10C 10D 4S 9C 7C", Description = "High Card Vs Three of Kind")]
+        [TestCase("0 AH 9C 10C 2D 4S 7S JS", "1 JH 10S 10C 10D 8S 9C 7C", Description = "High Card Vs Straight")]
+        [TestCase("0 AH 9C 10C 2D 4S 7S JS", "1 KC 10S 10C 10D 4C 9C 7C", Description = "High Card Vs Flush")]
+        [TestCase("0 AH 9C 10C 2D 4S 7S JS", "1 AH AC 10C 10D 10S 9C 7C", Description = "High Card Vs Full House")]
+        [TestCase("0 AH 9C 10C 2D 4S 7S JS", "1 AH 9S 9C 9D 4S 9H 10H", Description = "High Card Vs Four of Kind")]
+        [TestCase("0 AH 9C 10C 2D 4S 7S JS", "1 2S 3S 4S AC 5S JD 6S", Description = "High Card Vs Straight Flush")]
+        [TestCase("0 AH 9C 10C 2D 4S 7S JS", "1 AH KH 2C JH 10H 4S QH", Description = "High Card Vs Royal Flush")]
+        public void HighCardVersusTest(params string[] cardsList) {
+            GameTest(cardsList);
+        }
+
+        protected void GameTest(params string[] cardsList)
+        {
             var bestEval = new HandEvaluation { Scores = -1 };
             foreach (var playerInfo in cardsList) {
                 var playerCards = PokerCard.ParseList(playerInfo.Substring(2));

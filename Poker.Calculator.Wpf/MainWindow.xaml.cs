@@ -16,7 +16,7 @@ namespace Poker {
 
         public MainWindow() {
             InitializeComponent();
-            for (var i = 0; i < 3; i++) {
+            for (var i = 0; i < 4; i++) {
                 var player = new PokerPlayerViewModel();
                 player.Name = "Player " + (i + 1).ToString();
                 _model.Players.Add(player);
