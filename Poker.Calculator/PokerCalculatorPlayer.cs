@@ -39,18 +39,18 @@ namespace Poker.Calculator {
             get { return _flush; }
         }
 
-        private int _straight;
-        public int Straight {
+        private PokerCalculatorHand _straight;
+        public PokerCalculatorHand Straight {
             get { return _straight; }
         }
 
-        private int _threeOfKind;
-        public int ThreeOfKind {
+        private PokerCalculatorHand _threeOfKind;
+        public PokerCalculatorHand ThreeOfKind {
             get { return _threeOfKind; }
         }
 
-        private int _twoPairs;
-        public int TwoPairs {
+        private PokerCalculatorHand _twoPairs;
+        public PokerCalculatorHand TwoPairs {
             get { return _twoPairs; }
         }
 
@@ -83,13 +83,13 @@ namespace Poker.Calculator {
                     _flush++;
                     break;
                 case HandType.Straight:
-                    _straight++;
+                    _straight.Wins++;
                     break;
                 case HandType.ThreeOfKind:
-                    _threeOfKind++;
+                    _threeOfKind.Wins++;
                     break;
                 case HandType.TwoPairs:
-                    _twoPairs++;
+                    _twoPairs.Wins++;
                     break;
                 case HandType.OnePair:
                     _onePair.Wins++;
@@ -119,13 +119,13 @@ namespace Poker.Calculator {
                     _flush++;
                     break;
                 case HandType.Straight:
-                    _straight++;
+                    _straight.Splits++;
                     break;
                 case HandType.ThreeOfKind:
-                    _threeOfKind++;
+                    _threeOfKind.Splits++;
                     break;
                 case HandType.TwoPairs:
-                    _twoPairs++;
+                    _twoPairs.Splits++;
                     break;
                 case HandType.OnePair:
                     _onePair.Splits++;
@@ -155,13 +155,13 @@ namespace Poker.Calculator {
                     _flush++;
                     break;
                 case HandType.Straight:
-                    _straight++;
+                    _straight.Losts++;
                     break;
                 case HandType.ThreeOfKind:
-                    _threeOfKind++;
+                    _threeOfKind.Losts++;
                     break;
                 case HandType.TwoPairs:
-                    _twoPairs++;
+                    _twoPairs.Losts++;
                     break;
                 case HandType.OnePair:
                     _onePair.Losts++;

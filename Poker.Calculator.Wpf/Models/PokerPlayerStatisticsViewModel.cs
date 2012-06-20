@@ -99,19 +99,16 @@ namespace Poker.Calculator.Wpf.Models {
             _fourOfKind.Count = player.FourOfKind;
             _fullHouse.Count = player.FullHouse;
             _flush.Count = player.Flush;
-            _straight.Count = player.Straight;
-            _threeOfKind.Count = player.ThreeOfKind;
-            _twoPairs.Count = player.TwoPairs;
 
             _royalFlush.Percentage = Percentage(rootModel, player.RoyalFlush);
             _straightFlush.Percentage = Percentage(rootModel, player.StraightFlush);
             _fourOfKind.Percentage = Percentage(rootModel, player.FourOfKind);
             _fullHouse.Percentage = Percentage(rootModel, player.FullHouse);
             _flush.Percentage = Percentage(rootModel, player.Flush);
-            _straight.Percentage = Percentage(rootModel, player.Straight);
-            _threeOfKind.Percentage = Percentage(rootModel, player.ThreeOfKind);
-            _twoPairs.Percentage = Percentage(rootModel, player.TwoPairs);
 
+            _straight.CopyFrom(player.Straight, gamesPlayed);
+            _threeOfKind.CopyFrom(player.ThreeOfKind, gamesPlayed);
+            _twoPairs.CopyFrom(player.TwoPairs, gamesPlayed);
             _onePair.CopyFrom(player.OnePair, gamesPlayed);
             _highCard.CopyFrom(player.HighCard, gamesPlayed);
         }
