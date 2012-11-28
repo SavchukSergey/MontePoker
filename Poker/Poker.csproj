@@ -57,10 +57,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cards\CardDeck.cs" />
+    <Compile Include="Cards\FastCardDeck.cs" />
     <Compile Include="Cards\PokerCardExt.cs" />
     <Compile Include="Cards\CardRank.cs" />
     <Compile Include="Cards\CardRankExt.cs" />
     <Compile Include="Cards\CardSuit.cs" />
+    <Compile Include="Cards\Rnd.cs" />
     <Compile Include="Evaluation\CardRankGroup.cs" />
     <Compile Include="Evaluation\CardsEvaluation.cs" />
     <Compile Include="Evaluation\HandEvaluation.cs" />
