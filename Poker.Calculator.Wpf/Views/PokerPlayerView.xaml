@@ -18,39 +18,43 @@
         </Grid.ColumnDefinitions>
         <Grid Grid.Row="0" Grid.Column="0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="1*" />
+                <RowDefinition Height="4*" />
                 <RowDefinition Height="2*" />
-                <RowDefinition Height="1*" />
-                <RowDefinition Height="2*" />
-                <RowDefinition Height="5*" />
+                <RowDefinition Height="4*" />
             </Grid.RowDefinitions>
-            <Label Content="{Binding Path=Name}" Grid.Row="0" />
-            <Grid Grid.Row="1" Width="100" >
+            <StackPanel Orientation="Vertical" Grid.Row="0" Width="140">
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="{Binding Path=Name}" />
+                    <Button Content="Fold" Height="25" Click="btnFold_Click" />
+                </StackPanel>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <local:PokerCardView DataContext="{Binding Path=CardA}" Grid.Row="0" Grid.Column="0" Margin="2" CardClick="OnCardClick" />
+                    <local:PokerCardView DataContext="{Binding Path=CardB}" Grid.Row="0" Grid.Column="1" Margin="2" CardClick="OnCardClick" />
+                </Grid>
+            </StackPanel>
+            <Grid Grid.Row="1" Width="100" DataContext="{Binding Path=Statistics}" >
                 <Grid.RowDefinitions>
                     <RowDefinition />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
                     <ColumnDefinition />
-                </Grid.ColumnDefinitions>
-                <local:PokerCardView DataContext="{Binding Path=CardA}" Grid.Row="0" Grid.Column="0" Margin="2" CardClick="OnCardClick" />
-                <local:PokerCardView DataContext="{Binding Path=CardB}" Grid.Row="0" Grid.Column="1" Margin="2" CardClick="OnCardClick" />
-            </Grid>
-            <Grid Grid.Row="2">
-                <Button Content="Fold"  Click="btnFold_Click"/>
-            </Grid>
-            <Grid Grid.Row="3" Width="100" DataContext="{Binding Path=Statistics}" >
-                <Grid.RowDefinitions>
-                    <RowDefinition />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
                     <ColumnDefinition />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <local:PokerCardView DataContext="{Binding Path=OutA}" Grid.Row="0" Grid.Column="0" Margin="2" />
                 <local:PokerCardView DataContext="{Binding Path=OutB}" Grid.Row="0" Grid.Column="1" Margin="2" />
+                <local:PokerCardView DataContext="{Binding Path=OutC}" Grid.Row="0" Grid.Column="2" Margin="2" />
+                <local:PokerCardView DataContext="{Binding Path=OutD}" Grid.Row="0" Grid.Column="3" Margin="2" />
             </Grid>
-            <Grid Grid.Row="4">
+            <Grid Grid.Row="2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*" />
                     <ColumnDefinition Width="1*"/>

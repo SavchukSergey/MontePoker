@@ -87,6 +87,24 @@ namespace Poker.Calculator.Wpf.Models {
             }
         }
 
+        private PokerCardViewModel _outC;
+        public PokerCardViewModel OutC {
+            get { return _outC; }
+            set {
+                _outC = value;
+                OnPropertyChanged(new PropertyChangedEventArgs("OutC"));
+            }
+        }
+
+        private PokerCardViewModel _outD;
+        public PokerCardViewModel OutD {
+            get { return _outD; }
+            set {
+                _outD = value;
+                OnPropertyChanged(new PropertyChangedEventArgs("OutD"));
+            }
+        }
+
         protected virtual void OnPropertyChanged(PropertyChangedEventArgs args) {
             var handler = PropertyChanged;
             if (handler != null) {
@@ -120,6 +138,12 @@ namespace Poker.Calculator.Wpf.Models {
             }
             if (outCards.Count > 1) {
                 OutB = new PokerCardViewModel { Card = outCards[1].Card };
+            }
+            if (outCards.Count > 2) {
+                OutC = new PokerCardViewModel { Card = outCards[2].Card };
+            }
+            if (outCards.Count > 3) {
+                OutD = new PokerCardViewModel { Card = outCards[3].Card };
             }
         }
 
