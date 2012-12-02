@@ -1,5 +1,4 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
@@ -10,7 +9,6 @@ namespace Poker.Cards.Views {
 
         static BaseCardView() {
             CardBackgroundProperty = DependencyProperty.Register("CardBackground", typeof(Brush), typeof(BaseCardView), new FrameworkPropertyMetadata(new SolidColorBrush(Color.FromRgb(255, 255, 255)), FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.SubPropertiesDoNotAffectRender, OnBackGroundChanged));
-
         }
 
         private static void OnBackGroundChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs args) {
