@@ -1,4 +1,5 @@
-﻿using Poker.Cards;
+﻿using System.Collections.Generic;
+using Poker.Cards;
 using Poker.Evaluation;
 
 namespace Poker.Calculator {
@@ -14,54 +15,65 @@ namespace Poker.Calculator {
 
         public int Splits { get; set; }
 
-        private PokerCalculatorHand _royalFlush;
+        private PokerCalculatorHand _royalFlush = new PokerCalculatorHand();
         public PokerCalculatorHand RoyalFlush {
             get { return _royalFlush; }
         }
 
-        private PokerCalculatorHand _straightFlush;
+        private PokerCalculatorHand _straightFlush = new PokerCalculatorHand();
         public PokerCalculatorHand StraightFlush {
             get { return _straightFlush; }
         }
 
-        private PokerCalculatorHand _fourOfKind;
+        private PokerCalculatorHand _fourOfKind = new PokerCalculatorHand();
         public PokerCalculatorHand FourOfKind {
             get { return _fourOfKind; }
         }
 
-        private PokerCalculatorHand _fullHouse;
+        private PokerCalculatorHand _fullHouse = new PokerCalculatorHand();
         public PokerCalculatorHand FullHouse {
             get { return _fullHouse; }
         }
 
-        private PokerCalculatorHand _flush;
+        private PokerCalculatorHand _flush = new PokerCalculatorHand();
         public PokerCalculatorHand Flush {
             get { return _flush; }
         }
 
-        private PokerCalculatorHand _straight;
+        private PokerCalculatorHand _straight = new PokerCalculatorHand();
         public PokerCalculatorHand Straight {
             get { return _straight; }
         }
 
-        private PokerCalculatorHand _threeOfKind;
+        private PokerCalculatorHand _threeOfKind = new PokerCalculatorHand();
         public PokerCalculatorHand ThreeOfKind {
             get { return _threeOfKind; }
         }
 
-        private PokerCalculatorHand _twoPairs;
+        private PokerCalculatorHand _twoPairs = new PokerCalculatorHand();
         public PokerCalculatorHand TwoPairs {
             get { return _twoPairs; }
         }
 
-        private PokerCalculatorHand _onePair;
+        private PokerCalculatorHand _onePair = new PokerCalculatorHand();
         public PokerCalculatorHand OnePair {
             get { return _onePair; }
         }
 
-        private PokerCalculatorHand _highCard;
+        private PokerCalculatorHand _highCard = new PokerCalculatorHand();
         public PokerCalculatorHand HighCard {
             get { return _highCard; }
+        }
+
+        private PokerCalculatorCardsStat _cards = new PokerCalculatorCardsStat();
+        public PokerCalculatorCardsStat Cards {
+            get { return _cards; }
+        }
+
+        public ulong OpenedCardsMask { get; set; }
+
+        public IList<PokerCalculatorCardResult> GetOutCards() {
+            return Cards.GetOutCards(OpenedCardsMask);
         }
 
         public void IncreaseWins(HandType handType) {
@@ -185,16 +197,19 @@ namespace Poker.Calculator {
                 Losts = Losts,
                 Splits = Splits,
 
-                _royalFlush = _royalFlush,
-                _straightFlush = _straightFlush,
-                _fourOfKind = _fourOfKind,
-                _fullHouse = _fullHouse,
-                _flush = _flush,
-                _straight = _straight,
-                _threeOfKind = _threeOfKind,
-                _twoPairs = _twoPairs,
-                _onePair = _onePair,
-                _highCard = _highCard
+                OpenedCardsMask = OpenedCardsMask,
+
+                _royalFlush = _royalFlush.Clone(),
+                _straightFlush = _straightFlush.Clone(),
+                _fourOfKind = _fourOfKind.Clone(),
+                _fullHouse = _fullHouse.Clone(),
+                _flush = _flush.Clone(),
+                _straight = _straight.Clone(),
+                _threeOfKind = _threeOfKind.Clone(),
+                _twoPairs = _twoPairs.Clone(),
+                _onePair = _onePair.Clone(),
+                _highCard = _highCard.Clone(),
+                _cards = _cards.Clone()
             };
         }
     }

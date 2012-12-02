@@ -17,10 +17,33 @@ namespace Poker.Calculator {
             _table = data.Table;
             _deck = data.Deck;
 
+            var tableOpened = 0ul;
+            tableOpened = MarkAsOpened(tableOpened, _table.CardA);
+            tableOpened = MarkAsOpened(tableOpened, _table.CardB);
+            tableOpened = MarkAsOpened(tableOpened, _table.CardC);
+            tableOpened = MarkAsOpened(tableOpened, _table.CardD);
+            tableOpened = MarkAsOpened(tableOpened, _table.CardE);
+
+            foreach (var player in _players) {
+                var opened = tableOpened;
+                opened = MarkAsOpened(opened, player.CardA);
+                opened = MarkAsOpened(opened, player.CardB);
+
+                player.OpenedCardsMask = opened;
+            }
+
             foreach (var player in _players) {
                 var hand = new PokerPlayerHand { Player = player };
                 _hands.Add(hand);
             }
+        }
+
+
+        public ulong MarkAsOpened(ulong mask, PokerCard card) {
+            if (!card.IsEmpty()) {
+                mask |= 1ul << card.GetIndex();
+            }
+            return mask;
         }
 
         private class PokerPlayerHand {
@@ -30,6 +53,27 @@ namespace Poker.Calculator {
             public readonly PokerCard[] Cards = new PokerCard[7];
 
             public HandEvaluation Evaluation;
+
+            public void IncreaseWins() {
+                Player.IncreaseWins(Evaluation.HandType);
+                for (var i = 0; i < 7; i++) {
+                    Player.Cards[Cards[i]].Wins++;
+                }
+            }
+
+            public void IncreaseLosts() {
+                Player.IncreaseLosts(Evaluation.HandType);
+                for (var i = 0; i < 7; i++) {
+                    Player.Cards[Cards[i]].Losts++;
+                }
+            }
+
+            public void IncreaseSplits() {
+                Player.IncreaseSplits(Evaluation.HandType);
+                for (var i = 0; i < 7; i++) {
+                    Player.Cards[Cards[i]].Splits++;
+                }
+            }
         }
 
         public PokerCalculatorResult GetResult() {
@@ -113,12 +157,12 @@ namespace Poker.Calculator {
                 var hand = _hands[i];
                 if (hand.Evaluation.Scores == bestScore) {
                     if (!split) {
-                        hand.Player.IncreaseWins(hand.Evaluation.HandType);
+                        hand.IncreaseWins();
                     } else {
-                        hand.Player.IncreaseSplits(hand.Evaluation.HandType);
+                        hand.IncreaseSplits();
                     }
                 } else {
-                    hand.Player.IncreaseLosts(hand.Evaluation.HandType);
+                    hand.IncreaseLosts();
                 }
             }
         }

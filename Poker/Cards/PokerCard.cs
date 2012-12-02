@@ -172,23 +172,19 @@ namespace Poker.Cards {
             }
         }
 
-        public bool Equals(PokerCard other)
-        {
+        public bool Equals(PokerCard other) {
             return Equals(other.Rank, Rank) && Equals(other.Suit, Suit);
         }
 
-        public override bool Equals(object obj)
-        {
+        public override bool Equals(object obj) {
             if (ReferenceEquals(null, obj)) return false;
-            if (obj.GetType() != typeof (PokerCard)) return false;
-            return Equals((PokerCard) obj);
+            if (obj.GetType() != typeof(PokerCard)) return false;
+            return Equals((PokerCard)obj);
         }
 
-        public override int GetHashCode()
-        {
-            unchecked
-            {
-                return (Rank.GetHashCode()*397) ^ Suit.GetHashCode();
+        public override int GetHashCode() {
+            unchecked {
+                return (Rank.GetHashCode() * 397) ^ Suit.GetHashCode();
             }
         }
     }

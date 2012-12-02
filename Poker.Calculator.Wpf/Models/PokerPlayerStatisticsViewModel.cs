@@ -69,6 +69,24 @@ namespace Poker.Calculator.Wpf.Models {
             get { return _highCard; }
         }
 
+        private PokerCardViewModel _outA;
+        public PokerCardViewModel OutA {
+            get { return _outA; }
+            set {
+                _outA = value;
+                OnPropertyChanged(new PropertyChangedEventArgs("OutA"));
+            }
+        }
+
+        private PokerCardViewModel _outB;
+        public PokerCardViewModel OutB {
+            get { return _outB; }
+            set {
+                _outB = value;
+                OnPropertyChanged(new PropertyChangedEventArgs("OutB"));
+            }
+        }
+
         protected virtual void OnPropertyChanged(PropertyChangedEventArgs args) {
             var handler = PropertyChanged;
             if (handler != null) {
@@ -95,6 +113,14 @@ namespace Poker.Calculator.Wpf.Models {
             _twoPairs.CopyFrom(player.TwoPairs, gamesPlayed);
             _onePair.CopyFrom(player.OnePair, gamesPlayed);
             _highCard.CopyFrom(player.HighCard, gamesPlayed);
+
+            var outCards = player.GetOutCards();
+            if (outCards.Count > 0) {
+                OutA = new PokerCardViewModel { Card = outCards[0].Card };
+            }
+            if (outCards.Count > 1) {
+                OutB = new PokerCardViewModel { Card = outCards[1].Card };
+            }
         }
 
 

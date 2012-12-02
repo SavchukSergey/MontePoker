@@ -32,16 +32,17 @@ namespace Poker.Cards {
             _cards = new Queue<PokerCard>(_cards.OrderBy(item => Guid.NewGuid()));
         }
 
-        public void DealOne(out PokerCard card) {
+        public bool DealOne(out PokerCard card) {
             if (_cards.Count > 0) {
                 card = _cards.Dequeue();
-            } else {
-                card = new PokerCard(CardRank.None, CardSuit.None);
+                return true;
             }
+            card = new PokerCard(CardRank.None, CardSuit.None);
+            return false;
         }
 
         public CardDeck Clone() {
-            var res = new CardDeck (_cards);
+            var res = new CardDeck(_cards);
             return res;
         }
 
