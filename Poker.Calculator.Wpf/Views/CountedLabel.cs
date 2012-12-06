@@ -2,28 +2,27 @@
 using System.Windows.Controls;
 
 namespace Poker.Calculator.Wpf.Views {
-    public class PlayerHandType : Label {
+    public class CountedLabel : Label {
 
         public static readonly DependencyProperty CountProperty;
 
-        static PlayerHandType() {
-            CountProperty = DependencyProperty.Register("Count", typeof(int), typeof(PlayerHandType), new FrameworkPropertyMetadata(0, FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.SubPropertiesDoNotAffectRender, OnCountChanged));
+        static CountedLabel() {
+            CountProperty = DependencyProperty.Register("Count", typeof(int), typeof(CountedLabel), new FrameworkPropertyMetadata(0, FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.SubPropertiesDoNotAffectRender, OnCountChanged));
         }
 
         private static void OnCountChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs args) {
-            ((PlayerHandType)dependencyObject).OnCountChanged(args);
+            ((CountedLabel)dependencyObject).OnCountChanged(args);
         }
 
         protected virtual void OnCountChanged(DependencyPropertyChangedEventArgs args) {
             InvalidateContent();
         }
 
-
-        private string _handName;
-        public string HandName {
-            get { return _handName; }
+        private string _label;
+        public string Label {
+            get { return _label; }
             set {
-                _handName = value;
+                _label = value;
                 InvalidateContent();
             }
         }
@@ -38,7 +37,7 @@ namespace Poker.Calculator.Wpf.Views {
         }
 
         private void InvalidateContent() {
-            var hand = HandName ?? "";
+            var hand = Label ?? "";
             var cnt = Count;
 
             Content = hand + " (" + cnt + ")";

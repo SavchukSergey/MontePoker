@@ -19,7 +19,7 @@
         <Grid Grid.Row="0" Grid.Column="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="4*" />
-                <RowDefinition Height="2*" />
+                <RowDefinition Height="3*" />
                 <RowDefinition Height="4*" />
             </Grid.RowDefinitions>
             <StackPanel Orientation="Vertical" Grid.Row="0" Width="140">
@@ -57,21 +57,16 @@
             <Grid Grid.Row="2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*" />
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="1*" />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition />
                     <RowDefinition />
                     <RowDefinition />
                 </Grid.RowDefinitions>
-                <Label Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Content="Wins" />
-                <Label Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Content="Losts" />
-                <Label Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Content="Splits" />
-
-                <Label Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Content="{Binding Path=Statistics.Wins.Count}" />
-                <Label Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Content="{Binding Path=Statistics.Losts.Count}" />
-                <Label Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Content="{Binding Path=Statistics.Splits.Count}" />
+                <local:CountedLabel Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Label="Wins" Count="{Binding Path=Statistics.Wins.Count}"/>
+                <local:CountedLabel Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Label="Losts" Count="{Binding Path=Statistics.Losts.Count}" />
+                <local:CountedLabel Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Label="Splits"  Count="{Binding Path=Statistics.Splits.Count}"/>
 
                 <Label Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" Content="{Binding Path=Statistics.Wins.Percentage, Converter={StaticResource percentage}}" FontSize="24" />
                 <Label Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" Content="{Binding Path=Statistics.Losts.Percentage, Converter={StaticResource percentage}}" FontSize="24" />

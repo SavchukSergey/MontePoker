@@ -34,16 +34,16 @@
         <Label Grid.Row="0" Grid.Column="3" Content="Splits" />
         <Label Grid.Row="0" Grid.Column="4" Content="Losts" />
 
-        <local:PlayerHandType Grid.Row="1" Grid.Column="0" HandName="Royal Flush" Count="{Binding Path=RoyalFlush.Count}" />
-        <local:PlayerHandType Grid.Row="2" Grid.Column="0" HandName="Straight Flush" Count="{Binding Path=StraightFlush.Count}"/>
-        <local:PlayerHandType Grid.Row="3" Grid.Column="0" HandName="Four of Kind" Count="{Binding Path=FourOfKind.Count}"/>
-        <local:PlayerHandType Grid.Row="4" Grid.Column="0" HandName="Full House" Count="{Binding Path=FullHouse.Count}"/>
-        <local:PlayerHandType Grid.Row="5" Grid.Column="0" HandName="Flush" Count="{Binding Path=Flush.Count}"/>
-        <local:PlayerHandType Grid.Row="6" Grid.Column="0" HandName="Straight" Count="{Binding Path=Straight.Count}"/>
-        <local:PlayerHandType Grid.Row="7" Grid.Column="0" HandName="Three of Kind" Count="{Binding Path=ThreeOfKind.Count}"/>
-        <local:PlayerHandType Grid.Row="8" Grid.Column="0" HandName="Two Pairs" Count="{Binding Path=TwoPairs.Count}"/>
-        <local:PlayerHandType Grid.Row="9" Grid.Column="0" HandName="One Pair" Count="{Binding Path=OnePair.Count}"/>
-        <local:PlayerHandType Grid.Row="10" Grid.Column="0" HandName="High Card" Count="{Binding Path=HighCard.Count}"/>
+        <local:CountedLabel Grid.Row="1" Grid.Column="0" Label="Royal Flush" Count="{Binding Path=RoyalFlush.Count}" />
+        <local:CountedLabel Grid.Row="2" Grid.Column="0" Label="Straight Flush" Count="{Binding Path=StraightFlush.Count}"/>
+        <local:CountedLabel Grid.Row="3" Grid.Column="0" Label="Four of Kind" Count="{Binding Path=FourOfKind.Count}"/>
+        <local:CountedLabel Grid.Row="4" Grid.Column="0" Label="Full House" Count="{Binding Path=FullHouse.Count}"/>
+        <local:CountedLabel Grid.Row="5" Grid.Column="0" Label="Flush" Count="{Binding Path=Flush.Count}"/>
+        <local:CountedLabel Grid.Row="6" Grid.Column="0" Label="Straight" Count="{Binding Path=Straight.Count}"/>
+        <local:CountedLabel Grid.Row="7" Grid.Column="0" Label="Three of Kind" Count="{Binding Path=ThreeOfKind.Count}"/>
+        <local:CountedLabel Grid.Row="8" Grid.Column="0" Label="Two Pairs" Count="{Binding Path=TwoPairs.Count}"/>
+        <local:CountedLabel Grid.Row="9" Grid.Column="0" Label="One Pair" Count="{Binding Path=OnePair.Count}"/>
+        <local:CountedLabel Grid.Row="10" Grid.Column="0" Label="High Card" Count="{Binding Path=HighCard.Count}"/>
 
         <Label Grid.Row="1" Grid.Column="1" Content="{Binding Path=RoyalFlush.Percentage, Converter={StaticResource percentage}}" />
         <Label Grid.Row="2" Grid.Column="1" Content="{Binding Path=StraightFlush.Percentage, Converter={StaticResource percentage}}" />
