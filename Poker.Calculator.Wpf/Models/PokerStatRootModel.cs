@@ -177,6 +177,14 @@ namespace Poker.Calculator.Wpf.Models {
             }
         }
 
+        public bool Is2Players {
+            get { return _players.Count == 2; }
+        }
+        
+        public bool Is3Players {
+            get { return _players.Count == 3; }
+        }
+
         public bool Is4Players {
             get { return _players.Count == 4; }
         }
