@@ -1,0 +1,37 @@
+﻿<UserControl x:Class="Poker.Calculator.Wpf.Views.MainTabView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:Poker.Calculator.Wpf.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid Background="#208020">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="13*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="0">
+            <Button Content="New Hand" Click="OnNewHandClick" />
+            <local:PokerTableCardsView DataContext="{Binding Path=TableCards}" CardClick="OnTableCardsClick"/>
+        </StackPanel>
+        <local:PokerCardDeckView DataContext="{Binding Path=CardDeck}" Grid.Row="0" Grid.Column="2" CardClick="OnDeckCardClick" />
+        <ItemsControl ItemsSource="{Binding Path=Players}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Background="#408040">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <local:PokerPlayerView Margin="10" CardClick="OnPlayerCardsClick" Width="650" Height="320"/>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </Grid>
+</UserControl>

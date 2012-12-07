@@ -5,12 +5,13 @@ using System.ComponentModel;
 using System.Linq;
 
 namespace Poker.Calculator.Wpf.Models {
-    public class PokerStatRootModel {
+    public class PokerStatRootModel : INotifyPropertyChanged {
 
         private PokerCalculator _calculator;
         private readonly PokerCardDeckViewModel _cardDeck = new PokerCardDeckViewModel();
         private readonly PokerTableCardsViewModel _tableCards = new PokerTableCardsViewModel();
         private readonly ObservableCollection<PokerPlayerViewModel> _players = new ObservableCollection<PokerPlayerViewModel>();
+        private readonly ObservableCollection<PokerPlayerViewModel> _visiblePlayers = new ObservableCollection<PokerPlayerViewModel>();
         private readonly PokerGlobalStatistics _statistics = new PokerGlobalStatistics();
         private bool _dirty = true;
 
@@ -42,6 +43,13 @@ namespace Poker.Calculator.Wpf.Models {
                     player.CardB.PropertyChanged += PlayerCardsOnPropertyChanged;
                 }
             }
+            _dirty = true;
+            RefreshVisiblePlayers();
+            OnPropertyChanged("Is2Players");
+            OnPropertyChanged("Is3Players");
+            OnPropertyChanged("Is4Players");
+            OnPropertyChanged("Is5Players");
+            OnPropertyChanged("Is6Players");
         }
 
         private void OnPlayerPropertyChanged(object sender, PropertyChangedEventArgs propertyChangedEventArgs) {
@@ -51,6 +59,7 @@ namespace Poker.Calculator.Wpf.Models {
                     Sync();
                     break;
             }
+            RefreshVisiblePlayers();
         }
 
         private void PlayerCardsOnPropertyChanged(object sender, PropertyChangedEventArgs args) {
@@ -60,6 +69,7 @@ namespace Poker.Calculator.Wpf.Models {
                     Sync();
                     break;
             }
+            RefreshVisiblePlayers();
         }
 
         private void TableCardsOnPropertyChanged(object sender, PropertyChangedEventArgs args) {
@@ -106,6 +116,10 @@ namespace Poker.Calculator.Wpf.Models {
 
         public ObservableCollection<PokerPlayerViewModel> Players {
             get { return _players; }
+        }
+
+        public ObservableCollection<PokerPlayerViewModel> VisiblePlayers {
+            get { return _visiblePlayers; }
         }
 
         public PokerGlobalStatistics Statistics {
@@ -163,6 +177,50 @@ namespace Poker.Calculator.Wpf.Models {
             }
         }
 
+        public bool Is4Players {
+            get { return _players.Count == 4; }
+        }
 
+        public bool Is5Players {
+            get { return _players.Count == 5; }
+        }
+
+        public bool Is6Players {
+            get { return _players.Count == 6; }
+        }
+
+        public void SetPlayers(int count) {
+            while (_players.Count > count) {
+                _players.RemoveAt(count);
+            }
+            while (_players.Count < count) {
+                var player = new PokerPlayerViewModel {
+                    Name = "Player " + (_players.Count + 1).ToString()
+                };
+                _players.Add(player);
+            }
+        }
+
+        private void RefreshVisiblePlayers() {
+            var foundEmpty = false;
+            foreach (var player in _players) {
+                player.Visible = !foundEmpty;
+                var hasCards = player.HasAnyCard;
+                if (!hasCards) foundEmpty = true;
+            }
+            _visiblePlayers.Clear();
+            foreach (var player in _players) {
+                if (player.Visible) _visiblePlayers.Add(player);
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged(string propertyName) {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null) {
+                handler(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
     }
 }

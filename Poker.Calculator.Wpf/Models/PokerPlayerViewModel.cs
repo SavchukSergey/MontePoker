@@ -6,6 +6,11 @@ namespace Poker.Calculator.Wpf.Models {
         private readonly PokerCardViewModel _cardA = new PokerCardViewModel();
         private readonly PokerCardViewModel _cardB = new PokerCardViewModel();
         private bool _inGame = true;
+        private bool _visible = true;
+
+        public PokerPlayerViewModel() {
+            _cardA.PropertyChanged += CardPropertyChanged;
+        }
 
         private readonly PokerPlayerStatisticsViewModel _statistics = new PokerPlayerStatisticsViewModel();
         public PokerPlayerStatisticsViewModel Statistics {
@@ -40,9 +45,30 @@ namespace Poker.Calculator.Wpf.Models {
             }
         }
 
+        public bool Visible {
+            get { return _visible; }
+            set {
+                if (_visible != value) {
+                    _visible = value;
+                    OnPropertyChanged(new PropertyChangedEventArgs("Visible"));
+                }
+            }
+        }
+
+        public bool HasAnyCard {
+            get { return !_cardA.IsEmpty || !_cardB.IsEmpty; }
+        }
+
         public void Fold() {
             InGame = false;
             Statistics.Reset();
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public void ReturnCardsTo(PokerStatRootModel root) {
+            if (!_cardA.IsEmpty) root.ReturnCardToDeck(_cardA);
+            if (!_cardB.IsEmpty) root.ReturnCardToDeck(_cardB);
         }
 
         protected virtual void OnPropertyChanged(PropertyChangedEventArgs args) {
@@ -52,11 +78,9 @@ namespace Poker.Calculator.Wpf.Models {
             }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        public void ReturnCardsTo(PokerStatRootModel root) {
-            if (!_cardA.IsEmpty) root.ReturnCardToDeck(_cardA);
-            if (!_cardB.IsEmpty) root.ReturnCardToDeck(_cardB);
+        private void CardPropertyChanged(object sender, PropertyChangedEventArgs e) {
+            OnPropertyChanged(new PropertyChangedEventArgs("HasAnyCard"));
         }
+
     }
 }
