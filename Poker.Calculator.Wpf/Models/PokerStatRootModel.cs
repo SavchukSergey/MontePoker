@@ -14,6 +14,8 @@ namespace Poker.Calculator.Wpf.Models {
         private readonly ObservableCollection<PokerPlayerViewModel> _visiblePlayers = new ObservableCollection<PokerPlayerViewModel>();
         private readonly PokerGlobalStatistics _statistics = new PokerGlobalStatistics();
         private bool _dirty = true;
+        private double _gps = 500;
+        public double Gps => _gps;
 
         private readonly object _sync = new object();
 
@@ -195,6 +197,25 @@ namespace Poker.Calculator.Wpf.Models {
 
         public bool Is6Players {
             get { return _players.Count == 6; }
+        }
+
+        public bool IsGps100 => _gps == 100;
+        public bool IsGps500 => _gps == 500;
+        public bool IsGps1000 => _gps == 1000;
+        public bool IsGps5000 => _gps == 5000;
+        public bool IsGps10000 => _gps == 10000;
+        public bool IsGps50000 => _gps == 50000;
+        public bool IsGps100000 => _gps == 100000;
+
+        public void SetGps(double val) {
+            _gps = val;
+            OnPropertyChanged(nameof(IsGps100));
+            OnPropertyChanged(nameof(IsGps500));
+            OnPropertyChanged(nameof(IsGps1000));
+            OnPropertyChanged(nameof(IsGps5000));
+            OnPropertyChanged(nameof(IsGps10000));
+            OnPropertyChanged(nameof(IsGps50000));
+            OnPropertyChanged(nameof(IsGps100000));
         }
 
         public void SetPlayers(int count) {

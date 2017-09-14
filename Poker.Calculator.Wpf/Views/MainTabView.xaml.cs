@@ -14,6 +14,9 @@ namespace Poker.Calculator.Wpf.Views {
         private Timer _refreshTimer;
         private PokerStatRootModel _model;
         private PokerCardViewModel _selectedCard;
+        private LeakyBucket _leakyBucket = new LeakyBucket {
+            Interval = 250
+        };
 
         public MainTabView() {
             InitializeComponent();
@@ -55,13 +58,17 @@ namespace Poker.Calculator.Wpf.Views {
         private void OnTimerTick() {
             if (_model != null) {
                 _model.Sync();
+                _leakyBucket.Speed = _model.Gps;
+                _leakyBucket.Leak();
             }
         }
 
         private void CalcThreadEntryPoint() {
             while (true) {
                 if (_model != null) {
-                    _model.PlayGame();
+                    if (_leakyBucket.Request(1)) {
+                        _model.PlayGame();
+                    }
                 }
             }
         }

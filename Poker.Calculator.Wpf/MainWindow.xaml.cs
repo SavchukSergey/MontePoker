@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Threading;
 using System.Windows;
 using Poker.Calculator.Wpf.Models;
-using Poker.Calculator.Wpf.Views;
 
 namespace Poker {
     /// <summary>
@@ -43,5 +41,35 @@ namespace Poker {
         private void SixPlayersChecked(object sender, RoutedEventArgs e) {
             _model.SetPlayers(6);
         }
+
+
+        private void Gps100Checked(object sender, RoutedEventArgs e) {
+            _model.SetGps(100);
+        }
+
+        private void Gps500Checked(object sender, RoutedEventArgs e) {
+            _model.SetGps(500);
+        }
+
+        private void Gps1000Checked(object sender, RoutedEventArgs e) {
+            _model.SetGps(1000);
+        }
+
+        private void Gps5000Checked(object sender, RoutedEventArgs e) {
+            _model.SetGps(5000);
+        }
+
+        private void Gps10000Checked(object sender, RoutedEventArgs e) {
+            _model.SetGps(10000);
+        }
+
+        private void Gps50000Checked(object sender, RoutedEventArgs e) {
+            _model.SetGps(50000);
+        }
+
+        private void Gps100000Checked(object sender, RoutedEventArgs e) {
+            _model.SetGps(100000);
+        }
+
     }
 }

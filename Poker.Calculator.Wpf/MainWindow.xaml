@@ -13,6 +13,15 @@
                     <MenuItem Header="5 players" IsCheckable="true" IsChecked="{Binding Path=Is5Players, Mode=OneWay}" Checked="FivePlayersChecked" />
                     <MenuItem Header="6 players" IsCheckable="true" IsChecked="{Binding Path=Is6Players, Mode=OneWay}" Checked="SixPlayersChecked" />
                 </MenuItem>
+                <MenuItem Header="Performance">
+                    <MenuItem Header="100 gps" ToolTip="100 games per second" IsCheckable="true" IsChecked="{Binding Path=Is100Gps, Mode=OneWay}" Checked="Gps100Checked"/>
+                    <MenuItem Header="500 gps" ToolTip="500 games per second" IsCheckable="true" IsChecked="{Binding Path=Is500Gps, Mode=OneWay}" Checked="Gps500Checked"/>
+                    <MenuItem Header="1000 gps" ToolTip="1000 games per second" IsCheckable="true" IsChecked="{Binding Path=Is1000Gps, Mode=OneWay}" Checked="Gps1000Checked"/>
+                    <MenuItem Header="5000 gps" ToolTip="5000 games per second" IsCheckable="true" IsChecked="{Binding Path=Is5000Gps, Mode=OneWay}" Checked="Gps5000Checked"/>
+                    <MenuItem Header="10000 gps" ToolTip="10000 games per second" IsCheckable="true" IsChecked="{Binding Path=Is10000Gps, Mode=OneWay}" Checked="Gps10000Checked"/>
+                    <MenuItem Header="50000 gps" ToolTip="50000 games per second" IsCheckable="true" IsChecked="{Binding Path=Is50000Gps, Mode=OneWay}" Checked="Gps50000Checked"/>
+                    <MenuItem Header="100000 gps" ToolTip="100000 games per second" IsCheckable="true" IsChecked="{Binding Path=Is100000Gps, Mode=OneWay}" Checked="Gps100000Checked"/>
+                </MenuItem>
             </Menu.Items>
         </Menu>
         <local:MainTabView  />
