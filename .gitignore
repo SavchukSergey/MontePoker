@@ -1,6 +1,8 @@
 /packages/*/
 
 /_ReSharper.Poker.Calc
+/.vs/
+
 /Poker.Calc.sln.DotSettings.user
 /Poker.Calc.1.2.dotCover
 /Poker.Calc.suo
